@@ -1,0 +1,19 @@
+<marc:record xmlns:marc="http://www.loc.gov/MARC21/slim"><marc:leader>     nam  22     uu 4500</marc:leader><marc:controlfield tag="008">      s           |||||||||||||||||English||</marc:controlfield>
+  <marc:datafield tag="130" ind1="0" ind2=" "><marc:subfield code="a">Description of the Island of St. Christophers (With a correct whole sheet Map)</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="655" ind1=" " ind2="7"><marc:subfield code="a">journals</marc:subfield><marc:subfield code="2">aat</marc:subfield></marc:datafield>
+  <marc:datafield tag="260" ind1=" " ind2=" "><marc:subfield code="a">London</marc:subfield><marc:subfield code="b">J. Fielding</marc:subfield><marc:subfield code="c">1782</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="520" ind1=" " ind2=" "><marc:subfield code="a">Accompanies &lt;a href="https://nscc.cairnrepo.org/islandora/object/nscc:30848"&gt;AN ACCURATE MAP of the ISLANDS of ST. CHRISTOPHERS and NEVIS in the WEST INDIES&lt;/a&gt; and describes the history of the islands.</marc:subfield></marc:datafield>
+  
+  
+    <marc:datafield tag="300" ind1=" " ind2=" "><marc:subfield code="a">2 pages</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="852" ind1=" " ind2=" "><marc:subfield code="a">W. K. Morrison Special Collection</marc:subfield></marc:datafield>
+  <marc:datafield tag="651" ind1=" " ind2="0"><marc:subfield code="a">Saint Christopher Island</marc:subfield><marc:subfield code="z">West Indies</marc:subfield></marc:datafield>
+  
+    
+  
+  <marc:datafield tag="" ind1=" " ind2=" "><marc:subfield code="a">This material is provided for research, education and private use only. Commercial use of this work is strictly prohibited.  Attribution for use must be provided as follows: "Digital reproduction from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC Centre of Geographic Sciences” and link to the original record.  For use other than research, education or private uses please contact the &lt;a href="mailto:library.avlawrencetown@nscc.ca?subject=W. K. Morrison Special Collection"&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of Geographic Sciences.</marc:subfield></marc:datafield>
+  <marc:datafield tag="773" ind1="0" ind2=" "><marc:subfield code="t">European Magazine</marc:subfield><marc:subfield code="a">, cartographer</marc:subfield></marc:datafield>
+</marc:record>

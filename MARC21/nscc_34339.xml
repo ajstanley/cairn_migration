@@ -1,0 +1,28 @@
+<marc:record xmlns:marc="http://www.loc.gov/MARC21/slim"><marc:leader>     nem  22     uu 4500</marc:leader><marc:controlfield tag="008">      s           |||||||||||||||||English||</marc:controlfield>
+  <marc:datafield tag="130" ind1="1" ind2=" "><marc:subfield code="a">AMAP of the COUNTRIES AND PLACES, mentioned IN THE NEW TESTAMENT</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="655" ind1=" " ind2="7"><marc:subfield code="a">maps</marc:subfield><marc:subfield code="2">aat</marc:subfield></marc:datafield>
+  <marc:datafield tag="700" ind1="1" ind2=" "><marc:subfield code="a">Dunn, Samuel, -1794</marc:subfield><marc:subfield code="e">cartographer</marc:subfield></marc:datafield>
+  <marc:datafield tag="250" ind1=" " ind2=" "><marc:subfield code="a">5th edition</marc:subfield></marc:datafield><marc:datafield tag="260" ind1=" " ind2=" "><marc:subfield code="a">London</marc:subfield><marc:subfield code="b">Laurie &amp; Whittle</marc:subfield><marc:subfield code="c">1794</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="520" ind1=" " ind2=" "><marc:subfield code="a">Includes 2 inset maps: "A plan of Jerusalem at the Time of Our Savior" and "A map of Judea under Herod the Great and his three sons, Archelas, Herod-Antipas and Philip".</marc:subfield></marc:datafield>
+  
+  
+    <marc:datafield tag="300" ind1=" " ind2=" "><marc:subfield code="a">1 map with 2 insets : colored ; 24 x 43 cm on sheet 46 x 59 cm</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="500" ind1=" " ind2=" "><marc:subfield code="a">Map scales include: Roman miles, Travelling leagues, Common French leagues, and British miles. Maps use the Ferro meridian.</marc:subfield></marc:datafield>
+  <marc:datafield tag="852" ind1=" " ind2=" "><marc:subfield code="a">W. K. Morrison Special Collection</marc:subfield></marc:datafield>
+  
+    
+    
+    
+    
+    
+  
+  
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">3.793; 79.629; 26.485; 47.757</marc:subfield><marc:subfield code="a">1:10,350,000</marc:subfield><marc:subfield code="b">Retrieving data. Wait a few seconds and try to cut or copy again.</marc:subfield></marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">Judæa 33.322; 54.894; 30.267; 36.000</marc:subfield><marc:subfield code="a">Judæa 1:3,650,000</marc:subfield><marc:subfield code="b">Pseudocylindrical</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="" ind1=" " ind2=" "><marc:subfield code="a">This material is provided for research, education and private use only. Commercial use of this work is strictly prohibited.  Attribution for use must be provided as follows: "Digital reproduction from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC Centre of Geographic Sciences” and link to the original record.  For use other than research, education or private uses please contact the &lt;a href="mailto:library.avlawrencetown@nscc.ca?subject=W. K. Morrison Special Collection"&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of Geographic Sciences.</marc:subfield></marc:datafield>
+  <marc:datafield tag="773" ind1="0" ind2=" "><marc:subfield code="t">New Atlas of the Mundane System, or of Geography and Cosmography</marc:subfield><marc:subfield code="a">Dunn, Samuel, -1794, cartographer</marc:subfield></marc:datafield>
+</marc:record>

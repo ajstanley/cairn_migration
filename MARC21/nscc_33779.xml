@@ -1,0 +1,13 @@
+<marc:record xmlns:marc="http://www.loc.gov/MARC21/slim"><marc:leader>     nkm  22     uu 4500</marc:leader><marc:controlfield tag="008">      |           |||||||||||||||||English||</marc:controlfield>
+  <marc:datafield tag="130" ind1="0" ind2=" "><marc:subfield code="a">Halifax Campus (n.d.)</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="655" ind1=" " ind2="7"><marc:subfield code="a">black-and-white photographs</marc:subfield><marc:subfield code="2">aat</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="520" ind1=" " ind2=" "><marc:subfield code="a">Possibly Halifax Campus instructor handing envelopes to four students. The instructor shakes a student's hand. The exact date of the photo is unknown.</marc:subfield></marc:datafield>
+  
+  
+    <marc:datafield tag="300" ind1=" " ind2=" "><marc:subfield code="a">1 photograph : black and white ; 24.5 x 20 cm</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="852" ind1=" " ind2=" "><marc:subfield code="a">Halifax Campus Historical Photographs</marc:subfield></marc:datafield>
+  <marc:datafield tag="" ind1=" " ind2=" "><marc:subfield code="a">This material is provided for research, education and private use only. Commercial use of this work is strictly prohibited. Attribution for use must be provided as follows: "Digital reproduction from the NSCC Historical Documents Collection” and link to the original record.</marc:subfield></marc:datafield>
+</marc:record>

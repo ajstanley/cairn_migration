@@ -1,0 +1,26 @@
+<marc:record xmlns:marc="http://www.loc.gov/MARC21/slim"><marc:leader>     nem  22     uu 4500</marc:leader><marc:controlfield tag="008">      s           |||||||||||||||||English||</marc:controlfield>
+  <marc:datafield tag="130" ind1="1" ind2=" "><marc:subfield code="a">AGENERAL CHART OF THE ISLAND OF NEWFOUNDLAND with the Rocks &amp; Soundings, Drawn from SURVEYS taken by ORDER of the  RIGHT HONOURABLE the LORDS COMMISSIONERS of the ADMIRALTY</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="655" ind1=" " ind2="7"><marc:subfield code="a">nautical charts</marc:subfield><marc:subfield code="2">aat</marc:subfield></marc:datafield>
+  <marc:datafield tag="700" ind1="1" ind2=" "><marc:subfield code="a">Cook, James, 1728-1779</marc:subfield><marc:subfield code="e">surveyor</marc:subfield></marc:datafield>
+  <marc:datafield tag="700" ind1="1" ind2=" "><marc:subfield code="a">Lane, Michael, active 1768-1784</marc:subfield><marc:subfield code="e">surveyor</marc:subfield></marc:datafield>
+  <marc:datafield tag="700" ind1="1" ind2=" "><marc:subfield code="a">Jefferys, Thomas, -1771</marc:subfield><marc:subfield code="e">cartographer</marc:subfield></marc:datafield>
+  <marc:datafield tag="250" ind1=" " ind2=" "><marc:subfield code="a">2nd state</marc:subfield></marc:datafield><marc:datafield tag="260" ind1=" " ind2=" "><marc:subfield code="a">London</marc:subfield><marc:subfield code="b">Robert Sayer &amp; Jonathan Bennett</marc:subfield><marc:subfield code="c">1775</marc:subfield></marc:datafield>
+  
+  
+  
+    <marc:datafield tag="300" ind1=" " ind2=" "><marc:subfield code="a">1 map : outline color ; 55 x 56 cm</marc:subfield></marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" "><marc:subfield code="a">On verso, upper right corner, 12.</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="500" ind1=" " ind2=" "><marc:subfield code="a">Prime Meridian is Greenwich.</marc:subfield></marc:datafield>
+  <marc:datafield tag="852" ind1=" " ind2=" "><marc:subfield code="a">W. K. Morrison Special Collection</marc:subfield></marc:datafield>
+  
+    
+  
+  
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-60.504; -51.229; 46.441; 52.702</marc:subfield><marc:subfield code="a">1:1,300,000</marc:subfield><marc:subfield code="b">Unknown</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="" ind1=" " ind2=" "><marc:subfield code="a">This material is provided for research, education and private use only. Commercial use of this work is strictly prohibited.  Attribution for use must be provided as follows: "Digital reproduction from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC Centre of Geographic Sciences” and link to the original record.  For use other than research, education or private uses please contact the &lt;a href="mailto:library.avlawrencetown@nscc.ca?subject=W. K. Morrison Special Collection"&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of Geographic Sciences.</marc:subfield></marc:datafield>
+  <marc:datafield tag="773" ind1="0" ind2=" "><marc:subfield code="t">The American Atlas</marc:subfield><marc:subfield code="a">Jefferys, Thomas, -1771, cartographer</marc:subfield></marc:datafield>
+  <marc:datafield tag="520" ind1=" " ind2=" "><marc:subfield code="a">Surveyed to support enforcement of fishing rights as outlined in the Treaty of Paris (1763), Cook and Lane's survey of Newfoundland took 3 years. This work and the resulting map established Cook's reputation and directly led to his command appointment of the &lt;i&gt;Endeavour&lt;/i&gt; and subsequent South Pacific expeditions for which he is most famously known.</marc:subfield></marc:datafield>
+</marc:record>

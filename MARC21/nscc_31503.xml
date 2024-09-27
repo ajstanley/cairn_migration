@@ -1,0 +1,94 @@
+<marc:record xmlns:marc="http://www.loc.gov/MARC21/slim">
+    <marc:leader>nem 22 uu 4500</marc:leader>
+    <marc:controlfield tag="008">s |||||||||||||||||English||</marc:controlfield>
+    <marc:datafield tag="130" ind1="1" ind2=" ">
+        <marc:subfield code="a">AMAP of the most INHABITED part of VIRGINIA containing the whole PROVINCE of MARYLAND
+            with Part of PENSILVANIA, NEW JERSEY AND NORTH CAROLINA
+        </marc:subfield>
+    </marc:datafield>
+
+    <marc:datafield tag="655" ind1=" " ind2="7">
+        <marc:subfield code="a">maps</marc:subfield>
+        <marc:subfield code="2">aat</marc:subfield>
+    </marc:datafield>
+
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+        <marc:subfield code="a">Fry, Joshua, approximately 1700-1754</marc:subfield>
+        <marc:subfield code="e">surveyor</marc:subfield>
+    </marc:datafield>
+
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+        <marc:subfield code="a">Jefferson, Peter, 1708-1757</marc:subfield>
+        <marc:subfield code="e">surveyor</marc:subfield>
+    </marc:datafield>
+
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+        <marc:subfield code="a">Jefferys, Thomas, -1771</marc:subfield>
+        <marc:subfield code="e">cartographer</marc:subfield>
+    </marc:datafield>
+
+    <marc:datafield tag="250" ind1=" " ind2=" ">
+        <marc:subfield code="a">6th or 7th State</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="260" ind1=" " ind2=" ">
+        <marc:subfield code="a">London</marc:subfield>
+        <marc:subfield code="b">Robert Sayer &amp; Jonathan Bennett</marc:subfield>
+        <marc:subfield code="c">1775</marc:subfield>
+    </marc:datafield>
+
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+        <marc:subfield code="a">This is the first map to accurately depict the Blue Ridge Mountains and the first to lay
+            down the colonial road system of Virginia. A great number of plantations are located and include the family
+            names of the Virginia plantation owners of the period. The cartouche, showing a tobacco warehouse and wharf,
+            is one of the earliest printed images of the Virginia tobacco trade. The original survey was conducted in
+            1750 and published in 1751. It was updated in 1755 to incorporate information from the journals of John
+            Dalrymple and Christopher Gist.
+        </marc:subfield>
+    </marc:datafield>
+
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+        <marc:subfield code="a">1 map : outline color ; 39 x 123 cm</marc:subfield>
+    </marc:datafield>
+
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+        <marc:subfield code="a">There is debate in the reference literature as to which state of the map this is; some
+            reference literature doesn\'t discuss the 1775 edition of the Jefferys\' American Atlas. What is certain is
+            that Jefferys\' atlas was published both in 1775 and 1776 and our copy appears to be from the 1776 edition.
+            According to Phillips (1165 &amp; 1166), the 1775 edition has "Joshua Fry &amp; Peter Jefferson, 1775" and
+            the 1776 edition has "Joshua Fry &amp; Peter Jefferson in 1775".
+        </marc:subfield>
+    </marc:datafield>
+
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+        <marc:subfield code="a">Both London and Currituk Inlet are given as meridians. This is the only map we\'ve come
+            across with such an obscure place for a meridian. State borders between Virginia and North Carolina are
+            outlined in color.
+        </marc:subfield>
+    </marc:datafield>
+
+    <marc:datafield tag="852" ind1=" " ind2=" ">
+        <marc:subfield code="a">W. K. Morrison Special Collection</marc:subfield>
+    </marc:datafield>
+
+    <marc:datafield tag="255" ind1=" " ind2=" ">
+        <marc:subfield code="c">-83.030; -73.305; 35.716; 38.186</marc:subfield>
+        <marc:subfield code="a">1:660,000</marc:subfield>
+        <marc:subfield code="b">Unknown</marc:subfield>
+    </marc:datafield>
+
+    <marc:datafield tag="" ind1=" " ind2=" ">
+        <marc:subfield code="a">This material is provided for research, education and private use only. Commercial use
+            of this work is strictly prohibited. Attribution for use must be provided as follows: "Digital reproduction
+            from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC Centre of Geographic
+            Sciences&#8221; and link to the original record. For use other than research, education or private uses
+            please contact the &lt;a href="mailto:library.avlawrencetown@nscc.ca?subject=W. K. Morrison Special
+            Collection"&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of Geographic Sciences.
+        </marc:subfield>
+    </marc:datafield>
+
+    <marc:datafield tag="773" ind1="0" ind2=" ">
+        <marc:subfield code="t">The American Atlas</marc:subfield>
+        <marc:subfield code="a">Jefferys, Thomas, -1771, author</marc:subfield>
+    </marc:datafield>
+
+</marc:record>

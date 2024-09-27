@@ -1,0 +1,21 @@
+<marc:record xmlns:marc="http://www.loc.gov/MARC21/slim"><marc:leader>     nem  22     uu 4500</marc:leader><marc:controlfield tag="008">      s           |||||||||||||||||English||</marc:controlfield>
+  <marc:datafield tag="130" ind1="1" ind2=" "><marc:subfield code="a">ANEW GENERAL ATLAS OF Modern Geography Comprised of Fifty One Maps Compiled from the latest and best Authorities</marc:subfield><marc:subfield code="b">A New Edition with a Copious Consulting Index</marc:subfield></marc:datafield>
+  <marc:datafield tag="246" ind1="3" ind2=" "><marc:subfield code="a">DOWER'S GENERAL ATLAS</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="655" ind1=" " ind2="7"><marc:subfield code="a">atlases</marc:subfield><marc:subfield code="2">aat</marc:subfield></marc:datafield>
+  <marc:datafield tag="700" ind1="1" ind2=" "><marc:subfield code="a">Dower, John, active 1838-1846?</marc:subfield><marc:subfield code="e">engraver</marc:subfield></marc:datafield>
+  <marc:datafield tag="260" ind1=" " ind2=" "><marc:subfield code="a">London</marc:subfield><marc:subfield code="b">Wm. S. Orr &amp; Co.</marc:subfield><marc:subfield code="c">1850</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="505" ind1="0" ind2=" "><marc:subfield code="a">Contents: Rivers and Mountains. 1) World on Mercator's Projection. 2) World, Eastern Hemisphere. 3) World, Western Hemisphere. 4) Europe. 5) British Isles. 6) England and Wales. 7) Scotand. 8) Ireland. 9) France. 10) Belgium. 11) Holland. 12) Denmark. 13) Sweden and Norway. 14) Russian in Europe. 15) Prussia. 16) Austria. 17) Germany, Northern. 18) Germany, Southern. 19) Germany, Central. 20) Italy, Northern. 21) Italy, Southern. 22) Switzerland. 23) Spain and Protugal. 24) Greece. 25) Turkey in Europe. 26) Asia. 27) Turkey in Asia. 28) Russia in Asia. 29) Persia. 30) Palestine. 31) India. 32) Burman Empire. 33) China and Japan. 34) Africa. 35) Africa Southern. 36) Egypt. 37) North America. 38) North Do. British Possessions. 39) United States. 40) Mexico and Guatimala. 41) South America. 42) Colombia. 43) Brazil. 44) Chile and La Plata. 45) Peru and Bolivia. 46) West Indies. 47) Australia. 48) Van Diemen's Land. 49) East Indian Islands. 50) Pacific Ocean. 51. New Zealand.</marc:subfield></marc:datafield>
+  
+  
+    <marc:datafield tag="300" ind1=" " ind2=" "><marc:subfield code="a">1 atlas (51 maps) : colored ; 31 x 25 cm</marc:subfield></marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" "><marc:subfield code="a">There are no dates indicated on this atlas. Others have estimated a publication date between 1850-1854.  Looking at the individual maps we suspect that this is an earlier publication, however, because most of these maps appear in other atlases, it is impossible to make that conclusion with any certainty.</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="852" ind1=" " ind2=" "><marc:subfield code="a">W. K. Morrison Special Collection</marc:subfield></marc:datafield>
+  
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="a">various scales</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="" ind1=" " ind2=" "><marc:subfield code="a">This material is provided for research, education and private use only. Commercial use of this work is strictly prohibited.  Attribution for use must be provided as follows: "Digital reproduction from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC Centre of Geographic Sciences” and link to the original record.  For use other than research, education or private uses please contact the &lt;a href="mailto:library.avlawrencetown@nscc.ca"&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of Geographic Sciences.</marc:subfield></marc:datafield>
+  <marc:datafield tag="787" ind1="0" ind2=" "><marc:subfield code="a">, cartographer</marc:subfield></marc:datafield>
+</marc:record>

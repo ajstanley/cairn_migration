@@ -1,0 +1,28 @@
+<marc:record xmlns:marc="http://www.loc.gov/MARC21/slim"><marc:leader>     nem  22     uu 4500</marc:leader><marc:controlfield tag="008">      s           |||||||||||||||||French||</marc:controlfield>
+  <marc:datafield tag="130" ind1="0" ind2=" "><marc:subfield code="a">Port de Halifax de la Nouvelle Ecosse avec les Recifs, Dangers, Bas fonds et Sondes. Levé par ordre du Brigadier Général Lawrence Gouverneur de la Province par Morris premier Arpenteur publié a Londres en 1775. Traduit a Paris Chéz le Rouge Rue de Grands Augustins 1778</marc:subfield></marc:datafield>
+  <marc:datafield tag="242" ind1="1" ind2="0"><marc:subfield code="a">Port of Halifax in Nova Scotia with reefs, dangers, lower depths and soundings Lifted by order of Brigadier General Lawrence Governor of the Province by Morris first Surveyor published in London in 1775. Translated in Paris at Chez le Rouge,Grand Augustins Road 1778</marc:subfield></marc:datafield>
+  <marc:datafield tag="700" ind1="1" ind2=" "><marc:subfield code="a">Morris, Charles (Surveyor)</marc:subfield><marc:subfield code="e">surveyor</marc:subfield></marc:datafield>
+  <marc:datafield tag="700" ind1="1" ind2=" "><marc:subfield code="a">Lawrence, Charles, 1709-1760</marc:subfield><marc:subfield code="e">cartographer</marc:subfield></marc:datafield>
+  <marc:datafield tag="700" ind1="1" ind2=" "><marc:subfield code="a">Le Rouge, Georges-Louis</marc:subfield><marc:subfield code="e">cartographer</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="655" ind1=" " ind2="7"><marc:subfield code="a">nautical charts</marc:subfield><marc:subfield code="2">aat</marc:subfield></marc:datafield>
+  <marc:datafield tag="250" ind1=" " ind2=" "><marc:subfield code="a">2nd state</marc:subfield></marc:datafield><marc:datafield tag="260" ind1=" " ind2=" "><marc:subfield code="a">Paris</marc:subfield><marc:subfield code="b">Chez le Rouge</marc:subfield><marc:subfield code="c">1778</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="520" ind1=" " ind2=" "><marc:subfield code="a">Land features are almost completely devoid of topography or relief; coastline augmented with hachures. Depth is shown by soundings. Handwritten on verso: "Map No. 9 from: &#13;
+Pilote Américain Septentrionale pour Les Côtes de Labrador, Nlle Ecosse, Nlle Angleterre, New York, Pensylvanie, Maryland, Virginia, Les I. Caroline et Floride . . .A Paris  Chez Le Rouge  1778. Stevenson &amp; Stile . Cat . New Series No. 23  (40A)."</marc:subfield></marc:datafield>
+  
+  
+    <marc:datafield tag="300" ind1=" " ind2=" "><marc:subfield code="a">1 map; 39 x 56 cm</marc:subfield></marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" "><marc:subfield code="a">According to Kershaw (entry 835) the number 7 engraved in top right corner margin indicates this is the second state.</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="500" ind1=" " ind2=" "><marc:subfield code="a">West is "up" when in reading position. The graphic scale bar unit of measure is miles, the representative fraction scale is calculated by measuring scale bar increments. While the grid aligns with magnetic north it does not indicate lines of longitude and latitude and direction of lines of longitude is indicated by arrows extending from rhumb line centroids, labelled "Meridien". No geographic coordinates are displayed and there is no graticule or indication, as such, of a prime meridian; the map was meant to be used to navigate an entrance channel into Halifax harbour, after having located the mouth of the harbour with the use of other smaller scale charts. Rhumb line bearings, soundings, landmarks, and shallow water hazards, all displayed graphically, serve as navigational guides. The presence of rhumb lines and a right-angled graticule indicates a conformal projection, likely Mercator's, which preserves shape and direction, for the purpose of navigation (cylindrical).</marc:subfield></marc:datafield>
+  <marc:datafield tag="852" ind1=" " ind2=" "><marc:subfield code="a">W. K. Morrison Special Collection</marc:subfield></marc:datafield>
+  
+    
+  
+  
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-63.743; -63.323; 44.398; 44.766</marc:subfield><marc:subfield code="a">1:63,360</marc:subfield><marc:subfield code="b">unknown - see general notes field</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="" ind1=" " ind2=" "><marc:subfield code="a">This material is provided for research, education and private use only. Commercial use of this work is strictly prohibited.  Attribution for use must be provided as follows: "Digital reproduction from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC Centre of Geographic Sciences” and link to the original record.  For use other than research, education or private uses please contact the &lt;a href="mailto:library.avlawrencetown@nscc.ca"&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of Geographic Sciences.</marc:subfield></marc:datafield>
+  <marc:datafield tag="773" ind1="0" ind2=" "><marc:subfield code="t">Pilote Américain septentrional pour les côtes de Labrador, N. lle. Ecosse, N. ill Angleterre, New-York, Pensilvanie, Maryland, Virginie, les 2 Carolines et Florides</marc:subfield><marc:subfield code="a">Le Rouge, Georges-Louis, cartographerJefferys, Thomas, -1771, cartographer</marc:subfield></marc:datafield>
+</marc:record>

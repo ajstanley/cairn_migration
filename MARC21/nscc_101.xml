@@ -1,0 +1,61 @@
+<marc:record xmlns:marc="http://www.loc.gov/MARC21/slim"><marc:leader>     nem  22     uu 4500</marc:leader><marc:controlfield tag="008">      s           |||||||||||||||||English||</marc:controlfield>
+  <marc:datafield tag="130" ind1="0" ind2=" "><marc:subfield code="a">Particular Draughts and Plans of some of the Principal Towns and Harbours belonging to the English, French, and Spaniards, in AMERICA and WEST INDIES</marc:subfield><marc:subfield code="b">Collected from the best Authorities by Eman. Bowen</marc:subfield></marc:datafield>
+  <marc:datafield tag="700" ind1="1" ind2=" "><marc:subfield code="a">Bowen, Emanuel, -1767</marc:subfield><marc:subfield code="e">engraver</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="655" ind1=" " ind2="7"><marc:subfield code="a">maps</marc:subfield><marc:subfield code="2">aat</marc:subfield></marc:datafield>
+  <marc:datafield tag="260" ind1=" " ind2=" "><marc:subfield code="a">London</marc:subfield><marc:subfield code="b">William Innys [et al.]</marc:subfield><marc:subfield code="c">1747</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="520" ind1=" " ind2=" "><marc:subfield code="a">Relief shown pictorially. Depths shown by soundings.  "No. 105" lower left corner.</marc:subfield></marc:datafield>
+  
+  
+    <marc:datafield tag="300" ind1=" " ind2=" "><marc:subfield code="a">13 maps on 1 sheet : colored ; 35 x 43 cm</marc:subfield></marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" "><marc:subfield code="a">The coordinates and scales are presented in the same order as the Table of Contents</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="852" ind1=" " ind2=" "><marc:subfield code="a">W. K. Morrison Special Collection</marc:subfield></marc:datafield>
+  <marc:datafield tag="651" ind1=" " ind2="0"><marc:subfield code="a">Fort Royal</marc:subfield></marc:datafield>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+  
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-71.131; -70.808; 42.202; 42.434</marc:subfield><marc:subfield code="a">1:150,000</marc:subfield><marc:subfield code="b">Unknown</marc:subfield></marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-54.009;-53.939; 47.225; 47.266</marc:subfield><marc:subfield code="a">1:40,000</marc:subfield></marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-60.011; -59.930; 45.933; 45.867</marc:subfield><marc:subfield code="a">1:30,000</marc:subfield></marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-65.807; -65.233; 44.549; 44.937</marc:subfield><marc:subfield code="a">1:350,000</marc:subfield></marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-74.314; -73.529; 40.282; 40.927</marc:subfield><marc:subfield code="a">1:300,000</marc:subfield></marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-80.557;-80.321; 27.720; 27.951</marc:subfield><marc:subfield code="a">1:175,000</marc:subfield></marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-77.361; -77.330; 25.070; 25.098</marc:subfield><marc:subfield code="a">1:275,000</marc:subfield></marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-80.791; -80.550; 32.281; 32.473</marc:subfield><marc:subfield code="a">1:12,000</marc:subfield></marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-82.365; -82.305; 23.100; 23.265</marc:subfield><marc:subfield code="a">1:125,000</marc:subfield></marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-75.886; -75.812; 19.963; 20.030</marc:subfield><marc:subfield code="a">1:100,000</marc:subfield></marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-61.121; -60.928; 14.508; 14.639</marc:subfield><marc:subfield code="a">1:175,000</marc:subfield></marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-75.622; -75.465; 10.216; 10.4889</marc:subfield><marc:subfield code="a">1:200,000</marc:subfield></marc:datafield>
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-79.688; -79.646; 9.532; 9.578</marc:subfield><marc:subfield code="a">1:50,000</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="" ind1=" " ind2=" "><marc:subfield code="a">This material is provided for research, education and private use only. Commercial use of this work is strictly prohibited.  Attribution for use must be provided as follows: "Digital reproduction from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC Centre of Geographic Sciences” and link to the original record.  For use other than research, education or private uses please contact the &lt;a href="mailto:library.avlawrencetown@nscc.ca"&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of Geographic Sciences.</marc:subfield></marc:datafield>
+  <marc:datafield tag="773" ind1="0" ind2=" "><marc:subfield code="t">A complete system of geography</marc:subfield><marc:subfield code="a">Bowen, Emanuel, d. 1767, author</marc:subfield></marc:datafield>
+  <marc:datafield tag="505" ind1="0" ind2=" "><marc:subfield code="a">The 13 maps on this sheet (from upper left to lower right) are:&#13;
+1. A draught of Boston Harbour&#13;
+2. The harbour of Placentia&#13;
+3. A plan of the town and harbour of Louisbourg in the island of Cape Breton taken from the French on June 17, 1745 by the New England men under the command of General Pepperell, assisted by the Britsh Fleet commanded by Admiral Warren&#13;
+4. The Harbour of Annapolis Royal&#13;
+5. A draught of New York and Perthamboy Harbour&#13;
+6. Harbour of St. Augustine&#13;
+7. The harbour of Providence&#13;
+8. The town and harbour of Charles Town in South Carolina&#13;
+9. The Havana&#13;
+10. Bay of St. Jago de Cuba&#13;
+11. Fort Royal in Martinico&#13;
+12. A plan of the town and harbour of Cartagena&#13;
+13. A plan of the harbour town and forts of Porto Bello when taken by Admiral Vernon on Nov'r 22'd 1739 with 6 ships only</marc:subfield></marc:datafield>
+</marc:record>

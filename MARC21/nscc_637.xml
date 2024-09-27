@@ -1,0 +1,11 @@
+<marc:record xmlns:marc="http://www.loc.gov/MARC21/slim"><marc:leader>     nam  22     uu 4500</marc:leader><marc:controlfield tag="008">      s           |||||||||||||||||English||</marc:controlfield>
+  <marc:datafield tag="130" ind1="0" ind2=" "><marc:subfield code="a">1977 Nova Scotia Land Survey Institute</marc:subfield><marc:subfield code="b">Nova Scotia Land Survey Institute '76-'77</marc:subfield></marc:datafield>
+  
+  
+  
+  <marc:datafield tag="" ind1=" " ind2=" "><marc:subfield code="a">This material is provided for research, education and private use only. Commercial use of this work is strictly prohibited.  Attribution for use must be provided as follows: "Digital reproduction from the NSCC Yearbook Collection” and link to the original record.  For use other than research, education or private uses please contact the &lt;a href="mailto:trish.leblanc@nscc.casubject=NSCC Yearbooks"&gt;NSCC Library Services&lt;/a&gt;.</marc:subfield></marc:datafield>
+  <marc:datafield tag="710" ind1="2" ind2=" "><marc:subfield code="a">Nova Scotia Land Survey Institute</marc:subfield></marc:datafield>
+  <marc:datafield tag="260" ind1=" " ind2=" "><marc:subfield code="a">Lawrencetown, Nova Scotia</marc:subfield><marc:subfield code="c">1977</marc:subfield></marc:datafield>
+  <marc:datafield tag="520" ind1=" " ind2=" "><marc:subfield code="a">Cover title: Nova Scotia Land Survey Institute '76-'77</marc:subfield></marc:datafield>
+  <marc:datafield tag="650" ind1="1" ind2=" "><marc:subfield code="a">NSLSI</marc:subfield></marc:datafield>
+</marc:record>

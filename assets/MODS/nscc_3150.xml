@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mods xmlns="http://www.loc.gov/mods/v3" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <titleInfo type="uniform" usage="primary">
+    <nonSort>A</nonSort>
+    <title>MAP of the most INHABITED part of VIRGINIA containing the whole PROVINCE of MARYLAND with Part of PENSILVANIA, NEW JERSEY AND NORTH CAROLINA</title>
+  </titleInfo>
+  <typeOfResource>cartographic</typeOfResource>
+  <genre authority="aat">maps</genre>
+  <name authority="lcna" type="personal">
+    <namePart>Fry, Joshua, approximately 1700-1754</namePart>
+    <displayForm>Joshua Fry</displayForm>
+    <role>
+      <roleTerm authority="marcrelator" type="text">surveyor</roleTerm>
+    </role>
+  </name>
+  <name authority="lcna" type="personal">
+    <namePart>Jefferson, Peter, 1708-1757</namePart>
+    <displayForm>Peter Jefferson</displayForm>
+    <role>
+      <roleTerm authority="marcrelator" type="text">surveyor</roleTerm>
+    </role>
+  </name>
+  <name authority="lcna" type="personal">
+    <namePart>Jefferys, Thomas, -1771</namePart>
+    <displayForm>Thomas Jefferys</displayForm>
+    <role>
+      <roleTerm authority="marcrelator" type="text">cartographer</roleTerm>
+    </role>
+  </name>
+  <originInfo>
+    <dateIssued>1775</dateIssued>
+    <publisher>Robert Sayer &amp; Jonathan Bennett</publisher>
+    <place>
+      <placeTerm type="text">London</placeTerm>
+    </place>
+    <dateOther>1776</dateOther>
+    <edition>6th or 7th State</edition>
+  </originInfo>
+  <language>
+    <languageTerm authority="iso639-2b" type="text">English</languageTerm>
+  </language>
+  <abstract>This is the first map to accurately depict the Blue Ridge Mountains and the first to lay down the colonial road system of Virginia. A great number of plantations are located and include the family names of the Virginia plantation owners of the period. The cartouche, showing a tobacco warehouse and wharf, is one of the earliest printed images of the Virginia tobacco trade. The original survey was conducted in 1750 and published in 1751. It was updated in 1755 to incorporate information from the journals of John Dalrymple and Christopher Gist.</abstract>
+  <identifier type="local">WKM-M-037</identifier>
+  <physicalDescription>
+    <extent>1 map : outline color ; 39 x 123 cm</extent>
+    <note displayLabel="Notes on condition">There is debate in the reference literature as to which state of the map this is; some reference literature doesn't discuss the 1775 edition of the Jefferys' American Atlas. What is certain is that Jefferys' atlas was published both in 1775 and 1776 and our copy appears to be from the 1776 edition. According to Phillips (1165 &amp; 1166), the 1775 edition has "Joshua Fry &amp; Peter Jefferson, 1775" and the 1776 edition has "Joshua Fry &amp; Peter Jefferson in 1775".</note>
+  </physicalDescription>
+  <note>Both London and Currituk Inlet are given as meridians. This is the only map we've come across with such an obscure place for a meridian. State borders between Virginia and North Carolina are outlined in color.</note>
+  <location>
+    <physicalLocation>W. K. Morrison Special Collection</physicalLocation>
+    <shelfLocator>Cabinet #66</shelfLocator>
+  </location>
+  <subject authority="tgn">
+    <hierarchicalGeographic>
+      <continent>North America</continent>
+      <country>United States</country>
+      <state>North Carolina</state>
+      <state>Virginia</state>
+    </hierarchicalGeographic>
+  </subject>
+  <subject>
+    <cartographics>
+      <coordinates>-83.030; -73.305; 35.716; 38.186</coordinates>
+      <scale>1:660,000</scale>
+      <projection>Unknown</projection>
+    </cartographics>
+  </subject>
+  <accessCondition type="use and reproduction">This material is provided for research, education and private use only. Commercial use of this work is strictly prohibited.  Attribution for use must be provided as follows: "Digital reproduction from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC Centre of Geographic Sciences” and link to the original record.  For use other than research, education or private uses please contact the &lt;a href="mailto:library.avlawrencetown@nscc.ca?subject=W. K. Morrison Special Collection"&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of Geographic Sciences.</accessCondition>
+  <relatedItem type="host">
+    <titleInfo>
+      <title>The American Atlas</title>
+      <subTitle>Plate [22]</subTitle>
+    </titleInfo>
+    <name authority="lcna" type="personal">
+      <namePart>Jefferys, Thomas, -1771</namePart>
+      <displayForm>Thomas Jefferys</displayForm>
+      <role>
+        <roleTerm authority="marcrelator" type="text">author</roleTerm>
+      </role>
+    </name>
+    <originInfo>
+      <dateIssued>1776</dateIssued>
+      <publisher>Sayer &amp; Bennett</publisher>
+      <place>
+        <placeTerm type="text">London</placeTerm>
+      </place>
+    </originInfo>
+  </relatedItem>
+</mods>

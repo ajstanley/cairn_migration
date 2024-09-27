@@ -1,0 +1,24 @@
+<marc:record xmlns:marc="http://www.loc.gov/MARC21/slim"><marc:leader>     nem  22     uu 4500</marc:leader><marc:controlfield tag="008">      s           |||||||||||||||||English||</marc:controlfield>
+  <marc:datafield tag="130" ind1="0" ind2=" "><marc:subfield code="a">SKETCH OF THE NORTH EASTERN BOUNDARY Between GREAT BRITAIN AND THE UNITED STATES as Settled by Treaty Aug't 9th, 1842</marc:subfield></marc:datafield>
+  <marc:datafield tag="700" ind1="1" ind2=" "><marc:subfield code="a">Wyld, James, 1812-1887</marc:subfield><marc:subfield code="e">engraver</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="655" ind1=" " ind2="7"><marc:subfield code="a">maps</marc:subfield><marc:subfield code="2">aat</marc:subfield></marc:datafield>
+  <marc:datafield tag="260" ind1=" " ind2=" "><marc:subfield code="a">London</marc:subfield><marc:subfield code="b">James Wyld</marc:subfield><marc:subfield code="c">1842</marc:subfield></marc:datafield>
+  
+  
+  
+    <marc:datafield tag="300" ind1=" " ind2=" "><marc:subfield code="a">1 map : colored ; 24 x 33 cm</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="500" ind1=" " ind2=" "><marc:subfield code="a">Note outside the neat lines: "Published Sept. 29th, 1842, by Ja's Wyld, Geographer to the Queen, &amp; H.R.H. Prince Albert. Charing Cross East London". There is no scale bar; the scale was calculated based on increments of latitude.</marc:subfield></marc:datafield>
+  <marc:datafield tag="852" ind1=" " ind2=" "><marc:subfield code="a">W. K. Morrison Special Collection</marc:subfield></marc:datafield>
+  
+    
+    
+  
+  <marc:datafield tag="" ind1=" " ind2=" "><marc:subfield code="a">This material is provided for research, education and private use only. Commercial use of this work is strictly prohibited.  Attribution for use must be provided as follows: "Digital reproduction from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC Centre of Geographic Sciences” and link to the original record.  For use other than research, education or private uses please contact the &lt;a href="mailto:library.avlawrencetown@nscc.ca"&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of Geographic Sciences.</marc:subfield></marc:datafield>
+  <marc:datafield tag="787" ind1="0" ind2=" "><marc:subfield code="a">, cartographer</marc:subfield></marc:datafield>
+  <marc:datafield tag="520" ind1=" " ind2=" "><marc:subfield code="a">Represents the New Brunswick / Maine border as settled by the Webster-Ashburton Treaty in 1842. Includes "Old Boundary as Claimed by Great Britain" and "New Boundary Claimed by Great Britain" and "Boundary Claimed by The United States" and "Boundary as Settled by the Treaty Award of the King of Holland".</marc:subfield></marc:datafield>
+  
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-71.367; -65.041; 44.995; 48.119</marc:subfield><marc:subfield code="a">1:1,500,000</marc:subfield><marc:subfield code="b">unknown</marc:subfield></marc:datafield>
+  
+</marc:record>

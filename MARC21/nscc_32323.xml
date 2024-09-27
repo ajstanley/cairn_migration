@@ -1,0 +1,24 @@
+<marc:record xmlns:marc="http://www.loc.gov/MARC21/slim"><marc:leader>     nem  22     uu 4500</marc:leader><marc:controlfield tag="008">      s           |||||||||||||||||English||</marc:controlfield>
+  <marc:datafield tag="130" ind1="0" ind2=" "><marc:subfield code="a">MECKLENBURGH BAY</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="655" ind1=" " ind2="7"><marc:subfield code="a">nautical charts</marc:subfield><marc:subfield code="2">aat</marc:subfield></marc:datafield>
+  <marc:datafield tag="700" ind1="1" ind2=" "><marc:subfield code="a">Des Barres, Joseph F. W. (Joseph Frederick Wallet), 1722-1824</marc:subfield><marc:subfield code="e">surveyor</marc:subfield><marc:subfield code="u">Great Britain. Admiralty</marc:subfield></marc:datafield>
+  <marc:datafield tag="250" ind1=" " ind2=" "><marc:subfield code="a">Undocumented state</marc:subfield></marc:datafield><marc:datafield tag="260" ind1=" " ind2=" "><marc:subfield code="a">London</marc:subfield><marc:subfield code="b">Joseph F. W. DesBarres</marc:subfield><marc:subfield code="c">1779</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="520" ind1=" " ind2=" "><marc:subfield code="a">Map of Mahone Bay area.  This map is an excellent example of Desbarres' tendency to arbitrarily  give names to places and features that don't seem to occur elsewhere in the historical record; Gloucester Isle is Oak Island, Royal George Island is Tancook Island, etc. Sailing directions: "This Bay is full of the finest Harbours, and there are deep Passages within almost every Island in it, with convenient Anchorage for all kinds of Shipping. To sail from the southward into Prince Harbour When you are as high up as Royal George Island, Steer for Robinsons Rock (which is always above water) untill the North Point of Louisa Island opens with the North end of William Henry Island whence you may Shape your Course to any part of the Harbour &amp; Anchor at pleasure in 4, 6, or 9 Fathoms of Water good holding Ground. There are Several good Channels leading into the Royal Arm About the Middle part of it S W ½ S 300 Fathoms distant from the South end of Jarvis Isle &amp; E ½ S distant 600 Fathoms, from the South Point of Barrington Island, lies a Ledge dry at Low Water. The Navigation into Cumberland Arm, Chester and the other Harbours in this Bay is so easy &amp; safe, that the sole Inspection of the Draught will give every Information necessary on the Subject."</marc:subfield></marc:datafield>
+  
+  
+    <marc:datafield tag="300" ind1=" " ind2=" "><marc:subfield code="a">1 map on 2 sheets ; 69 x 100 cm</marc:subfield></marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" "><marc:subfield code="a">There are 8 known variations or states of this chart.  Ours does not match any of them.  Notable features of our copy: land is darkly shaded and heavily stippled, imprint March 1, 1779, PL. 17 (upper right). These features indicate it is likely between the 7th and 8th known states.</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="500" ind1=" " ind2=" "><marc:subfield code="a">There are two scale bars on the map, one in Miles, the other in Nautical Miles.  Map reads with North facing to the top Right corner of the map.  The sailing directions cover the top left corner of the map, so there was a guess on where the top corner is to record the top left corner coordinate.</marc:subfield></marc:datafield>
+  <marc:datafield tag="852" ind1=" " ind2=" "><marc:subfield code="a">W. K. Morrison Special Collection</marc:subfield></marc:datafield>
+  
+    
+  
+  
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-64.046; -64.461; 44.389; 44.623</marc:subfield><marc:subfield code="a">1:29,000</marc:subfield><marc:subfield code="b">Mercator</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="" ind1=" " ind2=" "><marc:subfield code="a">This material is provided for research, education and private use only. Commercial use of this work is strictly prohibited.  Attribution for use must be provided as follows: "Digital reproduction from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC Centre of Geographic Sciences” and link to the original record.  For use other than research, education or private uses please contact the &lt;a href="mailto:library.avlawrencetown@nscc.ca?subject=W. K. Morrison Special Collection"&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of Geographic Sciences.</marc:subfield></marc:datafield>
+  <marc:datafield tag="773" ind1="0" ind2=" "><marc:subfield code="t">Atlantic Neptune</marc:subfield><marc:subfield code="a">Des Barres, Joseph F. W. (Joseph Frederick Wallet), 1722-1824, author</marc:subfield></marc:datafield>
+</marc:record>

@@ -1,0 +1,24 @@
+<marc:record xmlns:marc="http://www.loc.gov/MARC21/slim"><marc:leader>     nem  22     uu 4500</marc:leader><marc:controlfield tag="008">      s           |||||||||||||||||English||</marc:controlfield>
+  <marc:datafield tag="130" ind1="2" ind2=" "><marc:subfield code="a">ANACCURATE MAP of the ISLANDS of ST. CHRISTOPHERS and NEVIS in the WEST INDIES By an Officer With the Position of the ENGLISH and FRENCH FLEETS February 7th 1782</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="655" ind1=" " ind2="7"><marc:subfield code="a">maps</marc:subfield><marc:subfield code="2">aat</marc:subfield></marc:datafield>
+  <marc:datafield tag="260" ind1=" " ind2=" "><marc:subfield code="a">London</marc:subfield><marc:subfield code="b">John Fielding</marc:subfield><marc:subfield code="c">1782</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="520" ind1=" " ind2=" "><marc:subfield code="a">The map provides fine topographical depiction of the two islands, locating parishes, quarters, towns, harbors, roads, etc. and illustrates the siege that followed the Battle of St Kitts, also known as the Battle of Frigate Bay, during the American Revolutionary War, which eventually resulted in a French victory.  The map shows the engagement between the French Forces led by Francois-Joseph Paul, Comte De Grasse and Admiral Samuel Hood.  Twenty-nine battleships are etched along the coastline and labelled "The French Fleet".  Another group of twenty-six battleships are etched in position by St. George's Town and titled "Ad'l. Hoods Squadron".  In January and February 1782, De Grasse conquered St. Kitts. De Grasse's action at St. Kitts was vigorously opposed by Hood, who, with a much inferior force, first drove de Grasse from his anchorage at Basseterre and then repulsed his repeated attacks. Admiral Hood`s Squadron is shown on the map in a defensive position protecting the towns against the French fleet. The map shows English and French fleet positions during the Battle after Hood had maneuvered into the anchorage at Basse Terre.  Other details include Mooring Point.  Coastal features are extensively annotated, and while no soundings are displayed a large amount of sand banks and hazards are shown. Relief is shown pictorially using a technique close to contour lines, especially for the volcanic centre of St. Kitts Island.&#13;
+St. Kitts was contested between the French, Spanish and English numerous times during the 17th and 18th century, due to the prosperous sugar plantations on the island. The islands were returned to Britain under the Treaty of Versailles in 1783. Description of the islands begins on &lt;a href="https://nscc.cairnrepo.org/islandora/object/nscc:30874"&gt;page 187&lt;/a&gt;.</marc:subfield></marc:datafield>
+  
+  
+    <marc:datafield tag="300" ind1=" " ind2=" "><marc:subfield code="a">1 map : 31 x 39 cm</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="500" ind1=" " ind2=" "><marc:subfield code="a">The scale bar is in British miles, and there is no graticule;  the scale was calculated from the the scale bar and the coordinates were obtained via georeferencing.</marc:subfield></marc:datafield>
+  <marc:datafield tag="852" ind1=" " ind2=" "><marc:subfield code="a">W. K. Morrison Special Collection</marc:subfield></marc:datafield>
+  <marc:datafield tag="651" ind1=" " ind2="0"><marc:subfield code="a">Saint Christopher Island</marc:subfield><marc:subfield code="z">West Indies</marc:subfield></marc:datafield>
+  
+    
+  
+  
+    <marc:datafield tag="255" ind1=" " ind2=" "><marc:subfield code="c">-62.890; -62.522; 17.093; 17.432</marc:subfield><marc:subfield code="a">1:160,000</marc:subfield><marc:subfield code="b">Unknown</marc:subfield></marc:datafield>
+  
+  <marc:datafield tag="" ind1=" " ind2=" "><marc:subfield code="a">This material is provided for research, education and private use only. Commercial use of this work is strictly prohibited.  Attribution for use must be provided as follows: "Digital reproduction from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC Centre of Geographic Sciences” and link to the original record.  For use other than research, education or private uses please contact the &lt;a href="mailto:library.avlawrencetown@nscc.ca?subject=W. K. Morrison Special Collection"&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of Geographic Sciences.</marc:subfield></marc:datafield>
+  <marc:datafield tag="773" ind1="0" ind2=" "><marc:subfield code="t">European Magazine</marc:subfield><marc:subfield code="a">, cartographer</marc:subfield></marc:datafield>
+</marc:record>
