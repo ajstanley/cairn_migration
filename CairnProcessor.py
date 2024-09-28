@@ -40,16 +40,18 @@ class CairnProcessor:
                     copy_streams[
                         file_data[
                             'file_name']] = f"{pid.replace(':', '_')}_{entry}_{self.mimemap[file_data['mimetype']]}"
-            path = f"{self.export_dir}/{item_number}"
+            path = f"{self.export_dir}/item{item_number}"
             # Build directory
             Path(path).mkdir(parents=True, exist_ok=True)
             with open(f'{path}/dublin_core.xml', 'w') as f:
-                dublin_core.write(f, encoding='unicode')
+                f.write(dublin_core, encoding='unicode')
             for source, destination in copy_streams.items():
-                shutil.copy(f"{self.datastreamStore}/{source}", f"{path}/{destination}")
+                stream_to_copy = self.CA.dereference(source)
+                shutil.copy(f"{self.datastreamStore}/{stream_to_copy}", f"{path}/{destination}")
                 with open(f'{path}/manifest', 'w') as f:
-                    for line, value in copy_streams.items():
-                        f.write(f"{line}\n")
+                    for source, destination in copy_streams.items():
+                        f.write(f"{destination}\n")
+            print(f"item_{item_number}")
             current_number += 1
 
 
