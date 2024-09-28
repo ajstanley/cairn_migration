@@ -31,8 +31,7 @@ class CairnProcessor:
             item_number = str(current_number).zfill(3)
             foxml_file = self.CA.dereference(pid)
             copy_streams = {}
-            with open(f"{self.objectStore}/{foxml_file}", 'r') as file:
-                foxml = file.read()
+            foxml = f"{self.objectStore}/{foxml_file}"
             fw = FW.FWorker(foxml)
             dublin_core = fw.get_modified_dc()
             all_files = fw.get_file_data()

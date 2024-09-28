@@ -69,10 +69,10 @@ class FWorker:
                 ET.SubElement(root, "dcvalue", element=key,
                               qualifier='none').text = x.replace('%%%', ',')
             ET.indent(root, space="\t", level=0)
-        return ET.ElementTree(root)
+        return ET.tostring(root, encoding='unicode')
 
 if __name__ == '__main__':
     FW = FWorker('inputs/sample_foxml.xml')
-    datastreams = FW.get_file_data()
-    print(datastreams)
+    dc = FW.get_modified_dc()
+    print(dc)
 
