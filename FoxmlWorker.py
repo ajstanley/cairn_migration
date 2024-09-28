@@ -22,21 +22,23 @@ class FWorker:
     def get_datastreams(self):
         ns = {'': 'info:fedora/fedora-system:def/foxml#'}
         datastreams = self.root.findall('.//datastream', ns)
-        types = []
+        types = {}
         for datastream in datastreams:
-            types.append(datastream.attrib['ID'])
+            versions = datastream.findall('./datastreamVersion', ns)
+            mimetype = versions[-1].attrib['MIMETYPE']
+            types[datastream.attrib['ID']] = mimetype
         return types
 
     # Gets names of current managed files from foxml.
-    def get_file_names(self):
+    def get_file_data(self):
         mapping = {}
         streams = self.get_datastreams()
         ns = {'foxml': 'info:fedora/fedora-system:def/foxml#'}
-        for stream in streams:
+        for stream, mimetype in streams.items():
             location = self.root.xpath(
                 f'//foxml:datastream[@ID="{stream}"]/foxml:datastreamVersion/foxml:contentLocation', namespaces=ns)
             if location:
-                mapping[stream] = location[-1].attrib['REF']
+                mapping[stream] = {'file_name': location[-1].attrib['REF'], 'mimetype': mimetype}
         return mapping
 
     # Converts embedded dublin core to dspace dublin core
@@ -67,10 +69,10 @@ class FWorker:
                 ET.SubElement(root, "dcvalue", element=key,
                               qualifier='none').text = x.replace('%%%', ',')
             ET.indent(root, space="\t", level=0)
-        return ET.tostring(root, encoding='unicode')
+        return ET.ElementTree(root)
 
 
 FW = FWorker('inputs/sample_foxml.xml')
-datastreams = FW.get_file_names()
+datastreams = FW.get_file_data()
 print(datastreams)
-print(FW.get_modified_dc())
+

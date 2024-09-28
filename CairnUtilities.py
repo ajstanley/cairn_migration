@@ -1,9 +1,12 @@
+#!/usr/bin/env python3
+
+import collections
 import csv
 import hashlib
 import sqlite3
-import urllib.parse
 import urllib
-import collections
+import urllib.parse
+
 import lxml.etree as ET
 import requests
 
@@ -105,7 +108,6 @@ class CairnUtilities:
             pids.append(row[0])
         return pids
 
-
     def get_collection_pid_model_map(self, table, collection):
         cursor = self.conn.cursor()
         command = f"SELECT PID, CONTENT_MODEL from {table} where collection_pid = '{collection}'"
@@ -156,15 +158,13 @@ class CairnUtilities:
                 break
 
 
-
 if __name__ == '__main__':
     CA = CairnUtilities()
-   # CA.process_institution('stfx', "inputs/stfx.csv")
+    # CA.process_institution('stfx', "inputs/stfx.csv")
     print(CA.dereference('nscc:9769+JP2+JP2.0'))
     print(CA.dereference('nscc:9769'))
-
 
     # CA.get_collection_pids('nscc', 'nscc:33056')
     # CA.get_stores('nscc:33037')
     # CA.get_all_mods()
-    print (CA.get_collection_pid_model_map('nscc', 'nscc:33056'))
+    print(CA.get_collection_pid_model_map('nscc', 'nscc:33056'))
