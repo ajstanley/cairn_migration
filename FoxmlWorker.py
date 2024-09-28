@@ -71,8 +71,8 @@ class FWorker:
             ET.indent(root, space="\t", level=0)
         return ET.ElementTree(root)
 
-
-FW = FWorker('inputs/sample_foxml.xml')
-datastreams = FW.get_file_data()
-print(datastreams)
+if __name__ == '__main__':
+    FW = FWorker('inputs/sample_foxml.xml')
+    datastreams = FW.get_file_data()
+    print(datastreams)
 
