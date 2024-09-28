@@ -15,7 +15,7 @@ class CairnProcessor:
         self.objectStore = '/usr/local/fedora/data/objectStore'
         self.datastreamStore = '/usr/local/fedora/data/datastreamStore'
         self.stream_map = {
-            'islandora:sp_large_image_cmodel': ['OBJ', 'JPG']
+            'islandora:sp_large_image_cmodel': ['OBJ', 'JPG', 'MODS']
         }
         self.export_dir = '/home/astanley/export'
         self.mimemap = {"image/jpeg": ".jpg",
