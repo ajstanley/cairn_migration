@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import shutil
-from pathlib import Path
 import time
+from pathlib import Path
 
 import CairnUtilities as CA
 import FoxmlWorker as FW
@@ -55,7 +55,7 @@ class CairnProcessor:
             print(f"item_{item_number}")
             current_number += 1
 
-        print (f"Processed {item_number} entries in {time.time() - self.start} seconds")
+        print(f"Processed {int(item_number)} entries in {round(time.time() - self.start, 2)} seconds")
 
 
 table = input("Table name?\n")
