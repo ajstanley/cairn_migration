@@ -15,13 +15,17 @@ class CairnProcessor:
         self.objectStore = '/usr/local/fedora/data/objectStore'
         self.datastreamStore = '/usr/local/fedora/data/datastreamStore'
         self.stream_map = {
+            'islandora:sp_pdf': ['OBJ', 'PDF', 'MODS'],
             'islandora:sp_large_image_cmodel': ['OBJ', 'JPG', 'MODS']
         }
+
         self.export_dir = '/home/astanley/export'
         self.mimemap = {"image/jpeg": ".jpg",
                         "image/jp2": ".jp2",
                         "image/png": ".png",
                         "image/tiff": ".tif",
+                        "text/xml": ".xml",
+                        "application/pdf": ".pdf",
                         "application/xml": ".xml"}
         self.start = time.time()
 
@@ -47,7 +51,7 @@ class CairnProcessor:
             Path(path).mkdir(parents=True, exist_ok=True)
             with open(f'{path}/dublin_core.xml', 'w') as f:
                 f.write(dublin_core)
-            with open(f'{path}/manifest', 'w') as f:
+            with open(f'{path}/contents', 'w') as f:
                 for source, destination in copy_streams.items():
                     stream_to_copy = self.CA.dereference(source)
                     shutil.copy(f"{self.datastreamStore}/{stream_to_copy}", f"{path}/{destination}")
