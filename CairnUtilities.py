@@ -14,6 +14,7 @@ import requests
 class CairnUtilities:
     def __init__(self):
         self.marcxml = 'assets/xsl/MODS3-4_MARC21slim_XSLT1-0.xsl'
+        self.mods_xsl = 'assets/mods_to_dc.xsl'
         self.conn = sqlite3.connect('cairn.db')
         self.fields = ['PID', 'model', 'RELS_EXT_isMemberOfCollection_uri_ms', 'RELS_EXT_isPageOf_uri_ms']
 
@@ -22,7 +23,14 @@ class CairnUtilities:
         xslt = ET.parse(self.marcxml)
         transform = ET.XSLT(xslt)
         newdom = transform(dom)
-        print(ET.tostring(newdom))
+        return ET.tostring(newdom)
+
+    def mods_to_dc(self, mods_xml):
+        dom = ET.parse(mods_xml)
+        xslt = ET.parse(self.mods_xsl)
+        transform = ET.XSLT(xslt)
+        newdom = transform(dom)
+        return ET.tostring(newdom)
 
     def get_marc_from_pid(self, pid):
         url = f'https://nscc.cairnrepo.org/islandora/object/{pid}/datastream/MODS/download'
