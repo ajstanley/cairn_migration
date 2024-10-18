@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
+import csv
 import shutil
 import time
 from pathlib import Path
-import csv
+
 import CairnUtilities as CA
 import FoxmlWorker as FW
 
@@ -21,7 +22,7 @@ class CairnProcessor:
         }
         self.ca = CA.CairnUtilities()
 
-        self.export_dir = '/home/astanley/export'
+        self.export_dir = '/usr/local/fedora/cairn_migration/outputs'
         self.mimemap = {"image/jpeg": ".jpg",
                         "image/jp2": ".jp2",
                         "image/png": ".png",
@@ -31,26 +32,27 @@ class CairnProcessor:
                         "application/xml": ".xml"}
         self.start = time.time()
 
-
     def selector(self):
-         selection = input("Process \n 1. Hierarchy\n 2. Collections\n")
-         if selection not in ["1", "2"]:
-             print("Try again\n")
-             self.selector()
-         if selection == "1":
-             namespace = input("Hierarchy namespace?\n")
-             self.process_hierarchy(namespace)
-         if selection == "2":
-             table = input("Table name?\n")
-             collection_pid = input("Collection pid?\n")
-             transform = input("Transform DC from MODS?\n")
-             self.process_collection(table, collection_pid, transform)
+        selection = input("Process \n 1. Hierarchy\n 2. Collections\n")
+        if selection not in ["1", "2"]:
+            print("Try again\n")
+            self.selector()
+        if selection == "1":
+            namespace = input("Hierarchy namespace?\n")
+            self.process_hierarchy(namespace)
+        if selection == "2":
+            table = input("Table name?\n")
+            collection_pid = input("Collection pid?\n")
+            transform = input("Transform DC from MODS?\nY/N")
+            if transform not in ['y', 'n']:
+                print("Try again\n")
+            self.process_collection(table, collection_pid, transform)
 
     def process_hierarchy(self, namespace):
         collection_data = self.ca.get_collection_details(namespace)
         headers = ['pid', 'label']
-        for collection_pid,  parent_pid in collection_data.items():
-            foxml_file = self.CA.dereference(collection_pid)
+        for collection_pid, parent_pid in collection_data.items():
+            foxml_file = self.ca.dereference(collection_pid)
             foxml = f"{self.objectStore}/{foxml_file}"
             fw = FW.FWorker(foxml)
             if fw.properties['state'] != 'Active':
@@ -63,7 +65,7 @@ class CairnProcessor:
             writer.writerow(row)
 
     def process_collection(self, table, collection, transform_mods):
-        collection_map = self.CA.get_collection_pid_model_map(table, collection)
+        collection_map = self.ca.get_collection_pid_model_map(table, collection)
         # Build collection directory
         path = f"{self.export_dir}/{collection.replace(':', '_')}"
         Path(path).mkdir(parents=True, exist_ok=True)
@@ -71,13 +73,13 @@ class CairnProcessor:
         # Process each PID in collectipn
         for pid, model in collection_map.items():
             item_number = str(current_number).zfill(4)
-            foxml_file = self.CA.dereference(pid)
+            foxml_file = self.ca.dereference(pid)
             copy_streams = {}
             foxml = f"{self.objectStore}/{foxml_file}"
             fw = FW.FWorker(foxml)
             dublin_core = None
-            if transform_mods:
-                dublin_core = FW.transform_mods_to_dc()
+            if transform_mods == 'y':
+                dublin_core = fw.transform_mods_to_dc()
             if not dublin_core:
                 dublin_core = fw.get_modified_dc()
             all_files = fw.get_file_data()
@@ -93,13 +95,14 @@ class CairnProcessor:
                 f.write(dublin_core)
             with open(f'{path}/contents', 'w') as f:
                 for source, destination in copy_streams.items():
-                    stream_to_copy = self.CA.dereference(source)
+                    stream_to_copy = self.ca.dereference(source)
                     shutil.copy(f"{self.datastreamStore}/{stream_to_copy}", f"{path}/{destination}")
                     f.write(f"{destination}\n")
             print(f"item_{item_number}")
             current_number += 1
 
         print(f"Processed {int(item_number)} entries in {round(time.time() - self.start, 2)} seconds")
+
 
 CP = CairnProcessor()
 CP.selector()
