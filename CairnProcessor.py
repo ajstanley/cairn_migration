@@ -68,7 +68,7 @@ class CairnProcessor:
         # Build collection directory
         archive = collection.replace(':', '_')
         archive_path = f"{self.export_dir}/{archive}"
-        Path(path).mkdir(parents=True, exist_ok=True)
+        Path(archive_path).mkdir(parents=True, exist_ok=True)
         current_number = 1
         # Process each PID in collectipn
         for pid, model in collection_map.items():
@@ -101,7 +101,8 @@ class CairnProcessor:
             print(f"item_{item_number}")
             current_number += 1
 
-        shutil.make_archive(f"{self.export_dir}/{archive}.zip", 'zip', f"{self.export_dir}/{archive}")
+        shutil.make_archive(f"{self.export_dir}/{archive}", 'zip', f"{self.export_dir}/{archive}")
+        shutil.rmtree(f"{self.export_dir}/{archive}")
         print(f"Processed {int(item_number)} entries in {round(time.time() - self.start, 2)} seconds")
 
 
