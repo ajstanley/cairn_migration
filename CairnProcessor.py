@@ -67,7 +67,7 @@ class CairnProcessor:
         collection_map = self.ca.get_collection_pid_model_map(table, collection)
         # Build collection directory
         archive = collection.replace(':', '_')
-        path = f"{self.export_dir}/{archive}"
+        archive_path = f"{self.export_dir}/{archive}"
         Path(path).mkdir(parents=True, exist_ok=True)
         current_number = 1
         # Process each PID in collectipn
@@ -88,7 +88,7 @@ class CairnProcessor:
                     copy_streams[
                         file_data[
                             'file_name']] = f"{pid.replace(':', '_')}_{entry}{self.mimemap[file_data['mimetype']]}"
-            path = f"{path}/item_{item_number}"
+            path = f"{archive_path}/item_{item_number}"
             # Build directory
             Path(path).mkdir(parents=True, exist_ok=True)
             with open(f'{path}/dublin_core.xml', 'w') as f:
@@ -101,7 +101,7 @@ class CairnProcessor:
             print(f"item_{item_number}")
             current_number += 1
 
-        shutil.make_archive(f"{archive}.zip", 'zip', f"{self.export_dir}/{archive}")
+        shutil.make_archive(f"{self.export_dir}/{archive}.zip", 'zip', f"{self.export_dir}/{archive}")
         print(f"Processed {int(item_number)} entries in {round(time.time() - self.start, 2)} seconds")
 
 
