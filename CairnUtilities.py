@@ -116,6 +116,7 @@ class CairnUtilities:
             pids.append(row[0])
         return pids
 
+    # Get all content models from map
     def get_collection_pid_model_map(self, table, collection):
         cursor = self.conn.cursor()
         command = f"SELECT PID, CONTENT_MODEL from {table} where collection_pid = '{collection}'"
@@ -123,6 +124,14 @@ class CairnUtilities:
         for row in cursor.execute(command):
             map[row[0]] = row[1]
         return map
+
+    def get_collection_details(self, table):
+        cursor = self.conn.cursor()
+        command = f"SELECT PID, COLLECTION_PID from {table} where content_model = 'islandora:collectionCModel'"
+        results = {}
+        for row in cursor.execute(command):
+            results[row[0]] = row[1]
+        return results
 
     def get_stores(self, collection_pid):
         members = self.get_collection_pids('nscc', collection_pid)
@@ -175,4 +184,4 @@ if __name__ == '__main__':
     # CA.get_collection_pids('nscc', 'nscc:33056')
     # CA.get_stores('nscc:33037')
     # CA.get_all_mods()
-    print(CA.get_collection_pid_model_map('nscc', 'nscc:33056'))
+    print(CA.get_collection_details('nscc'))

@@ -7,23 +7,30 @@ class FWorker:
     def __init__(self, foxml_file):
         self.tree = ET.parse(foxml_file)
         self.root = self.tree.getroot()
-        self.dc = ["format", "language", "relation", "description", "coverage", "identifier",
-                   "subject", "contributor", "publisher", "date", "title", "rights", "type",
-                   "source", "creator"]
         self.namespaces = {
             'foxml': 'info:fedora/fedora-system:def/foxml#',
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/oai_dc/',
             'dc': 'http://purl.org/dc/elements/1.1/'
         }
         self.mods_xsl = 'assets/mods_to_dc.xsl'
+        self.properties = self.get_properties()
 
     # Returns PID from foxml
     def get_pid(self):
         return self.root.attrib['PID']
 
-    # gets state from foxml
+    # gets state
     def get_state(self):
-        return self.root.find('.//foxml:objectProperties/foxml:property', self.namespaces).attrib['VALUE']
+        return self.properties['state']
+
+    def get_properties(self):
+        values = {}
+        properties = self.root.findall('.//foxml:objectProperties/foxml:property', self.namespaces)
+        for property in properties:
+            name = property.attrib['NAME'].split('#')[1]
+            value = property.attrib['VALUE']
+            values[name] = value
+        return values
 
     # Gets all datastream types from foxml.
     def get_datastreams(self):
@@ -55,6 +62,19 @@ class FWorker:
         dc_node = dc_nodes[-1]
         return ET.tostring(dc_node, encoding='unicode')
 
+    def get_dc_values(self):
+        dc_nodes = self.root.findall(f'.//foxml:datastream[@ID="DC"]/foxml:datastreamVersion/foxml:xmlContent',
+                                     namespaces=self.namespaces)
+        dc_values = []
+        dc_node = dc_nodes[-1]
+        for child in dc_node.iter():
+            cleaned = child.text.replace('\n', '')
+            text = ' '.join(cleaned.split())
+            if text:
+                tag = child.xpath('local-name()')
+                dc_values.append({tag: text})
+        return dc_values
+
     # Converts embedded dublin core to dspace dublin core
     def get_modified_dc(self):
         dc_nodes = self.root.findall(f'.//foxml:datastream[@ID="DC"]/foxml:datastreamVersion/foxml:xmlContent',
@@ -64,18 +84,14 @@ class FWorker:
 
     # Builds dspace xml from extracted values/
     def build_dspace_dc(self, dc_node):
-        dc_values = {}
-        for tag in self.dc:
-            test = dc_node.find(f".//dc:{tag}", self.namespaces)
-            if test is not None:
-                dc_values[tag] = test.text
         root = ET.Element("dublin_core")
-        for key, value in dc_values.items():
-            value = value.replace("\\,", '%%%')
-            values = value.split(',')
-            for x in values:
+        dc_values = self.get_dc_values()
+        for candidate in dc_values:
+            for key, value in candidate.items():
+                value = value.replace("\\,", '%%%')
                 ET.SubElement(root, "dcvalue", element=key,
-                              qualifier='none').text = x.replace('%%%', ',')
+                              qualifier='none').text = value.replace('%%%', ',')
+
             ET.indent(root, space="\t", level=0)
         return ET.tostring(root, encoding='unicode')
 
@@ -96,5 +112,10 @@ class FWorker:
 
 if __name__ == '__main__':
     FW = FWorker('inputs/sample_foxml.xml')
-    dc = FW.get_modified_dc()
-    print(dc)
+    print(FW.get_dc_values())
+    print(FW.properties['label'])
+    print(FW.properties['state'])
+
+    # dc = FW.get_modified_dc()
+    # values = FW.get_dc_values()
+    # print(values)
