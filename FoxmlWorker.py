@@ -38,7 +38,7 @@ class FWorker:
         datastreams = self.root.findall('.//foxml:datastream', self.namespaces)
         types = {}
         for datastream in datastreams:
-            versions = datastream.findall('./foxml:datastreamVersion', ns)
+            versions = datastream.findall('./foxml:datastreamVersion', self.namespaces)
             mimetype = versions[-1].attrib['MIMETYPE']
             types[datastream.attrib['ID']] = mimetype
         return types

@@ -4,7 +4,6 @@ import csv
 import shutil
 import time
 from pathlib import Path
-
 import CairnUtilities as CA
 import FoxmlWorker as FW
 
@@ -43,7 +42,7 @@ class CairnProcessor:
         if selection == "2":
             table = input("Table name?\n")
             collection_pid = input("Collection pid?\n")
-            transform = input("Transform DC from MODS?\nY/N")
+            transform = input("Transform DC from MODS?\ny/n\n")
             if transform not in ['y', 'n']:
                 print("Try again\n")
             self.process_collection(table, collection_pid, transform)
@@ -67,7 +66,8 @@ class CairnProcessor:
     def process_collection(self, table, collection, transform_mods):
         collection_map = self.ca.get_collection_pid_model_map(table, collection)
         # Build collection directory
-        path = f"{self.export_dir}/{collection.replace(':', '_')}"
+        archive = collection.replace(':', '_')
+        path = f"{self.export_dir}/{archive}"
         Path(path).mkdir(parents=True, exist_ok=True)
         current_number = 1
         # Process each PID in collectipn
@@ -88,7 +88,7 @@ class CairnProcessor:
                     copy_streams[
                         file_data[
                             'file_name']] = f"{pid.replace(':', '_')}_{entry}{self.mimemap[file_data['mimetype']]}"
-            path = f"{self.export_dir}/item_{item_number}"
+            path = f"{path}/item_{item_number}"
             # Build directory
             Path(path).mkdir(parents=True, exist_ok=True)
             with open(f'{path}/dublin_core.xml', 'w') as f:
@@ -101,6 +101,7 @@ class CairnProcessor:
             print(f"item_{item_number}")
             current_number += 1
 
+        shutil.make_archive(f"{archive}.zip", 'zip', f"{self.export_dir}/{archive}")
         print(f"Processed {int(item_number)} entries in {round(time.time() - self.start, 2)} seconds")
 
 
