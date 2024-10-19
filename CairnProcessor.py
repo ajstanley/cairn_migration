@@ -76,7 +76,10 @@ class CairnProcessor:
             foxml_file = self.ca.dereference(pid)
             copy_streams = {}
             foxml = f"{self.objectStore}/{foxml_file}"
-            fw = FW.FWorker(foxml)
+            try:
+                fw = FW.FWorker(foxml)
+            except:
+                print(f"No record found for {pid}")
             dublin_core = None
             if transform_mods == 'y':
                 dublin_core = fw.transform_mods_to_dc()
@@ -100,7 +103,7 @@ class CairnProcessor:
                     f.write(f"{destination}\n")
             print(f"item_{item_number}")
             current_number += 1
-
+        print(f"Zipping files into {archive}.zip")
         shutil.make_archive(f"{self.export_dir}/{archive}", 'zip', f"{self.export_dir}/{archive}")
         shutil.rmtree(f"{self.export_dir}/{archive}")
         print(f"Processed {int(item_number)} entries in {round(time.time() - self.start, 2)} seconds")

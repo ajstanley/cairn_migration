@@ -68,11 +68,12 @@ class FWorker:
         dc_values = []
         dc_node = dc_nodes[-1]
         for child in dc_node.iter():
-            cleaned = child.text.replace('\n', '')
-            text = ' '.join(cleaned.split())
-            if text:
-                tag = child.xpath('local-name()')
-                dc_values.append({tag: text})
+            if child.text is not None:
+                cleaned = child.text.replace('\n', '')
+                text = ' '.join(cleaned.split())
+                if text:
+                    tag = child.xpath('local-name()')
+                    dc_values.append({tag: text})
         return dc_values
 
     # Converts embedded dublin core to dspace dublin core
