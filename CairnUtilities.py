@@ -209,16 +209,19 @@ class CairnUtilities:
             writer = csv.DictWriter(csvfile, fieldnames=headers)
             writer.writeheader()
             for pid in pids:
-                foxml = self.dereference(pid)
+                foxml_file = self.dereference(pid)
+                foxml = f"{self.objectStore}/{foxml_file}"
                 fw = FW.FWorker(foxml)
                 relations = fw.get_rels_ext_values()
                 row = {}
                 row['pid'] = pid
-                for relation, value in relations.items():
-                    row[self.rels_map[relation]] = value
+                for candidate in relations:
+                    for relation, value in candidate.items():
+                        row[self.rels_map[relation]] = value
                 writer.writerow(row)
 
 
 if __name__ == '__main__':
     CA = CairnUtilities()
+    CA.build_record_from_pids('nscad', '/usr/local/fedora/cairn_migration/nscad.csv')
     # CA.process_institution('mta', "inputs/mta.csv")
