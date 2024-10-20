@@ -10,7 +10,11 @@ class FWorker:
         self.namespaces = {
             'foxml': 'info:fedora/fedora-system:def/foxml#',
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/oai_dc/',
-            'dc': 'http://purl.org/dc/elements/1.1/'
+            'dc': 'http://purl.org/dc/elements/1.1/',
+            'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+            'fedora': "info:fedora/fedora-system:def/relations-external#",
+            'fedora - model': "info:fedora/fedora-system:def/model#",
+            'islandora': "http://islandora.ca/ontology/relsext#"
         }
         self.mods_xsl = 'assets/mods_to_dc.xsl'
         self.properties = self.get_properties()
@@ -110,12 +114,30 @@ class FWorker:
         if mod_path:
             return Path(mod_path).read_text()
 
+    def get_rels_ext_values(self):
+        re_values = []
+        re_nodes = self.root.findall(
+            f'.//foxml:datastream[@ID="RELS-EXT"]/foxml:datastreamVersion/foxml:xmlContent/rdf:RDF',
+            namespaces=self.namespaces)
+        re_node = re_nodes[-1]
+        for child in re_node.iter():
+            tag = child.xpath('local-name()')
+            if child.text is not None:
+                cleaned = child.text.replace('info:fedora/', '').replace('\n', '')
+                text = ' '.join(cleaned.split())
+                if text:
+                    re_values.append({tag: text})
+            resource = child.attrib.get('{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource')
+            if resource:
+                re_values.append({tag: resource.replace('info:fedora/', '')})
+        return re_values
+
 
 if __name__ == '__main__':
     FW = FWorker('inputs/sample_foxml.xml')
-    print(FW.get_dc_values())
-    print(FW.properties['label'])
-    print(FW.properties['state'])
+    print(FW.get_rels_ext_values())
+    # print(FW.properties['label'])
+    # print(FW.properties['state'])
 
     # dc = FW.get_modified_dc()
     # values = FW.get_dc_values()

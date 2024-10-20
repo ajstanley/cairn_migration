@@ -17,7 +17,7 @@ class CairnProcessor:
             'islandora:sp_pdf': ['OBJ', 'PDF', 'MODS'],
             'islandora:sp_large_image_cmodel': ['OBJ', 'JPG', 'MODS'],
             'ir:citationCModel': [],
-            'r:thesisCModel': ['PDF', 'FULL_TEXT']
+            'ir:thesisCModel': ['PDF', 'FULL_TEXT']
         }
         self.ca = CA.CairnUtilities()
 
@@ -27,6 +27,7 @@ class CairnProcessor:
                         "image/png": ".png",
                         "image/tiff": ".tif",
                         "text/xml": ".xml",
+                        "test/plain": ".txt",
                         "application/pdf": ".pdf",
                         "application/xml": ".xml"}
         self.start = time.time()

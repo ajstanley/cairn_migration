@@ -6,9 +6,13 @@ import hashlib
 import sqlite3
 import urllib
 import urllib.parse
+from pathlib import Path
+from urllib.parse import unquote
 
 import lxml.etree as ET
 import requests
+
+import FoxmlWorker as FW
 
 
 class CairnUtilities:
@@ -17,6 +21,14 @@ class CairnUtilities:
         self.mods_xsl = 'assets/mods_to_dc.xsl'
         self.conn = sqlite3.connect('cairn.db')
         self.fields = ['PID', 'model', 'RELS_EXT_isMemberOfCollection_uri_ms', 'RELS_EXT_isPageOf_uri_ms']
+        self.objectStore = '/usr/local/fedora/data/objectStore/'
+        self.rels_map = {'isMemberOfCollection': 'collection_pid',
+                         'isMemberOf': 'collection_pid',
+                         'hasModel': 'content_model',
+                         'isPageOf': 'page_of',
+                         'isSequenceNumber': 'sequence',
+                         'isConstituentOf': 'constituent_of'
+                         }
 
     def mods_to_marc21(self, mods_xml):
         dom = ET.parse(mods_xml)
@@ -61,7 +73,7 @@ class CairnUtilities:
             collection_pid TEXT,
             page_of TEXT,
             sequence TEXT,
-            constiuent_of TEXT
+            constituent_of TEXT
             )""")
         self.conn.commit()
         with open(csv_file, newline='') as csvfile:
@@ -174,14 +186,39 @@ class CairnUtilities:
                         f.write(line)
                 break
 
+    def get_pids_from_objectstore(self, namespace=''):
+        wildcard = '*/*'
+        if namespace:
+            wildcard = f'*/*{namespace}*'
+        pids = []
+        for p in Path(self.objectStore).rglob(wildcard):
+            pid = unquote(p.name).replace('info:fedora/', '')
+            pids.append(pid)
+        return pids
+
+    def build_record_from_pids(self, namespace, output_file):
+        pids = self.get_pids_from_objectstore(namespace)
+        headers = ['pid',
+                   'content_model',
+                   'collection_pid',
+                   'page_of',
+                   'sequence',
+                   'constituent_of']
+
+        with open(output_file, 'w', newline='') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=headers)
+            writer.writeheader()
+            for pid in pids:
+                foxml = self.dereference(pid)
+                fw = FW.FWorker(foxml)
+                relations = fw.get_rels_ext_values()
+                row = {}
+                row['pid'] = pid
+                for relation, value in relations.items():
+                    row[self.rels_map[relation]] = value
+                writer.writerow(row)
+
 
 if __name__ == '__main__':
     CA = CairnUtilities()
-    # CA.process_institution('stfx', "inputs/stfx.csv")
-    print(CA.dereference('nscc:9769+JP2+JP2.0'))
-    print(CA.dereference('nscc:9769'))
-
-    # CA.get_collection_pids('nscc', 'nscc:33056')
-    # CA.get_stores('nscc:33037')
-    # CA.get_all_mods()
-    print(CA.get_collection_details('nscc'))
+    # CA.process_institution('mta', "inputs/mta.csv")
