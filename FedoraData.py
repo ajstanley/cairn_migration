@@ -20,7 +20,6 @@ class FedoraDataWorker:
 
     def get_namespaces(self):
         namespaces = []
-        reserved = ['fedora-system', 'ir', 'test', 'changeme', 'TEST', 'TEST2', '00']
         for pid in self.get_all_pids():
             namespace = pid.split(':')[0]
             if namespace not in namespaces:

@@ -30,6 +30,7 @@ class CairnUtilities:
                          'isConstituentOf': 'constituent_of'
                          }
 
+    # Converts MODS to marc21
     def mods_to_marc21(self, mods_xml):
         dom = ET.parse(mods_xml)
         xslt = ET.parse(self.marcxml)
@@ -37,6 +38,7 @@ class CairnUtilities:
         newdom = transform(dom)
         return ET.tostring(newdom)
 
+    # Converts MODS to DC
     def mods_to_dc(self, mods_xml):
         dom = ET.parse(mods_xml)
         xslt = ET.parse(self.mods_xsl)
@@ -44,6 +46,7 @@ class CairnUtilities:
         newdom = transform(dom)
         return ET.tostring(newdom)
 
+    # Returns marc21 from PID - hardcoded for nscc
     def get_marc_from_pid(self, pid):
         url = f'https://nscc.cairnrepo.org/islandora/object/{pid}/datastream/MODS/download'
         mods_xml = requests.get(url).content
@@ -55,6 +58,7 @@ class CairnUtilities:
         with open(filename, 'wb') as f:
             newdom.write(f, encoding='utf-8')
 
+    # Gets all pids from CSV file
     def get_pids_from_csv(self, csv_file):
         print(csv_file)
         with open(csv_file, newline='') as csvfile:
@@ -64,6 +68,7 @@ class CairnUtilities:
                 pid = row['PID']
                 pids.append(pid)
 
+    # Creates database table with RELS-EXT values returned from Workbench harvest
     def process_institution(self, institution, csv_file):
         cursor = self.conn.cursor()
         cursor.execute(f"""
@@ -93,6 +98,37 @@ class CairnUtilities:
                     print(row['PID'])
         self.conn.commit()
 
+    # Processes CSV returned from direct objectStore harvest
+    def process_clean_institution(self, institution, csv_file):
+        cursor = self.conn.cursor()
+        cursor.execute(f"""
+            CREATE TABLE if not exists {institution}(
+            pid TEXT PRIMARY KEY,
+            content_model TEXT,
+            collection_pid TEXT,
+            page_of TEXT,
+            sequence TEXT,
+            constituent_of TEXT
+            )""")
+        self.conn.commit()
+        with open(csv_file, newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                collection = row['collection_pid']
+                page_of = row['page_of']
+                if not page_of:
+                    page_of = ' '
+                constituent_of = row['constituent_of']
+                if not constituent_of:
+                    constituent_of = ' '
+                try:
+                    command = f"INSERT OR REPLACE INTO  {institution} VALUES('{row['pid']}', '{row['content_model']}', '{collection}','{page_of}', '{row['sequence']}','{constituent_of}')"
+                    cursor.execute(command)
+                except sqlite3.Error:
+                    print(row['PID'])
+        self.conn.commit()
+
+    # Identifies object and datastream location within Fedora objectStores and datastreamStore.
     def dereference(self, identifier: str) -> str:
         # Replace '+' with '/' in the identifier
         slashed = identifier.replace('+', '/')
@@ -120,6 +156,7 @@ class CairnUtilities:
         encoded = urllib.parse.quote(full, safe='').replace('_', '%5F')
         return f"{subbed}/{encoded}"
 
+    # Get all collection pids within namespace
     def get_collection_pids(self, table, collection):
         cursor = self.conn.cursor()
         command = f"SELECT PID from {table} where collection_pid = '{collection}'"
@@ -137,6 +174,7 @@ class CairnUtilities:
             map[row[0]] = row[1]
         return map
 
+    # Gets collection hierarchy by namespace.
     def get_collection_details(self, table):
         cursor = self.conn.cursor()
         command = f"SELECT PID, COLLECTION_PID from {table} where content_model = 'islandora:collectionCModel'"
@@ -145,6 +183,7 @@ class CairnUtilities:
             results[row[0]] = row[1]
         return results
 
+    # Gets filestores for NSCC - No longer needed.
     def get_stores(self, collection_pid):
         members = self.get_collection_pids('nscc', collection_pid)
         encoded_members = []
@@ -164,6 +203,7 @@ class CairnUtilities:
                             f.write(line)
                     break
 
+    # Get MODS from NSCC inpupts
     def get_all_mods(self):
         all_mods = {}
         file = open('inputs/nscc_datastream.txt')
@@ -186,6 +226,7 @@ class CairnUtilities:
                         f.write(line)
                 break
 
+    # Gets PIDS, filtered by namespace directly from objectStore
     def get_pids_from_objectstore(self, namespace=''):
         wildcard = '*/*'
         if namespace:
@@ -196,6 +237,16 @@ class CairnUtilities:
             pids.append(pid)
         return pids
 
+    # Gets all namespaces in objectStore
+    def get_namespaces(self):
+        namespaces = []
+        for pid in self.get_pids_from_objectstore():
+            namespace = pid.split(':')[0]
+            if namespace not in namespaces:
+                namespaces.append(namespace)
+        return namespaces
+
+    # Gets RELS-EXT relationships from objectStore
     def build_record_from_pids(self, namespace, output_file):
         pids = self.get_pids_from_objectstore(namespace)
         headers = ['pid',
@@ -212,16 +263,39 @@ class CairnUtilities:
                 foxml_file = self.dereference(pid)
                 foxml = f"{self.objectStore}/{foxml_file}"
                 fw = FW.FWorker(foxml)
+                if fw.get_state() != 'Active':
+                    continue
                 relations = fw.get_rels_ext_values()
                 row = {}
                 row['pid'] = pid
                 for candidate in relations:
-                    for relation, value in candidate.items():
-                        row[self.rels_map[relation]] = value
+                    if next(iter(candidate)) in [self.rels_map]:
+                        for relation, value in candidate.items():
+                            row[self.rels_map[relation]] = value
+
                 writer.writerow(row)
+
+    # Adds all MODS records from datastreamStore to database
+    def add_mods_to_database(self, namespace):
+        cursor = self.conn.cursor()
+        pids = self.get_pids_from_objectstore('')
+        for pid in pids:
+            foxml_file = self.dereference(pid)
+            foxml = f"{self.objectStore}/{foxml_file}"
+            fw = FW.FWorker(foxml)
+            if fw.get_state() != 'Active':
+                continue
+            mods = fw.get_mods()
+            if mods:
+                command = f"INSERT OR REPLACE INTO  {namespace} (pid, mods) values ({pid}, {mods}"
+                cursor.execute(command)
+
+
+
+
 
 
 if __name__ == '__main__':
     CA = CairnUtilities()
-    CA.build_record_from_pids('nscad', '/usr/local/fedora/cairn_migration/nscad.csv')
-    # CA.process_institution('mta', "inputs/mta.csv")
+
+    CA.process_clean_institution('nscad', "inputs/nscad.csv")

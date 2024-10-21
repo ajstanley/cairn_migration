@@ -2,7 +2,7 @@ import csv
 import xml.etree.cElementTree as ET
 import os
 from pathlib import Path
-import CairnUtilities as CA
+import pandas as pd
 
 
 class ArchiveBuilder:
@@ -41,7 +41,12 @@ class ArchiveBuilder:
         ET.indent(root, space="\t", level=0)
         return ET.ElementTree(root)
 
+    def manipulate_mods(self):
+        mods = pd.read_xml('inputs/sample_mods.xml')
+        print(mods)
+
+
 if __name__ == '__main__':
     AB = ArchiveBuilder("inputs/msvu.csv", 'msvu_archive')
-    AB.work()
+    AB.manipulate_mods()
 
