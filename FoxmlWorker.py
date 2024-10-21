@@ -56,7 +56,7 @@ class FWorker:
                 f'//foxml:datastream[@ID="{stream}"]/foxml:datastreamVersion/foxml:contentLocation',
                 namespaces=self.namespaces)
             if location:
-                mapping[stream] = {'file_name': location[-1].attrib['REF'], 'mimetype': mimetype}
+                mapping[stream] = {'filename': location[-1].attrib['REF'], 'mimetype': mimetype}
         return mapping
 
     def get_dc(self):

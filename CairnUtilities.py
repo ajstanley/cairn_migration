@@ -292,8 +292,10 @@ class CairnUtilities:
                 mods_path = f"{self.datastreamStore}/{self.dereference(mods_info['filename'])}"
                 mods_xml = Path(mods_path).read_text()
                 if mods_xml:
-                    command = f"INSERT OR REPLACE INTO  {namespace} (pid, mods) values ({pid}, {mods_xml}"
+                    mods_xml = mods_xml.replace("'", "''")
+                    command = f"""INSERT OR REPLACE INTO  {namespace} (pid, mods) values ('{pid}', '{mods_xml}')"""
                     cursor.execute(command)
+        self.conn.commit()
 
 
 
