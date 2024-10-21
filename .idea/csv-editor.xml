@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/inputs/nscad.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/inputs/nscc_collections.csv">
           <value>
             <Attribute>

@@ -22,6 +22,7 @@ class CairnUtilities:
         self.conn = sqlite3.connect('cairn.db')
         self.fields = ['PID', 'model', 'RELS_EXT_isMemberOfCollection_uri_ms', 'RELS_EXT_isPageOf_uri_ms']
         self.objectStore = '/usr/local/fedora/data/objectStore/'
+        self.datastreamStore = '/usr/local/fedora/data/datastreamStore/'
         self.rels_map = {'isMemberOfCollection': 'collection_pid',
                          'isMemberOf': 'collection_pid',
                          'hasModel': 'content_model',
@@ -278,24 +279,23 @@ class CairnUtilities:
     # Adds all MODS records from datastreamStore to database
     def add_mods_to_database(self, namespace):
         cursor = self.conn.cursor()
-        pids = self.get_pids_from_objectstore('')
+        pids = self.get_pids_from_objectstore(namespace)
         for pid in pids:
             foxml_file = self.dereference(pid)
             foxml = f"{self.objectStore}/{foxml_file}"
             fw = FW.FWorker(foxml)
             if fw.get_state() != 'Active':
                 continue
-            mods = fw.get_mods()
-            if mods:
-                command = f"INSERT OR REPLACE INTO  {namespace} (pid, mods) values ({pid}, {mods}"
-                cursor.execute(command)
-
-
-
+            mapping = fw.get_file_data()
+            mods_info = mapping.get('MODS')
+            if mods_info:
+                mods_path = f"{self.datastreamStore}/{self.dereference(mods_info['filename'])}"
+                mods_xml = Path(mods_path).read_text()
+                if mods_xml:
+                    command = f"INSERT OR REPLACE INTO  {namespace} (pid, mods) values ({pid}, {mods_xml}"
+                    cursor.execute(command)
 
 
 
 if __name__ == '__main__':
     CA = CairnUtilities()
-
-    CA.process_clean_institution('nscad', "inputs/nscad.csv")

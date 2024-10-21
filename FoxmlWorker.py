@@ -108,12 +108,6 @@ class FWorker:
         dc_node = transform(dom)
         return self.build_dspace_dc(dc_node)
 
-    def get_mods(self):
-        mappings = self.get_file_data()
-        mod_path = mappings.get('MODS')
-        if mod_path:
-            return Path(mod_path).read_text()
-
     def get_rels_ext_values(self):
         re_values = []
         re_nodes = self.root.findall(
@@ -135,7 +129,7 @@ class FWorker:
 
 if __name__ == '__main__':
     FW = FWorker('inputs/sample_foxml.xml')
-    print(FW.get_rels_ext_values())
+
     # print(FW.properties['label'])
     # print(FW.properties['state'])
 
