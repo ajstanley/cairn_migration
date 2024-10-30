@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
 import csv
+import re
 import shutil
 import time
 from pathlib import Path
-import re
+
 import lxml.etree as ET
 
 import CairnUtilities as CA
@@ -21,7 +22,7 @@ class CairnProcessor:
             'islandora:sp_large_image_cmodel': ['OBJ', 'JPG', 'MODS'],
             'ir:citationCModel': [],
             'ir:thesisCModel': ['PDF', 'FULL_TEXT'],
-            'islandora:sp_videoCModel':  ['OBJ', 'PDF', 'MODS'],
+            'islandora:sp_videoCModel': ['OBJ', 'PDF', 'MODS'],
         }
         self.ca = CA.CairnUtilities()
         self.mods_xsl = 'assets/xsl/stfx_mods_to_dc.xsl'
@@ -90,13 +91,14 @@ class CairnProcessor:
             if transform_mods == 'y':
                 files_info = fw.get_file_data()
                 mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
-                mods_xml = Path(mods_path).read_text()
-                dom = ET.parse(mods_xml)
+                dom = ET.parse(mods_path)
                 xslt = ET.parse(self.mods_xsl)
                 transform = ET.XSLT(xslt)
                 dc = transform(dom)
                 root = ET.Element("dublin_core")
                 for candidate in dc.iter():
+                    if not candidate.text:
+                        continue
                     value = candidate.text.replace("\\,", '%%%')
                     tag = re.sub(r'{.*}', '', candidate.tag)
                     if tag == 'dc':
@@ -141,10 +143,14 @@ class CairnProcessor:
         for candidate in dublin_core.iter():
             value = candidate.text.replace("\\,", '%%%')
             tag = re.sub(r'{.*}', '', candidate.tag)
+            qualifier = 'none'
             if tag == 'dc':
                 continue
+            if '.' in tag:
+                [tag, qualifier] = tag.split('.')
+
             ET.SubElement(root, "dcvalue", element=tag,
-                          qualifier='none').text = value.replace('%%%', ',')
+                          qualifier=qualifier).text = value.replace('%%%', ',')
         ET.indent(root, space="\t", level=0)
         print(ET.tostring(root, encoding='unicode'))
 

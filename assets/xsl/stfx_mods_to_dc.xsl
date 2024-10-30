@@ -81,7 +81,7 @@
 	</xsl:template>
 
 	<xsl:template match="mods:extension">
-		<dc.subject.discipline><xsl:value-of select="./etd:degree/etd:discipline"/></dc.subject.discipline>
+		<dc:subject.discipline><xsl:value-of select="./etd:degree/etd:discipline"/></dc:subject.discipline>
 		<degree>
 			<name><xsl:value-of select="./etd:degree/etd:name"/></name>
 			<level><xsl:value-of select="./etd:degree/etd:level"/></level>
