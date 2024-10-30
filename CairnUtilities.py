@@ -293,7 +293,7 @@ class CairnUtilities:
                 mods_xml = Path(mods_path).read_text()
                 if mods_xml:
                     mods_xml = mods_xml.replace("'", "''")
-                    command = f"""INSERT OR REPLACE INTO  {namespace} (pid, mods) values ('{pid}', '{mods_xml}')"""
+                    command = f"""UPDATE {namespace} set mods = '{mods_xml}' where pid = '{pid}"""
                     cursor.execute(command)
         self.conn.commit()
 

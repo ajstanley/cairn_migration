@@ -100,6 +100,11 @@ class FWorker:
             ET.indent(root, space="\t", level=0)
         return ET.tostring(root, encoding='unicode')
 
+    # Get MODS datastream
+    def get_mods(self):
+        data = FW.get_file_data()
+        mods_address = data['MODS']['filename']
+
     def transform_mods_to_dc(self):
         mods_xml = self.get_mods()
         dom = ET.parse(mods_xml)
@@ -135,4 +140,7 @@ if __name__ == '__main__':
 
     # dc = FW.get_modified_dc()
     # values = FW.get_dc_values()
-    # print(values)
+    data = FW.get_file_data()
+
+    print(data['MODS']['filename'])
+    print (FW.get_modified_dc())

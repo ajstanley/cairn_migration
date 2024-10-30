@@ -4,6 +4,9 @@ import csv
 import shutil
 import time
 from pathlib import Path
+import re
+import lxml.etree as ET
+
 import CairnUtilities as CA
 import FoxmlWorker as FW
 
@@ -17,10 +20,11 @@ class CairnProcessor:
             'islandora:sp_pdf': ['OBJ', 'PDF', 'MODS'],
             'islandora:sp_large_image_cmodel': ['OBJ', 'JPG', 'MODS'],
             'ir:citationCModel': [],
-            'ir:thesisCModel': ['PDF', 'FULL_TEXT']
+            'ir:thesisCModel': ['PDF', 'FULL_TEXT'],
+            'islandora:sp_videoCModel':  ['OBJ', 'PDF', 'MODS'],
         }
         self.ca = CA.CairnUtilities()
-
+        self.mods_xsl = 'assets/xsl/stfx_mods_to_dc.xsl'
         self.export_dir = '/usr/local/fedora/cairn_migration/outputs'
         self.mimemap = {"image/jpeg": ".jpg",
                         "image/jp2": ".jp2",
@@ -81,9 +85,26 @@ class CairnProcessor:
                 fw = FW.FWorker(foxml)
             except:
                 print(f"No record found for {pid}")
+                continue
             dublin_core = None
             if transform_mods == 'y':
-                dublin_core = fw.transform_mods_to_dc()
+                files_info = fw.get_file_data()
+                mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
+                mods_xml = Path(mods_path).read_text()
+                dom = ET.parse(mods_xml)
+                xslt = ET.parse(self.mods_xsl)
+                transform = ET.XSLT(xslt)
+                dc = transform(dom)
+                root = ET.Element("dublin_core")
+                for candidate in dc.iter():
+                    value = candidate.text.replace("\\,", '%%%')
+                    tag = re.sub(r'{.*}', '', candidate.tag)
+                    if tag == 'dc':
+                        continue
+                    ET.SubElement(root, "dcvalue", element=tag,
+                                  qualifier='none').text = value.replace('%%%', ',')
+                ET.indent(root, space="\t", level=0)
+                dublin_core = ET.tostring(root, encoding='unicode')
             if not dublin_core:
                 dublin_core = fw.get_modified_dc()
             all_files = fw.get_file_data()
@@ -109,6 +130,29 @@ class CairnProcessor:
         shutil.rmtree(f"{self.export_dir}/{archive}")
         print(f"Processed {int(item_number)} entries in {round(time.time() - self.start, 2)} seconds")
 
+    # Temp function for testing only.
+    def temp_transform(self):
+
+        dom = ET.parse('assets/MODS/nscc_3150.xml')
+        xslt = ET.parse('assets/xsl/stfx_mods_to_dc.xsl')
+        transform = ET.XSLT(xslt)
+        dublin_core = transform(dom)
+        root = ET.Element("dublin_core")
+        for candidate in dublin_core.iter():
+            value = candidate.text.replace("\\,", '%%%')
+            tag = re.sub(r'{.*}', '', candidate.tag)
+            if tag == 'dc':
+                continue
+            ET.SubElement(root, "dcvalue", element=tag,
+                          qualifier='none').text = value.replace('%%%', ',')
+        ET.indent(root, space="\t", level=0)
+        print(ET.tostring(root, encoding='unicode'))
+
+        f = open("assets/demofile3.txt", "w")
+        f.write(str(dublin_core))
+        f.close()
+        print(dublin_core)
+
 
 CP = CairnProcessor()
-CP.selector()
+CP.temp_transform()
