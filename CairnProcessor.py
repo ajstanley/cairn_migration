@@ -180,7 +180,7 @@ class CairnProcessor:
             current_number += 1
             item_number = str(current_number).zfill(4)
             dublin_core = fw.get_modified_dc()
-            second_level = self.ca.get_subcollections('nscad', pid)
+            second_level = self.ca.get_collection_pids('nscad', pid)
             copy_streams = {}
             for component in second_level:
                 foxml_file = self.ca.dereference(component)
@@ -209,4 +209,4 @@ class CairnProcessor:
 
 
 CP = CairnProcessor()
-CP.temp_transform()
+CP.nscad_audio('nscad:design')
