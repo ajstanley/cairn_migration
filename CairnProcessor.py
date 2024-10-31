@@ -97,6 +97,8 @@ class CairnProcessor:
                 dc = transform(dom)
                 root = ET.Element("dublin_core")
                 for candidate in dc.iter():
+                    if not candidate.text:
+                        continue
                     value = candidate.text.replace("\\,", '%%%')
                     tag = re.sub(r'{.*}', '', candidate.tag)
                     qualifier = 'none'
