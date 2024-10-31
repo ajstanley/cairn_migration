@@ -97,14 +97,16 @@ class CairnProcessor:
                 dc = transform(dom)
                 root = ET.Element("dublin_core")
                 for candidate in dc.iter():
-                    if not candidate.text:
-                        continue
                     value = candidate.text.replace("\\,", '%%%')
                     tag = re.sub(r'{.*}', '', candidate.tag)
+                    qualifier = 'none'
                     if tag == 'dc':
                         continue
+                    if '.' in tag:
+                        [tag, qualifier] = tag.split('.')
+
                     ET.SubElement(root, "dcvalue", element=tag,
-                                  qualifier='none').text = value.replace('%%%', ',')
+                                  qualifier=qualifier).text = value.replace('%%%', ',')
                 ET.indent(root, space="\t", level=0)
                 dublin_core = ET.tostring(root, encoding='unicode')
             if not dublin_core:
@@ -114,7 +116,7 @@ class CairnProcessor:
                 if entry in self.stream_map[model]:
                     copy_streams[
                         file_data[
-                            'file_name']] = f"{pid.replace(':', '_')}_{entry}{self.mimemap[file_data['mimetype']]}"
+                            'filename']] = f"{pid.replace(':', '_')}_{entry}{self.mimemap[file_data['mimetype']]}"
             path = f"{archive_path}/item_{item_number}"
             # Build directory
             Path(path).mkdir(parents=True, exist_ok=True)
@@ -135,7 +137,7 @@ class CairnProcessor:
     # Temp function for testing only.
     def temp_transform(self):
 
-        dom = ET.parse('assets/MODS/nscc_3150.xml')
+        dom = ET.parse('assets/MODS/stfx_11134.xml')
         xslt = ET.parse('assets/xsl/stfx_mods_to_dc.xsl')
         transform = ET.XSLT(xslt)
         dublin_core = transform(dom)
