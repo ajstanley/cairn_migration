@@ -142,5 +142,4 @@ if __name__ == '__main__':
     # values = FW.get_dc_values()
     data = FW.get_file_data()
 
-    print(data['MODS']['filename'])
-    print (FW.get_modified_dc())
+    print(FW.dedata['MODS']['filename'])

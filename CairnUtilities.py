@@ -175,6 +175,13 @@ class CairnUtilities:
             map[row[0]] = row[1]
         return map
 
+    def get_subcollections(self, table, collection):
+        cursor = self.conn.cursor()
+        command = f"SELECT PID, CONTENT_MODEL from {table} where collection_pid = '{collection}' AND CONTENT_MODEL = 'islandora:collectionCModel' "
+        pids = []
+        for row in cursor.execute(command):
+            pids.append(row[0])
+        return pids
     # Gets collection hierarchy by namespace.
     def get_collection_details(self, table):
         cursor = self.conn.cursor()

@@ -163,6 +163,50 @@ class CairnProcessor:
         f.close()
         print(dublin_core)
 
+    def nscad_audio(self, collection_pid):
+        archive = collection_pid.replace(':', '_')
+        archive_path = f"{self.export_dir}/{archive}"
+        Path(archive_path).mkdir(parents=True, exist_ok=True)
+        first_level = self.ca.get_subcollections('nscad', collection_pid)
+        current_number = 0
+        for pid in first_level:
+            foxml_file = self.ca.dereference(pid)
+            foxml = f"{self.objectStore}/{foxml_file}"
+            try:
+                fw = FW.FWorker(foxml)
+            except:
+                print(f"No record found for {pid}")
+                continue
+            current_number += 1
+            item_number = str(current_number).zfill(4)
+            dublin_core = fw.get_modified_dc()
+            second_level = self.ca.get_subcollections('nscad', pid)
+            copy_streams = {}
+            for component in second_level:
+                foxml_file = self.ca.dereference(component)
+                foxml = f"{self.objectStore}/{foxml_file}"
+                fworker = FW.FWorker(foxml)
+                file_data = fworker.get_file_data()
+                if 'OBJ' in file_data:
+                    copy_streams[
+                        file_data['OBJ']['filename']] = f"{pid.replace(':', '_')}_OBJ{self.mimemap[file_data['mimetype']]}"
+            path = f"{archive_path}/item_{item_number}"
+            # Build directory
+            Path(path).mkdir(parents=True, exist_ok=True)
+            with open(f'{path}/dublin_core.xml', 'w') as f:
+                f.write(dublin_core)
+            with open(f'{path}/contents', 'w') as f:
+                for source, destination in copy_streams.items():
+                    stream_to_copy = self.ca.dereference(source)
+                    shutil.copy(f"{self.datastreamStore}/{stream_to_copy}", f"{path}/{destination}")
+                    f.write(f"{destination}\n")
+            print(f"item_{item_number}")
+
+
+
+
+
+
 
 CP = CairnProcessor()
 CP.temp_transform()
