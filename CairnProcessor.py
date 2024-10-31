@@ -191,7 +191,7 @@ class CairnProcessor:
                 file_data = fworker.get_file_data()
                 if 'OBJ' in file_data:
                     copy_streams[
-                        file_data['OBJ']['filename']] = f"{pid.replace(':', '_')}_OBJ_{self.mimemap[file_data['OBJ']['mimetype']]}"
+                        file_data['OBJ']['filename']] = f"{component.replace(':', '_')}_OBJ_{self.mimemap[file_data['OBJ']['mimetype']]}"
             path = f"{archive_path}/item_{item_number}"
             # Build directory
             Path(path).mkdir(parents=True, exist_ok=True)
