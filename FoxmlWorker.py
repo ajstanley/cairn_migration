@@ -135,11 +135,3 @@ class FWorker:
 if __name__ == '__main__':
     FW = FWorker('inputs/sample_foxml.xml')
 
-    # print(FW.properties['label'])
-    # print(FW.properties['state'])
-
-    # dc = FW.get_modified_dc()
-    # values = FW.get_dc_values()
-    data = FW.get_file_data()
-
-    print(FW.dedata['MODS']['filename'])
