@@ -276,11 +276,9 @@ class CairnUtilities:
                 relations = fw.get_rels_ext_values()
                 row = {}
                 row['pid'] = pid
-                for candidate in relations:
-                    if next(iter(candidate)) in [self.rels_map]:
-                        for relation, value in candidate.items():
-                            row[self.rels_map[relation]] = value
-
+                for relation, value in relations.items():
+                    if relation in self.rels_map:
+                        row[self.rels_map[relation]] = value
                 writer.writerow(row)
 
     # Adds all MODS records from datastreamStore to database
@@ -308,3 +306,4 @@ class CairnUtilities:
 
 if __name__ == '__main__':
     CA = CairnUtilities()
+    CA.process_clean_institution('stfxir', 'stfxir.csv')

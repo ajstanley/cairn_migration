@@ -114,7 +114,7 @@ class FWorker:
         return self.build_dspace_dc(dc_node)
 
     def get_rels_ext_values(self):
-        re_values = []
+        re_values = {}
         re_nodes = self.root.findall(
             f'.//foxml:datastream[@ID="RELS-EXT"]/foxml:datastreamVersion/foxml:xmlContent/rdf:RDF',
             namespaces=self.namespaces)
@@ -125,13 +125,11 @@ class FWorker:
                 cleaned = child.text.replace('info:fedora/', '').replace('\n', '')
                 text = ' '.join(cleaned.split())
                 if text:
-                    re_values.append({tag: text})
+                    re_values[tag] = text
             resource = child.attrib.get('{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource')
             if resource:
-                re_values.append({tag: resource.replace('info:fedora/', '')})
+                re_values[tag] = resource.replace('info:fedora/', '')
         return re_values
-
 
 if __name__ == '__main__':
     FW = FWorker('inputs/sample_foxml.xml')
-
