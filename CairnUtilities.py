@@ -18,8 +18,9 @@ import FoxmlWorker as FW
 class CairnUtilities:
     def __init__(self):
         self.marcxml = 'assets/xsl/MODS3-4_MARC21slim_XSLT1-0.xsl'
-        self.mods_xsl = 'assets/mods_to_dc.xsl'
+        self.mods_xsl = 'assets/thesis.xsl'
         self.conn = sqlite3.connect('cairn.db')
+        self.conn.row_factory = sqlite3.Row
         self.fields = ['PID', 'model', 'RELS_EXT_isMemberOfCollection_uri_ms', 'RELS_EXT_isPageOf_uri_ms']
         self.objectStore = '/usr/local/fedora/data/objectStore/'
         self.datastreamStore = '/usr/local/fedora/data/datastreamStore/'
@@ -163,7 +164,7 @@ class CairnUtilities:
         command = f"SELECT PID from {table} where collection_pid = '{collection}'"
         pids = []
         for row in cursor.execute(command):
-            pids.append(row[0])
+            pids.append(row['pid'])
         return pids
 
     # Get all content models from map
@@ -306,4 +307,5 @@ class CairnUtilities:
 
 if __name__ == '__main__':
     CA = CairnUtilities()
-    CA.process_clean_institution('stfxir', 'stfxir.csv')
+    print(CA.dereference('stfxir:364+MODS+MODS.0'))
+

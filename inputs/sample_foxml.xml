@@ -1,123 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<foxml:digitalObject VERSION="1.1" PID="nscc:13768"
+<foxml:digitalObject VERSION="1.1" PID="stfxir:364"
                      xmlns:foxml="info:fedora/fedora-system:def/foxml#"
                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                      xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
     <foxml:objectProperties>
         <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
         <foxml:property NAME="info:fedora/fedora-system:def/model#label"
-                        VALUE="A CHART of the BALTIC SEA, GULFS OF FINLAND and BOTHNIA., with the SOUND, Drawn from the best Maps &amp; Charts"/>
-        <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="ahannam"/>
-        <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2017-04-13T18:57:27.318Z"/>
-        <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2020-02-19T12:39:17.495Z"/>
+                        VALUE="Factors that influence performance on the Canadian National Council Licensure Examination for Registered Nurses (NCLEX-RN®)"/>
+        <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="mlandry"/>
+        <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2019-03-19T16:59:14.802Z"/>
+        <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2024-01-30T19:11:22.347Z"/>
     </foxml:objectProperties>
     <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
-        <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2017-04-13T18:57:27.318Z"
+        <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2019-03-19T16:59:14.802Z"
                                  MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
             <foxml:xmlContent>
                 <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
                     <audit:record ID="AUDREC1">
                         <audit:process type="Fedora API-M"/>
                         <audit:action>addDatastream</audit:action>
-                        <audit:componentID>JPG</audit:componentID>
+                        <audit:componentID>FULL_TEXT</audit:componentID>
                         <audit:responsibility>fedoraAdmin</audit:responsibility>
-                        <audit:date>2017-04-13T18:57:49.396Z</audit:date>
-                        <audit:justification>Copied datastream from nscc:13768.</audit:justification>
+                        <audit:date>2019-03-19T16:59:29.479Z</audit:date>
+                        <audit:justification>Copied datastream from stfxir:364.</audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC2">
                         <audit:process type="Fedora API-M"/>
                         <audit:action>addDatastream</audit:action>
-                        <audit:componentID>JP2</audit:componentID>
+                        <audit:componentID>TN</audit:componentID>
                         <audit:responsibility>fedoraAdmin</audit:responsibility>
-                        <audit:date>2017-04-13T18:57:52.880Z</audit:date>
-                        <audit:justification>Copied datastream from nscc:13768.</audit:justification>
+                        <audit:date>2019-03-19T16:59:29.536Z</audit:date>
+                        <audit:justification>Copied datastream from stfxir:364.</audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC3">
                         <audit:process type="Fedora API-M"/>
                         <audit:action>addDatastream</audit:action>
                         <audit:componentID>TECHMD</audit:componentID>
                         <audit:responsibility>fedoraAdmin</audit:responsibility>
-                        <audit:date>2017-04-13T18:57:53.994Z</audit:date>
-                        <audit:justification>Copied datastream from nscc:13768.</audit:justification>
+                        <audit:date>2019-03-19T16:59:32.750Z</audit:date>
+                        <audit:justification>Copied datastream from stfxir:364.</audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC4">
                         <audit:process type="Fedora API-M"/>
                         <audit:action>addDatastream</audit:action>
-                        <audit:componentID>TN</audit:componentID>
+                        <audit:componentID>PREVIEW</audit:componentID>
                         <audit:responsibility>fedoraAdmin</audit:responsibility>
-                        <audit:date>2017-04-13T18:57:58.355Z</audit:date>
-                        <audit:justification>Copied datastream from nscc:13768.</audit:justification>
+                        <audit:date>2019-03-19T16:59:36.902Z</audit:date>
+                        <audit:justification>Copied datastream from stfxir:364.</audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC5">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>addDatastream</audit:action>
-                        <audit:componentID>RELS-INT</audit:componentID>
-                        <audit:responsibility>fedoraAdmin</audit:responsibility>
-                        <audit:date>2017-04-13T18:57:59.770Z</audit:date>
-                        <audit:justification>Copied datastream from nscc:13768.</audit:justification>
+                        <audit:action>modifyDatastreamByValue</audit:action>
+                        <audit:componentID>RELS-EXT</audit:componentID>
+                        <audit:responsibility>kmacphail</audit:responsibility>
+                        <audit:date>2019-03-21T18:30:19.940Z</audit:date>
+                        <audit:justification></audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC6">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyObject</audit:action>
-                        <audit:componentID></audit:componentID>
-                        <audit:responsibility>ahannam</audit:responsibility>
-                        <audit:date>2017-04-13T19:08:01.166Z</audit:date>
+                        <audit:action>modifyDatastreamByValue</audit:action>
+                        <audit:componentID>RELS-EXT</audit:componentID>
+                        <audit:responsibility>kmacphail</audit:responsibility>
+                        <audit:date>2019-03-21T18:30:20.138Z</audit:date>
                         <audit:justification></audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC7">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyDatastreamByReference</audit:action>
-                        <audit:componentID>MODS</audit:componentID>
-                        <audit:responsibility>ahannam</audit:responsibility>
-                        <audit:date>2017-04-13T19:08:01.274Z</audit:date>
+                        <audit:action>modifyDatastreamByValue</audit:action>
+                        <audit:componentID>RELS-EXT</audit:componentID>
+                        <audit:responsibility>kmacphail</audit:responsibility>
+                        <audit:date>2019-03-21T18:34:15.382Z</audit:date>
                         <audit:justification></audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC8">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyDatastreamByValue</audit:action>
-                        <audit:componentID>DC</audit:componentID>
-                        <audit:responsibility>ahannam</audit:responsibility>
-                        <audit:date>2017-04-13T19:08:01.425Z</audit:date>
+                        <audit:action>modifyDatastreamByReference</audit:action>
+                        <audit:componentID>POLICY</audit:componentID>
+                        <audit:responsibility>kmacphail</audit:responsibility>
+                        <audit:date>2019-03-21T18:34:15.500Z</audit:date>
                         <audit:justification></audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC9">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyObject</audit:action>
-                        <audit:componentID></audit:componentID>
-                        <audit:responsibility>tleblanc</audit:responsibility>
-                        <audit:date>2017-04-14T21:28:50.173Z</audit:date>
+                        <audit:action>modifyDatastreamByValue</audit:action>
+                        <audit:componentID>RELS-EXT</audit:componentID>
+                        <audit:responsibility>kmacphail</audit:responsibility>
+                        <audit:date>2019-10-11T15:39:11.094Z</audit:date>
                         <audit:justification></audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC10">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyObject</audit:action>
-                        <audit:componentID></audit:componentID>
-                        <audit:responsibility>tleblanc</audit:responsibility>
-                        <audit:date>2020-02-19T12:39:03.067Z</audit:date>
+                        <audit:action>modifyDatastreamByReference</audit:action>
+                        <audit:componentID>POLICY</audit:componentID>
+                        <audit:responsibility>kmacphail</audit:responsibility>
+                        <audit:date>2019-10-11T15:39:11.217Z</audit:date>
                         <audit:justification></audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC11">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyDatastreamByReference</audit:action>
-                        <audit:componentID>MODS</audit:componentID>
-                        <audit:responsibility>tleblanc</audit:responsibility>
-                        <audit:date>2020-02-19T12:39:03.149Z</audit:date>
+                        <audit:action>modifyDatastreamByValue</audit:action>
+                        <audit:componentID>RELS-EXT</audit:componentID>
+                        <audit:responsibility>x2019apk</audit:responsibility>
+                        <audit:date>2024-01-30T19:11:22.300Z</audit:date>
                         <audit:justification></audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC12">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyDatastreamByValue</audit:action>
-                        <audit:componentID>DC</audit:componentID>
-                        <audit:responsibility>tleblanc</audit:responsibility>
-                        <audit:date>2020-02-19T12:39:03.506Z</audit:date>
-                        <audit:justification></audit:justification>
-                    </audit:record>
-                    <audit:record ID="AUDREC13">
-                        <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyObject</audit:action>
-                        <audit:componentID></audit:componentID>
-                        <audit:responsibility>tleblanc</audit:responsibility>
-                        <audit:date>2020-02-19T12:39:17.495Z</audit:date>
+                        <audit:action>modifyDatastreamByReference</audit:action>
+                        <audit:componentID>POLICY</audit:componentID>
+                        <audit:responsibility>x2019apk</audit:responsibility>
+                        <audit:date>2024-01-30T19:11:22.347Z</audit:date>
                         <audit:justification></audit:justification>
                     </audit:record>
                 </audit:auditTrail>
@@ -126,215 +118,268 @@
     </foxml:datastream>
     <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
         <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object to Object Relationship Metadata."
-                                 CREATED="2017-04-13T18:57:27.318Z" MIMETYPE="application/rdf+xml"
-                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="611">
+                                 CREATED="2019-03-19T16:59:14.802Z" MIMETYPE="application/rdf+xml"
+                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1530">
             <foxml:xmlContent>
                 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                          xmlns:fedora="info:fedora/fedora-system:def/relations-external#"
                          xmlns:fedora-model="info:fedora/fedora-system:def/model#"
                          xmlns:islandora="http://islandora.ca/ontology/relsext#">
-                    <rdf:Description rdf:about="info:fedora/nscc:13768">
-                        <fedora:isMemberOfCollection rdf:resource="info:fedora/nscc:maps"></fedora:isMemberOfCollection>
-                        <fedora-model:hasModel
-                                rdf:resource="info:fedora/islandora:sp_large_image_cmodel"></fedora-model:hasModel>
+                    <rdf:Description rdf:about="info:fedora/stfxir:364">
+                        <fedora:isMemberOfCollection rdf:resource="info:fedora/stfxir:55"></fedora:isMemberOfCollection>
+                        <fedora-model:hasModel rdf:resource="info:fedora/ir:thesisCModel"></fedora-model:hasModel>
+                        <islandora:inheritXacmlFrom rdf:resource="info:fedora/stfxir:55"></islandora:inheritXacmlFrom>
                         <islandora:deferDerivatives>true</islandora:deferDerivatives>
+                        <islandora:isViewableByUser>stacksadmin</islandora:isViewableByUser>
+                        <islandora:isViewableByUser>fedoraAdmin</islandora:isViewableByUser>
+                        <islandora:isViewableByRole>administrator</islandora:isViewableByRole>
+                        <islandora:isViewableByRole>authenticated user</islandora:isViewableByRole>
+                        <islandora:isViewableByRole>stfxir_admin</islandora:isViewableByRole>
+                        <islandora:isViewableByRole>stfxir_user</islandora:isViewableByRole>
+                        <islandora:isManageableByUser>stacksadmin</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>fedoraAdmin</islandora:isManageableByUser>
+                        <islandora:isManageableByRole>administrator</islandora:isManageableByRole>
+                        <islandora:isManageableByRole>stfxir_admin</islandora:isManageableByRole>
+                        <islandora:isManageableByRole>stfxir_user</islandora:isManageableByRole>
+                    </rdf:Description>
+                </rdf:RDF>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion ID="RELS-EXT.1" LABEL="Fedora Object to Object Relationship Metadata."
+                                 CREATED="2019-03-21T18:30:19.940Z" MIMETYPE="application/rdf+xml"
+                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1643">
+            <foxml:xmlContent>
+                <rdf:RDF xmlns:fedora="info:fedora/fedora-system:def/relations-external#"
+                         xmlns:fedora-model="info:fedora/fedora-system:def/model#"
+                         xmlns:islandora="http://islandora.ca/ontology/relsext#"
+                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                    <rdf:Description rdf:about="info:fedora/stfxir:364">
+                        <fedora:isMemberOfCollection rdf:resource="info:fedora/stfxir:55"></fedora:isMemberOfCollection>
+                        <fedora-model:hasModel rdf:resource="info:fedora/ir:thesisCModel"></fedora-model:hasModel>
+                        <islandora:inheritXacmlFrom rdf:resource="info:fedora/stfxir:55"></islandora:inheritXacmlFrom>
+                        <islandora:deferDerivatives>true</islandora:deferDerivatives>
+                        <islandora:isViewableByUser>stacksadmin</islandora:isViewableByUser>
+                        <islandora:isViewableByUser>fedoraAdmin</islandora:isViewableByUser>
+                        <islandora:isViewableByRole>administrator</islandora:isViewableByRole>
+                        <islandora:isViewableByRole>authenticated user</islandora:isViewableByRole>
+                        <islandora:isViewableByRole>stfxir_admin</islandora:isViewableByRole>
+                        <islandora:isViewableByRole>stfxir_user</islandora:isViewableByRole>
+                        <islandora:isManageableByUser>stacksadmin</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>fedoraAdmin</islandora:isManageableByUser>
+                        <islandora:isManageableByRole>administrator</islandora:isManageableByRole>
+                        <islandora:isManageableByRole>stfxir_admin</islandora:isManageableByRole>
+                        <islandora:isManageableByRole>stfxir_user</islandora:isManageableByRole>
+                        <fedora:isMemberOfCollection
+                                rdf:resource="info:fedora/stfxir:graduate-works"></fedora:isMemberOfCollection>
+                    </rdf:Description>
+                </rdf:RDF>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion ID="RELS-EXT.2" LABEL="Fedora Object to Object Relationship Metadata."
+                                 CREATED="2019-03-21T18:30:20.138Z" MIMETYPE="application/rdf+xml"
+                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1542">
+            <foxml:xmlContent>
+                <rdf:RDF xmlns:fedora="info:fedora/fedora-system:def/relations-external#"
+                         xmlns:fedora-model="info:fedora/fedora-system:def/model#"
+                         xmlns:islandora="http://islandora.ca/ontology/relsext#"
+                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                    <rdf:Description rdf:about="info:fedora/stfxir:364">
+                        <fedora-model:hasModel rdf:resource="info:fedora/ir:thesisCModel"></fedora-model:hasModel>
+                        <islandora:inheritXacmlFrom rdf:resource="info:fedora/stfxir:55"></islandora:inheritXacmlFrom>
+                        <islandora:deferDerivatives>true</islandora:deferDerivatives>
+                        <islandora:isViewableByUser>stacksadmin</islandora:isViewableByUser>
+                        <islandora:isViewableByUser>fedoraAdmin</islandora:isViewableByUser>
+                        <islandora:isViewableByRole>administrator</islandora:isViewableByRole>
+                        <islandora:isViewableByRole>authenticated user</islandora:isViewableByRole>
+                        <islandora:isViewableByRole>stfxir_admin</islandora:isViewableByRole>
+                        <islandora:isViewableByRole>stfxir_user</islandora:isViewableByRole>
+                        <islandora:isManageableByUser>stacksadmin</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>fedoraAdmin</islandora:isManageableByUser>
+                        <islandora:isManageableByRole>administrator</islandora:isManageableByRole>
+                        <islandora:isManageableByRole>stfxir_admin</islandora:isManageableByRole>
+                        <islandora:isManageableByRole>stfxir_user</islandora:isManageableByRole>
+                        <fedora:isMemberOfCollection
+                                rdf:resource="info:fedora/stfxir:graduate-works"></fedora:isMemberOfCollection>
+                    </rdf:Description>
+                </rdf:RDF>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion ID="RELS-EXT.3" LABEL="Fedora Object to Object Relationship Metadata."
+                                 CREATED="2019-03-21T18:34:15.382Z" MIMETYPE="application/rdf+xml"
+                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1688">
+            <foxml:xmlContent>
+                <rdf:RDF xmlns:fedora="info:fedora/fedora-system:def/relations-external#"
+                         xmlns:fedora-model="info:fedora/fedora-system:def/model#"
+                         xmlns:islandora="http://islandora.ca/ontology/relsext#"
+                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                    <rdf:Description rdf:about="info:fedora/stfxir:364">
+                        <fedora-model:hasModel rdf:resource="info:fedora/ir:thesisCModel"></fedora-model:hasModel>
+                        <islandora:inheritXacmlFrom rdf:resource="info:fedora/stfxir:55"></islandora:inheritXacmlFrom>
+                        <islandora:deferDerivatives>true</islandora:deferDerivatives>
+                        <fedora:isMemberOfCollection
+                                rdf:resource="info:fedora/stfxir:graduate-works"></fedora:isMemberOfCollection>
+                        <islandora:isViewableByUser>kmacphail</islandora:isViewableByUser>
+                        <islandora:isViewableByUser>stacksadmin</islandora:isViewableByUser>
+                        <islandora:isViewableByUser>fedoraAdmin</islandora:isViewableByUser>
+                        <islandora:isViewableByRole>administrator</islandora:isViewableByRole>
+                        <islandora:isViewableByRole>authenticated user</islandora:isViewableByRole>
+                        <islandora:isViewableByRole>stfxir_admin</islandora:isViewableByRole>
+                        <islandora:isViewableByRole>stfxir_user</islandora:isViewableByRole>
+                        <islandora:isManageableByUser>kmacphail</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>stacksadmin</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>fedoraAdmin</islandora:isManageableByUser>
+                        <islandora:isManageableByRole>administrator</islandora:isManageableByRole>
+                        <islandora:isManageableByRole>stfxir_admin</islandora:isManageableByRole>
+                        <islandora:isManageableByRole>stfxir_user</islandora:isManageableByRole>
+                    </rdf:Description>
+                </rdf:RDF>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion ID="RELS-EXT.4" LABEL="Fedora Object to Object Relationship Metadata."
+                                 CREATED="2019-10-11T15:39:11.094Z" MIMETYPE="application/rdf+xml"
+                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1528">
+            <foxml:xmlContent>
+                <rdf:RDF xmlns:fedora="info:fedora/fedora-system:def/relations-external#"
+                         xmlns:fedora-model="info:fedora/fedora-system:def/model#"
+                         xmlns:islandora="http://islandora.ca/ontology/relsext#"
+                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                    <rdf:Description rdf:about="info:fedora/stfxir:364">
+                        <fedora-model:hasModel rdf:resource="info:fedora/ir:thesisCModel"></fedora-model:hasModel>
+                        <islandora:inheritXacmlFrom rdf:resource="info:fedora/stfxir:55"></islandora:inheritXacmlFrom>
+                        <islandora:deferDerivatives>true</islandora:deferDerivatives>
+                        <fedora:isMemberOfCollection
+                                rdf:resource="info:fedora/stfxir:graduate-works"></fedora:isMemberOfCollection>
+                        <islandora:isManageableByUser>dmoses</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>kmacphail</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>mlandry</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>mvail</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>ppound</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>rdrew</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>stacksadmin</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>fedoraAdmin</islandora:isManageableByUser>
+                        <islandora:isManageableByRole>administrator</islandora:isManageableByRole>
+                        <islandora:isManageableByRole>stfxir_admin</islandora:isManageableByRole>
+                        <islandora:isManageableByRole>stfxir_user</islandora:isManageableByRole>
+                    </rdf:Description>
+                </rdf:RDF>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion ID="RELS-EXT.5" LABEL="Fedora Object to Object Relationship Metadata."
+                                 CREATED="2024-01-30T19:11:22.300Z" MIMETYPE="application/rdf+xml"
+                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1386">
+            <foxml:xmlContent>
+                <rdf:RDF xmlns:fedora="info:fedora/fedora-system:def/relations-external#"
+                         xmlns:fedora-model="info:fedora/fedora-system:def/model#"
+                         xmlns:islandora="http://islandora.ca/ontology/relsext#"
+                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                    <rdf:Description rdf:about="info:fedora/stfxir:364">
+                        <fedora-model:hasModel rdf:resource="info:fedora/ir:thesisCModel"></fedora-model:hasModel>
+                        <islandora:inheritXacmlFrom rdf:resource="info:fedora/stfxir:55"></islandora:inheritXacmlFrom>
+                        <islandora:deferDerivatives>true</islandora:deferDerivatives>
+                        <fedora:isMemberOfCollection
+                                rdf:resource="info:fedora/stfxir:graduate-works"></fedora:isMemberOfCollection>
+                        <islandora:isManageableByUser>kfuller</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>mvail</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>smacdona</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>stacksadmin</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>x2019apk</islandora:isManageableByUser>
+                        <islandora:isManageableByUser>fedoraAdmin</islandora:isManageableByUser>
+                        <islandora:isManageableByRole>administrator</islandora:isManageableByRole>
+                        <islandora:isManageableByRole>stfxir_admin</islandora:isManageableByRole>
+                        <islandora:isManageableByRole>stfxir_user</islandora:isManageableByRole>
                     </rdf:Description>
                 </rdf:RDF>
             </foxml:xmlContent>
         </foxml:datastreamVersion>
     </foxml:datastream>
     <foxml:datastream ID="MODS" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
-        <foxml:datastreamVersion ID="MODS.0" LABEL="MODS Record" CREATED="2017-04-13T18:57:27.318Z"
-                                 MIMETYPE="application/xml" SIZE="3135">
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="nscc:13768+MODS+MODS.0"/>
-        </foxml:datastreamVersion>
-        <foxml:datastreamVersion ID="MODS.1" LABEL="MODS Record" CREATED="2017-04-13T19:08:01.274Z"
-                                 MIMETYPE="application/xml" SIZE="3136">
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="nscc:13768+MODS+MODS.1"/>
-        </foxml:datastreamVersion>
-        <foxml:datastreamVersion ID="MODS.2" LABEL="MODS Record" CREATED="2020-02-19T12:39:03.149Z"
-                                 MIMETYPE="application/xml" SIZE="3263">
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="nscc:13768+MODS+MODS.2"/>
+        <foxml:datastreamVersion ID="MODS.0" LABEL="MODS Record" CREATED="2019-03-19T16:59:14.802Z"
+                                 MIMETYPE="application/xml" SIZE="2996">
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+MODS+MODS.0"/>
         </foxml:datastreamVersion>
     </foxml:datastream>
     <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-        <foxml:datastreamVersion ID="DC.0" LABEL="DC Record" CREATED="2017-04-13T18:57:27.318Z" MIMETYPE="text/xml"
-                                 SIZE="2186">
+        <foxml:datastreamVersion ID="DC.0" LABEL="DC Record" CREATED="2019-03-19T16:59:14.802Z" MIMETYPE="text/xml"
+                                 SIZE="1325">
             <foxml:xmlContent>
                 <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
                            xmlns:dc="http://purl.org/dc/elements/1.1/"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-                    <dc:title>A CHART of the BALTIC SEA, GULFS OF FINLAND and BOTHNIA., with the SOUND, Drawn from the
-                        best Maps &amp; Charts
+                    <dc:title>Factors that influence performance on the Canadian National Council Licensure Examination
+                        for Registered Nurses (NCLEX-RN®)
                     </dc:title>
-                    <dc:subject></dc:subject>
-                    <dc:subject></dc:subject>
-                    <dc:subject></dc:subject>
-                    <dc:description>Map with text explaining the ceding of Swedish territory to Russia. Map details the
-                        coasts of Norway, Sweden, Denmark, and Finland as well as the Baltic rephlics and Germany.
-                    </dc:description>
-                    <dc:description>Map of the Baltic Sea. Prime Meridian is based in London. Scale was determined by
-                        measuring between 5 degrees of Latitude. Map reads with North Facing to the top of the map.
-                        There is a scale bar along the right side of the latitude grid, in leagues.
-                    </dc:description>
-                    <dc:publisher>Sylvanus Urban</dc:publisher>
-                    <dc:date>1748</dc:date>
-                    <dc:type>maps</dc:type>
-                    <dc:format>1 map ; 24 x 26 cm</dc:format>
-                    <dc:identifier>nscc:13768</dc:identifier>
-                    <dc:identifier>local: WKM-J-050</dc:identifier>
-                    <dc:language>English</dc:language>
-                    <dc:relation>Gentleman&apos;s Magazine</dc:relation>
-                    <dc:coverage>Prussia</dc:coverage>
-                    <dc:coverage>Europe--Norway</dc:coverage>
-                    <dc:coverage>3.368; 31.707; 53.346; 66.100</dc:coverage>
-                    <dc:coverage>1:6,390,000</dc:coverage>
-                    <dc:coverage>Cylindrical</dc:coverage>
-                    <dc:rights>This material is provided for research, education and private use only. Commercial use of
-                        this work is strictly prohibited. Attribution for use must be provided as follows: &quot;Digital
-                        reproduction from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC
-                        Centre of Geographic Sciences” and link to the original record. For use other than research,
-                        education or private uses please contact the &lt;a href=&quot;mailto:library.avlawrencetown@nscc.ca?subject=W.
-                        K. Morrison Special Collection&quot;&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of
-                        Geographic Sciences.
-                    </dc:rights>
-                </oai_dc:dc>
-            </foxml:xmlContent>
-        </foxml:datastreamVersion>
-        <foxml:datastreamVersion ID="DC.1" LABEL="DC Record" CREATED="2017-04-13T19:08:01.425Z" MIMETYPE="text/xml"
-                                 SIZE="2187">
-            <foxml:xmlContent>
-                <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
-                           xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
-                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                           xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-                    <dc:title>A CHART of the BALTIC SEA, GULFS OF FINLAND and BOTHNIA., with the SOUND, Drawn from the
-                        best Maps &amp; Charts
-                    </dc:title>
-                    <dc:subject></dc:subject>
-                    <dc:subject></dc:subject>
-                    <dc:subject></dc:subject>
-                    <dc:description>Map with text explaining the ceding of Swedish territory to Russia. Map details the
-                        coasts of Norway, Sweden, Denmark, and Finland as well as the Baltic republics and Germany.
-                    </dc:description>
-                    <dc:description>Map of the Baltic Sea. Prime Meridian is based in London. Scale was determined by
-                        measuring between 5 degrees of Latitude. Map reads with North Facing to the top of the map.
-                        There is a scale bar along the right side of the latitude grid, in leagues.
-                    </dc:description>
-                    <dc:publisher>Sylvanus Urban</dc:publisher>
-                    <dc:date>1748</dc:date>
-                    <dc:type>maps</dc:type>
-                    <dc:format>1 map ; 24 x 26 cm</dc:format>
-                    <dc:identifier>nscc:13768</dc:identifier>
-                    <dc:identifier>local: WKM-J-050</dc:identifier>
-                    <dc:language>English</dc:language>
-                    <dc:relation>Gentleman&apos;s Magazine</dc:relation>
-                    <dc:coverage>Prussia</dc:coverage>
-                    <dc:coverage>Europe--Norway</dc:coverage>
-                    <dc:coverage>3.368; 31.707; 53.346; 66.100</dc:coverage>
-                    <dc:coverage>1:6,390,000</dc:coverage>
-                    <dc:coverage>Cylindrical</dc:coverage>
-                    <dc:rights>This material is provided for research, education and private use only. Commercial use of
-                        this work is strictly prohibited. Attribution for use must be provided as follows: &quot;Digital
-                        reproduction from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC
-                        Centre of Geographic Sciences” and link to the original record. For use other than research,
-                        education or private uses please contact the &lt;a href=&quot;mailto:library.avlawrencetown@nscc.ca?subject=W.
-                        K. Morrison Special Collection&quot;&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of
-                        Geographic Sciences.
-                    </dc:rights>
-                </oai_dc:dc>
-            </foxml:xmlContent>
-        </foxml:datastreamVersion>
-        <foxml:datastreamVersion ID="DC.2" LABEL="DC Record" CREATED="2020-02-19T12:39:03.506Z" MIMETYPE="text/xml"
-                                 SIZE="2147">
-            <foxml:xmlContent>
-                <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/"
-                           xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
-                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                           xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-                    <dc:title>A CHART of the BALTIC SEA, GULFS OF FINLAND and BOTHNIA., with the SOUND, Drawn from the
-                        best Maps &amp; Charts
-                    </dc:title>
-                    <dc:description>Map with text explaining the ceding of Swedish territory to Russia. Map details the
-                        coasts of Norway, Sweden, Denmark, and Finland as well as the Baltic republics and Germany.
-                    </dc:description>
-                    <dc:description>Map of the Baltic Sea. Prime Meridian is based in London. Scale was determined by
-                        measuring between 5 degrees of Latitude. Map reads with North Facing to the top of the map.
-                        There is a scale bar along the right side of the latitude grid, in leagues.
-                    </dc:description>
-                    <dc:publisher>Sylvanus Urban</dc:publisher>
-                    <dc:date>1748</dc:date>
-                    <dc:type>maps</dc:type>
-                    <dc:format>1 map ; 24 x 26 cm</dc:format>
-                    <dc:identifier>nscc:13768</dc:identifier>
-                    <dc:identifier>local: WKM-J-050</dc:identifier>
-                    <dc:language>English</dc:language>
-                    <dc:relation>Gentleman&apos;s Magazine</dc:relation>
-                    <dc:coverage>Prussia</dc:coverage>
-                    <dc:coverage>Europe--Norway</dc:coverage>
-                    <dc:coverage>Europe--Sweden</dc:coverage>
-                    <dc:coverage>3.368; 31.707; 53.346; 66.100</dc:coverage>
-                    <dc:coverage>1:6,390,000</dc:coverage>
-                    <dc:coverage>Cylindrical</dc:coverage>
-                    <dc:rights>This material is provided for research, education and private use only. Commercial use of
-                        this work is strictly prohibited. Attribution for use must be provided as follows: &quot;Digital
-                        reproduction from the W. K. Morrison Special Collection of the J. B. Hall Library at the NSCC
-                        Centre of Geographic Sciences” and link to the original record. For use other than research,
-                        education or private uses please contact the &lt;a href=&quot;mailto:library.avlawrencetown@nscc.ca?subject=W.
-                        K. Morrison Special Collection&quot;&gt;J. B. Hall Library&lt;/a&gt; at the NSCC Centre of
-                        Geographic Sciences.
-                    </dc:rights>
+                    <dc:publisher>St. Francis Xavier University</dc:publisher>
+                    <dc:contributor>Dudett, Kumar (author)</dc:contributor>
+                    <dc:contributor>(author)</dc:contributor>
+                    <dc:contributor>MacDonald, JoAnne (Thesis advisor)</dc:contributor>
+                    <dc:contributor>(Thesis advisor)</dc:contributor>
+                    <dc:contributor>(Supervisory Committee Member)</dc:contributor>
+                    <dc:contributor>Tompkins, Joanne (Examination Committee Member)</dc:contributor>
+                    <dc:contributor>Young, David (Examination Committee Member)</dc:contributor>
+                    <dc:contributor>(Examination Committee Member)</dc:contributor>
+                    <dc:date>2019</dc:date>
+                    <dc:type>Text</dc:type>
+                    <dc:type>Dissertation/Thesis</dc:type>
+                    <dc:format>electronic</dc:format>
+                    <dc:format>application/pdf</dc:format>
+                    <dc:identifier>stfxir:364</dc:identifier>
+                    <dc:identifier>department: Education</dc:identifier>
+                    <dc:language>eng</dc:language>
                 </oai_dc:dc>
             </foxml:xmlContent>
         </foxml:datastreamVersion>
     </foxml:datastream>
-    <foxml:datastream ID="OBJ" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
-        <foxml:datastreamVersion ID="OBJ.0" LABEL="WKM-J-050_w.tif" CREATED="2017-04-13T18:57:27.318Z"
-                                 MIMETYPE="image/tiff" SIZE="122232252">
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="nscc:13768+OBJ+OBJ.0"/>
+    <foxml:datastream ID="PDF" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+        <foxml:datastreamVersion ID="PDF.0" LABEL="Dudett Kumar&apos;s MEd thesis 2019.pdf"
+                                 CREATED="2019-03-19T16:59:14.802Z" MIMETYPE="application/pdf" SIZE="899640">
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+PDF+PDF.0"/>
         </foxml:datastreamVersion>
     </foxml:datastream>
-    <foxml:datastream ID="JPG" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
-        <foxml:datastreamVersion ID="JPG.0" LABEL="JPG" CREATED="2017-04-13T18:57:49.396Z" MIMETYPE="image/jpeg"
-                                 SIZE="424414">
-            <foxml:contentDigest TYPE="MD5" DIGEST="1f31ed84f49781862aaec5ba4f435cd6"/>
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="nscc:13768+JPG+JPG.0"/>
+    <foxml:datastream ID="POLICY" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+        <foxml:datastreamVersion ID="POLICY.0" LABEL="XACML Policy Stream" CREATED="2019-03-19T16:59:14.802Z"
+                                 MIMETYPE="application/xml" SIZE="15658">
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+POLICY+POLICY.0"/>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion ID="POLICY.1" LABEL="XACML Policy Stream" CREATED="2019-03-21T18:34:15.500Z"
+                                 MIMETYPE="application/xml" SIZE="15870">
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+POLICY+POLICY.1"/>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion ID="POLICY.2" LABEL="XACML Policy Stream" CREATED="2019-10-11T15:39:11.217Z"
+                                 MIMETYPE="application/xml" SIZE="13146">
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+POLICY+POLICY.2"/>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion ID="POLICY.3" LABEL="XACML Policy Stream" CREATED="2024-01-30T19:11:22.347Z"
+                                 MIMETYPE="application/xml" SIZE="15882">
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+POLICY+POLICY.3"/>
         </foxml:datastreamVersion>
     </foxml:datastream>
-    <foxml:datastream ID="JP2" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
-        <foxml:datastreamVersion ID="JP2.0" LABEL="JP2" CREATED="2017-04-13T18:57:52.880Z" MIMETYPE="image/jp2"
-                                 SIZE="2566300">
-            <foxml:contentDigest TYPE="MD5" DIGEST="5e258d2131ee488bd4ae806e05b13145"/>
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="nscc:13768+JP2+JP2.0"/>
-        </foxml:datastreamVersion>
-    </foxml:datastream>
-    <foxml:datastream ID="TECHMD" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
-        <foxml:datastreamVersion ID="TECHMD.0" LABEL="TECHMD" CREATED="2017-04-13T18:57:53.994Z" MIMETYPE="text/xml"
-                                 SIZE="7836">
-            <foxml:contentDigest TYPE="MD5" DIGEST="e5631007f9ae5ccbb557daeeedb83b82"/>
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="nscc:13768+TECHMD+TECHMD.0"/>
+    <foxml:datastream ID="FULL_TEXT" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+        <foxml:datastreamVersion ID="FULL_TEXT.0" LABEL="FULL_TEXT" CREATED="2019-03-19T16:59:29.479Z"
+                                 MIMETYPE="text/plain" SIZE="207734">
+            <foxml:contentDigest TYPE="MD5" DIGEST="cfd61ca60602496dfb5fa68eb1381752"/>
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+FULL_TEXT+FULL_TEXT.0"/>
         </foxml:datastreamVersion>
     </foxml:datastream>
     <foxml:datastream ID="TN" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
-        <foxml:datastreamVersion ID="TN.0" LABEL="TN" CREATED="2017-04-13T18:57:58.355Z" MIMETYPE="image/jpeg"
-                                 SIZE="63799">
-            <foxml:contentDigest TYPE="MD5" DIGEST="26f0c15c3a3b9ad73544465f5cbd10ac"/>
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="nscc:13768+TN+TN.0"/>
+        <foxml:datastreamVersion ID="TN.0" LABEL="TN" CREATED="2019-03-19T16:59:29.536Z" MIMETYPE="image/jpeg"
+                                 SIZE="9006">
+            <foxml:contentDigest TYPE="MD5" DIGEST="4f18cdb8f14aa69349dbe8f133da1364"/>
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+TN+TN.0"/>
         </foxml:datastreamVersion>
     </foxml:datastream>
-    <foxml:datastream ID="RELS-INT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
-        <foxml:datastreamVersion ID="RELS-INT.0" LABEL="RELS-INT" CREATED="2017-04-13T18:57:59.770Z" MIMETYPE="text/xml"
-                                 SIZE="300">
-            <foxml:contentDigest TYPE="MD5" DIGEST="4ca047797083f15c9a0d513a96386986"/>
-            <foxml:xmlContent>
-                <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-                    <rdf:Description rdf:about="info:fedora/nscc:13768/JP2">
-                        <width xmlns="http://islandora.ca/ontology/relsext#">6332</width>
-                        <height xmlns="http://islandora.ca/ontology/relsext#">6433</height>
-                    </rdf:Description>
-                </rdf:RDF>
-            </foxml:xmlContent>
+    <foxml:datastream ID="TECHMD" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+        <foxml:datastreamVersion ID="TECHMD.0" LABEL="TECHMD" CREATED="2019-03-19T16:59:32.750Z" MIMETYPE="text/xml"
+                                 SIZE="1939">
+            <foxml:contentDigest TYPE="MD5" DIGEST="6c302dd6e22f1afff07b5865cb6ba388"/>
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+TECHMD+TECHMD.0"/>
+        </foxml:datastreamVersion>
+    </foxml:datastream>
+    <foxml:datastream ID="PREVIEW" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+        <foxml:datastreamVersion ID="PREVIEW.0" LABEL="PREVIEW" CREATED="2019-03-19T16:59:36.902Z" MIMETYPE="image/jpeg"
+                                 SIZE="56116">
+            <foxml:contentDigest TYPE="MD5" DIGEST="1229b5f54af9580bd75044ae1a7fa94c"/>
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+PREVIEW+PREVIEW.0"/>
         </foxml:datastreamVersion>
     </foxml:datastream>
 </foxml:digitalObject>
