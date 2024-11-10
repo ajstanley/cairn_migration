@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
 
-import csv
 import re
 import shutil
 import time
 from pathlib import Path
-
 import lxml.etree as ET
 
 import CairnUtilities as CA
 import FoxmlWorker as FW
-
 
 class CairnProcessor:
 
@@ -40,36 +37,21 @@ class CairnProcessor:
         self.start = time.time()
 
     def selector(self):
-        selection = input("Process \n 1. Hierarchy\n 2. Collections\n")
-        if selection not in ["1", "2"]:
+        table = input("Table name?\n")
+        collection_pid = input("Collection pid?\n")
+        transform = input("Transform DC from MODS?\ny/n\n")
+        if transform not in ['y', 'n']:
             print("Try again\n")
-            self.selector()
-        if selection == "1":
-            namespace = input("Hierarchy namespace?\n")
-            self.process_hierarchy(namespace)
-        if selection == "2":
-            table = input("Table name?\n")
-            collection_pid = input("Collection pid?\n")
-            transform = input("Transform DC from MODS?\ny/n\n")
-            if transform not in ['y', 'n']:
-                print("Try again\n")
-            self.process_collection(table, collection_pid, transform)
+        self.process_collection(table, collection_pid, transform)
 
-    def process_hierarchy(self, namespace):
-        collection_data = self.ca.get_collection_details(namespace)
-        headers = ['pid', 'label']
-        for collection_pid, parent_pid in collection_data.items():
-            foxml_file = self.ca.dereference(collection_pid)
-            foxml = f"{self.objectStore}/{foxml_file}"
-            fw = FW.FWorker(foxml)
-            if fw.properties['state'] != 'Active':
-                continue
-            row = {}
-            writer = csv.DictWriter(f"{namespace}_collections.csv", fieldnames=headers)
-            writer.writeheader()
-            row['pid'] = collection_pid
-            row['label'] = fw.properties['label']
-            writer.writerow(row)
+    def get_foxml_from_pid(self, pid):
+        foxml_file = self.ca.dereference(pid)
+        foxml = f"{self.objectStore}/{foxml_file}"
+        try:
+            return FW.FWorker(foxml)
+        except:
+            print(f"No results found for {pid}")
+            return False
 
     def process_collection(self, table, collection, transform_mods):
         collection_map = self.ca.get_collection_pid_model_map(table, collection)
@@ -81,16 +63,12 @@ class CairnProcessor:
         # Process each PID in collectipn
         for pid, model in collection_map.items():
             item_number = str(current_number).zfill(4)
-            foxml_file = self.ca.dereference(pid)
-            copy_streams = {}
-            foxml = f"{self.objectStore}/{foxml_file}"
-            try:
-                fw = FW.FWorker(foxml)
-            except:
-                print(f"No record found for {pid}")
+            fw = self.get_foxml_from_pid(pid)
+            if not fw:
                 continue
             dublin_core = None
             thesis = None
+            copy_streams = {}
             if transform_mods == 'y':
                 files_info = fw.get_file_data()
                 mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
@@ -123,7 +101,6 @@ class CairnProcessor:
                     ET.indent(thesis_root, space="\t", level=0)
                     thesis = ET.tostring(thesis_root, encoding='unicode')
 
-
             if not dublin_core:
                 dublin_core = fw.get_modified_dc()
             all_files = fw.get_file_data()
@@ -150,11 +127,10 @@ class CairnProcessor:
         print(f"Zipping files into {archive}.zip")
         shutil.make_archive(f"{self.export_dir}/{archive}", 'zip', f"{self.export_dir}/{archive}")
         shutil.rmtree(f"{self.export_dir}/{archive}")
-        print(f"Processed {int(item_number)} entries in {round(time.time() - self.start, 2)} seconds")
+        print(f"Processed {current_number} entries in {round(time.time() - self.start, 2)} seconds")
 
     # Temp function for testing only.
     def temp_transform(self):
-
         dom = ET.parse('assets/MODS/stfxir_364.xml')
         xslt = ET.parse('assets/xsl/thesis.xsl')
         transform = ET.XSLT(xslt)
@@ -181,9 +157,9 @@ class CairnProcessor:
                 ET.SubElement(root, "dcvalue", element=tag,
                               qualifier=qualifier).text = value.replace('%%%', ',')
         ET.indent(root, space="\t", level=0)
-        result = len(root.xpath(".//*"))
+
         print(ET.tostring(root, encoding='unicode'))
-        if len(root.xpath(".//*")) > 0:
+        if len(root) > 0:
             ET.indent(thesis_root, space="\t", level=0)
             print(ET.tostring(thesis_root, encoding='unicode'))
 
@@ -199,27 +175,24 @@ class CairnProcessor:
         first_level = self.ca.get_subcollections('nscad', collection_pid)
         current_number = 0
         for pid in first_level:
-            foxml_file = self.ca.dereference(pid)
-            foxml = f"{self.objectStore}/{foxml_file}"
-            try:
-                fw = FW.FWorker(foxml)
-            except:
-                print(f"No record found for {pid}")
-                continue
+            fw = self.get_foxml_from_pid(pid)
             current_number += 1
             item_number = str(current_number).zfill(4)
             dublin_core = fw.get_modified_dc()
-            second_level = self.ca.get_collection_pids('nscad', pid)
+            file_data = fw.get_file_data()
             copy_streams = {}
+            if 'MODS' in file_data:
+                source = file_data['MODS']['filename']
+                destination = f"{pid.replace(':', '_')}_MODS{self.mimemap[file_data['MODS']['mimetype']]}"
+                copy_streams[source] = destination
+            second_level = self.ca.get_collection_pids('nscad', pid)
             for component in second_level:
-                foxml_file = self.ca.dereference(component)
-                foxml = f"{self.objectStore}/{foxml_file}"
-                fworker = FW.FWorker(foxml)
+                fworker = self.get_foxml_from_pid(component)
                 file_data = fworker.get_file_data()
                 if 'OBJ' in file_data:
                     copy_streams[
                         file_data['OBJ'][
-                            'filename']] = f"{component.replace(':', '_')}_OBJ_{self.mimemap[file_data['OBJ']['mimetype']]}"
+                            'filename']] = f"{component.replace(':', '_')}_OBJ{self.mimemap[file_data['OBJ']['mimetype']]}"
             path = f"{archive_path}/item_{item_number}"
             # Build directory
             Path(path).mkdir(parents=True, exist_ok=True)
@@ -232,6 +205,31 @@ class CairnProcessor:
                     f.write(f"{destination}\n")
             print(f"item_{item_number}")
 
+    def build_book(self, table, book_pid):
+        archive = book_pid.replace(':', '_')
+        archive_path = f"{self.export_dir}/{archive}"
+        Path(archive_path).mkdir(parents=True, exist_ok=True)
+        pages = self.ca.get_pages(table, book_pid)
+        fw = self.get_foxml_from_pid(book_pid)
+        dc = fw.get_modified_dc()
+        mods = fw.get_mods()
+        path = f"{archive_path}/book_{book_pid.replace(':', '_')}"
+        Path(path).mkdir(parents=True, exist_ok=True)
+        for pid in pages:
+            pfw = self.get_foxml_from_pid(pid)
+            file_data = pfw.get_file_data()
+            if 'OBJ' in file_data:
+                source = f"{self.datastreamStore}/{file_data['OBJ']['filename']}"
+                destination = f"{pid.replace(':', '_')}_OBJ_{self.mimemap[file_data['OBJ']['mimetype']]}"
+                shutil.copy(source, f"{path}/{destination}")
+        print(f"Zipping files into {archive}.zip")
+        shutil.make_archive(f"{self.export_dir}/{archive}", 'zip', f"{self.export_dir}/{archive}")
+        return {
+            'dc': dc,
+            'mods': mods,
+            'file': f"{self.export_dir}/{archive}.zip"
+        }
+
 
 CP = CairnProcessor()
-CP.temp_transform()
+CP.nscad_audio('nscad:design')

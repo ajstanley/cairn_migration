@@ -133,3 +133,4 @@ class FWorker:
 
 if __name__ == '__main__':
     FW = FWorker('inputs/sample_foxml.xml')
+    print(FW.get_mods())

@@ -124,10 +124,10 @@ class CairnUtilities:
                 if not constituent_of:
                     constituent_of = ' '
                 try:
-                    command = f"INSERT OR REPLACE INTO  {institution} VALUES('{row['pid']}', '{row['content_model']}', '{collection}','{page_of}', '{row['sequence']}','{constituent_of}')"
+                    command = f"INSERT OR REPLACE INTO  {institution} VALUES('{row['pid']}', '{row['content_model']}', '{collection}','{page_of}', '{row['sequence']}','{constituent_of}', '')"
                     cursor.execute(command)
                 except sqlite3.Error:
-                    print(row['PID'])
+                    print(row['pid'])
         self.conn.commit()
 
     # Identifies object and datastream location within Fedora objectStores and datastreamStore.
@@ -179,6 +179,14 @@ class CairnUtilities:
     def get_subcollections(self, table, collection):
         cursor = self.conn.cursor()
         command = f"SELECT PID, CONTENT_MODEL from {table} where collection_pid = '{collection}' AND CONTENT_MODEL = 'islandora:collectionCModel' "
+        pids = []
+        for row in cursor.execute(command):
+            pids.append(row[0])
+        return pids
+
+    def get_pages(self, table, book_pid):
+        cursor = self.conn.cursor()
+        command = f"SELECT PID from {table} where page_of = '{book_pid}'"
         pids = []
         for row in cursor.execute(command):
             pids.append(row[0])
@@ -307,5 +315,5 @@ class CairnUtilities:
 
 if __name__ == '__main__':
     CA = CairnUtilities()
-    print(CA.dereference('stfxir:364+MODS+MODS.0'))
+    CA.build_record_from_pids('mta', 'mta.csv')
 
