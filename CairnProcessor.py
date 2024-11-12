@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 
+import csv
 import re
 import shutil
 import time
 from pathlib import Path
+
 import lxml.etree as ET
 
 import CairnUtilities as CA
 import FoxmlWorker as FW
+
 
 class CairnProcessor:
 
@@ -22,7 +25,7 @@ class CairnProcessor:
             'islandora:sp_videoCModel': ['OBJ', 'PDF', 'MODS'],
         }
         self.ca = CA.CairnUtilities()
-        self.mods_xsl = 'assets/xsl/thesis.xsl'
+        self.mods_xsl = 'assets/xsl/nov_12_margaret.xsl'
         self.export_dir = '/usr/local/fedora/cairn_migration/outputs'
         self.mimemap = {"image/jpeg": ".jpg",
                         "image/jp2": ".jp2",
@@ -32,7 +35,8 @@ class CairnProcessor:
                         "text/plain": ".txt",
                         "application/pdf": ".pdf",
                         "application/xml": ".xml",
-                        "audio/x-wav": ".wav"
+                        "audio/x-wav": ".wav",
+                        "audio/mpeg": ".mp3",
                         }
         self.start = time.time()
 
@@ -51,7 +55,6 @@ class CairnProcessor:
             return FW.FWorker(foxml)
         except:
             print(f"No results found for {pid}")
-            return False
 
     def process_collection(self, table, collection, transform_mods):
         collection_map = self.ca.get_collection_pid_model_map(table, collection)
@@ -63,12 +66,16 @@ class CairnProcessor:
         # Process each PID in collectipn
         for pid, model in collection_map.items():
             item_number = str(current_number).zfill(4)
-            fw = self.get_foxml_from_pid(pid)
-            if not fw:
+            foxml_file = self.ca.dereference(pid)
+            copy_streams = {}
+            foxml = f"{self.objectStore}/{foxml_file}"
+            try:
+                fw = FW.FWorker(foxml)
+            except:
+                print(f"No record found for {pid}")
                 continue
             dublin_core = None
             thesis = None
-            copy_streams = {}
             if transform_mods == 'y':
                 files_info = fw.get_file_data()
                 mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
@@ -127,7 +134,7 @@ class CairnProcessor:
         print(f"Zipping files into {archive}.zip")
         shutil.make_archive(f"{self.export_dir}/{archive}", 'zip', f"{self.export_dir}/{archive}")
         shutil.rmtree(f"{self.export_dir}/{archive}")
-        print(f"Processed {current_number} entries in {round(time.time() - self.start, 2)} seconds")
+        print(f"Processed {int(item_number)} entries in {round(time.time() - self.start, 2)} seconds")
 
     # Temp function for testing only.
     def temp_transform(self):
@@ -210,9 +217,11 @@ class CairnProcessor:
         archive_path = f"{self.export_dir}/{archive}"
         Path(archive_path).mkdir(parents=True, exist_ok=True)
         pages = self.ca.get_pages(table, book_pid)
+        current_number = 0
         fw = self.get_foxml_from_pid(book_pid)
         dc = fw.get_modified_dc()
         mods = fw.get_mods()
+
         path = f"{archive_path}/book_{book_pid.replace(':', '_')}"
         Path(path).mkdir(parents=True, exist_ok=True)
         for pid in pages:
@@ -229,7 +238,36 @@ class CairnProcessor:
             'mods': mods,
             'file': f"{self.export_dir}/{archive}.zip"
         }
-
+    def get_nscc_ocr(self):
+        collections = self.ca.get_subcollections('nscc', 'nscc:booktest')
+        for collection in collections:
+            fw = self.get_foxml_from_pid(collection)
+            collection_title = fw.get_properties()['label'].strip().replace(" ", "_")
+            collection_path = f"{self.export_dir}/{collection_title}"
+            Path(collection_path).mkdir(parents=True, exist_ok=True)
+            yearbooks = self.ca.get_books('nscc', collection)
+            for yearbook in yearbooks:
+                fw = self.get_foxml_from_pid(yearbook)
+                yearbook_title = fw.get_properties()['label'].strip().replace(" ", "_")
+                yearbook_path = f"{collection_path}/{yearbook_title}"
+                Path(yearbook_path).mkdir(parents=True, exist_ok=True)
+                pages = self.ca.get_pages('nscc', yearbook)
+                print(f"Processing {len(pages)} pages for {yearbook_title}")
+                for page in pages:
+                    fw = self.get_foxml_from_pid(page)
+                    file_data = fw.get_file_data()
+                    rels = fw.get_rels_ext_values()
+                    page_num = rels['isPageNumber']
+                    if 'OCR' in file_data:
+                        source = f"{self.datastreamStore}/{self.ca.dereference(file_data['OCR']['filename'])}"
+                        destination = f"{yearbook_path}/{yearbook_title}_{page_num}{self.mimemap[file_data['OCR']['mimetype']]}"
+                        try:
+                            shutil.copy(source, destination)
+                        except FileNotFoundError as e:
+                            print(f"File not found for page: {page_num}")
+                print(f"Zipping files into {yearbook_title}.zip")
+                shutil.make_archive(yearbook_path, 'zip', yearbook_path)
+                shutil.rmtree(yearbook_path)
 
 CP = CairnProcessor()
-CP.nscad_audio('nscad:design')
+CP.selector()

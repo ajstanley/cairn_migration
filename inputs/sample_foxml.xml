@@ -1,115 +1,178 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<foxml:digitalObject VERSION="1.1" PID="stfxir:364"
+<foxml:digitalObject VERSION="1.1" PID="upei:batch1-1309"
                      xmlns:foxml="info:fedora/fedora-system:def/foxml#"
                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                      xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
     <foxml:objectProperties>
         <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
-        <foxml:property NAME="info:fedora/fedora-system:def/model#label"
-                        VALUE="Factors that influence performance on the Canadian National Council Licensure Examination for Registered Nurses (NCLEX-RN®)"/>
-        <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="mlandry"/>
-        <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2019-03-19T16:59:14.802Z"/>
-        <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2024-01-30T19:11:22.347Z"/>
+        <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="upei:batch1-1308-001"/>
+        <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="salhakeem"/>
+        <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2017-05-25T13:36:34.177Z"/>
+        <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2017-08-17T15:45:06.877Z"/>
     </foxml:objectProperties>
     <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
-        <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2019-03-19T16:59:14.802Z"
+        <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2017-05-25T13:36:34.177Z"
                                  MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
             <foxml:xmlContent>
                 <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
                     <audit:record ID="AUDREC1">
                         <audit:process type="Fedora API-M"/>
                         <audit:action>addDatastream</audit:action>
-                        <audit:componentID>FULL_TEXT</audit:componentID>
+                        <audit:componentID>TN</audit:componentID>
                         <audit:responsibility>fedoraAdmin</audit:responsibility>
-                        <audit:date>2019-03-19T16:59:29.479Z</audit:date>
-                        <audit:justification>Copied datastream from stfxir:364.</audit:justification>
+                        <audit:date>2017-05-25T13:52:50.143Z</audit:date>
+                        <audit:justification>Copied datastream from upei:batch1-1309.</audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC2">
                         <audit:process type="Fedora API-M"/>
                         <audit:action>addDatastream</audit:action>
-                        <audit:componentID>TN</audit:componentID>
+                        <audit:componentID>JP2</audit:componentID>
                         <audit:responsibility>fedoraAdmin</audit:responsibility>
-                        <audit:date>2019-03-19T16:59:29.536Z</audit:date>
-                        <audit:justification>Copied datastream from stfxir:364.</audit:justification>
+                        <audit:date>2017-05-25T13:52:50.284Z</audit:date>
+                        <audit:justification>Copied datastream from upei:batch1-1309.</audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC3">
                         <audit:process type="Fedora API-M"/>
                         <audit:action>addDatastream</audit:action>
-                        <audit:componentID>TECHMD</audit:componentID>
+                        <audit:componentID>HOCR</audit:componentID>
                         <audit:responsibility>fedoraAdmin</audit:responsibility>
-                        <audit:date>2019-03-19T16:59:32.750Z</audit:date>
-                        <audit:justification>Copied datastream from stfxir:364.</audit:justification>
+                        <audit:date>2017-05-25T13:52:50.461Z</audit:date>
+                        <audit:justification>Copied datastream from upei:batch1-1309.</audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC4">
                         <audit:process type="Fedora API-M"/>
                         <audit:action>addDatastream</audit:action>
-                        <audit:componentID>PREVIEW</audit:componentID>
+                        <audit:componentID>OCR</audit:componentID>
                         <audit:responsibility>fedoraAdmin</audit:responsibility>
-                        <audit:date>2019-03-19T16:59:36.902Z</audit:date>
-                        <audit:justification>Copied datastream from stfxir:364.</audit:justification>
+                        <audit:date>2017-05-25T13:52:51.826Z</audit:date>
+                        <audit:justification>Copied datastream from upei:batch1-1309.</audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC5">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyDatastreamByValue</audit:action>
-                        <audit:componentID>RELS-EXT</audit:componentID>
-                        <audit:responsibility>kmacphail</audit:responsibility>
-                        <audit:date>2019-03-21T18:30:19.940Z</audit:date>
-                        <audit:justification></audit:justification>
+                        <audit:action>addDatastream</audit:action>
+                        <audit:componentID>TECHMD</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-05-25T13:52:53.787Z</audit:date>
+                        <audit:justification>Copied datastream from upei:batch1-1309.</audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC6">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyDatastreamByValue</audit:action>
-                        <audit:componentID>RELS-EXT</audit:componentID>
-                        <audit:responsibility>kmacphail</audit:responsibility>
-                        <audit:date>2019-03-21T18:30:20.138Z</audit:date>
-                        <audit:justification></audit:justification>
+                        <audit:action>addDatastream</audit:action>
+                        <audit:componentID>RELS-INT</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-05-25T13:52:56.866Z</audit:date>
+                        <audit:justification>Copied datastream from upei:batch1-1309.</audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC7">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyDatastreamByValue</audit:action>
-                        <audit:componentID>RELS-EXT</audit:componentID>
-                        <audit:responsibility>kmacphail</audit:responsibility>
-                        <audit:date>2019-03-21T18:34:15.382Z</audit:date>
-                        <audit:justification></audit:justification>
+                        <audit:action>addDatastream</audit:action>
+                        <audit:componentID>JPG</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-05-25T13:52:57.127Z</audit:date>
+                        <audit:justification>Copied datastream from upei:batch1-1309.</audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC8">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyDatastreamByReference</audit:action>
-                        <audit:componentID>POLICY</audit:componentID>
-                        <audit:responsibility>kmacphail</audit:responsibility>
-                        <audit:date>2019-03-21T18:34:15.500Z</audit:date>
-                        <audit:justification></audit:justification>
+                        <audit:action>ingest</audit:action>
+                        <audit:componentID></audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-08-17T14:58:29.300Z</audit:date>
+                        <audit:justification>migration from islandora namespace to upei namespace</audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC9">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyDatastreamByValue</audit:action>
-                        <audit:componentID>RELS-EXT</audit:componentID>
-                        <audit:responsibility>kmacphail</audit:responsibility>
-                        <audit:date>2019-10-11T15:39:11.094Z</audit:date>
+                        <audit:action>modifyDatastreamByReference</audit:action>
+                        <audit:componentID>TN</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-08-17T15:44:59.738Z</audit:date>
                         <audit:justification></audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC10">
                         <audit:process type="Fedora API-M"/>
                         <audit:action>modifyDatastreamByReference</audit:action>
-                        <audit:componentID>POLICY</audit:componentID>
-                        <audit:responsibility>kmacphail</audit:responsibility>
-                        <audit:date>2019-10-11T15:39:11.217Z</audit:date>
+                        <audit:componentID>TN</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-08-17T15:44:59.858Z</audit:date>
                         <audit:justification></audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC11">
                         <audit:process type="Fedora API-M"/>
-                        <audit:action>modifyDatastreamByValue</audit:action>
-                        <audit:componentID>RELS-EXT</audit:componentID>
-                        <audit:responsibility>x2019apk</audit:responsibility>
-                        <audit:date>2024-01-30T19:11:22.300Z</audit:date>
+                        <audit:action>modifyDatastreamByReference</audit:action>
+                        <audit:componentID>JP2</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-08-17T15:44:59.900Z</audit:date>
                         <audit:justification></audit:justification>
                     </audit:record>
                     <audit:record ID="AUDREC12">
                         <audit:process type="Fedora API-M"/>
                         <audit:action>modifyDatastreamByReference</audit:action>
-                        <audit:componentID>POLICY</audit:componentID>
-                        <audit:responsibility>x2019apk</audit:responsibility>
-                        <audit:date>2024-01-30T19:11:22.347Z</audit:date>
+                        <audit:componentID>JP2</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-08-17T15:45:00.135Z</audit:date>
+                        <audit:justification></audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC13">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByReference</audit:action>
+                        <audit:componentID>HOCR</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-08-17T15:45:00.137Z</audit:date>
+                        <audit:justification></audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC14">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByReference</audit:action>
+                        <audit:componentID>HOCR</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-08-17T15:45:00.264Z</audit:date>
+                        <audit:justification></audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC15">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByReference</audit:action>
+                        <audit:componentID>OCR</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-08-17T15:45:01.543Z</audit:date>
+                        <audit:justification></audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC16">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByReference</audit:action>
+                        <audit:componentID>OCR</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-08-17T15:45:01.792Z</audit:date>
+                        <audit:justification></audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC17">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByReference</audit:action>
+                        <audit:componentID>TECHMD</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-08-17T15:45:02.480Z</audit:date>
+                        <audit:justification></audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC18">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByReference</audit:action>
+                        <audit:componentID>TECHMD</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-08-17T15:45:02.560Z</audit:date>
+                        <audit:justification></audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC19">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByReference</audit:action>
+                        <audit:componentID>JPG</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-08-17T15:45:06.776Z</audit:date>
+                        <audit:justification></audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC20">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByReference</audit:action>
+                        <audit:componentID>JPG</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2017-08-17T15:45:06.877Z</audit:date>
                         <audit:justification></audit:justification>
                     </audit:record>
                 </audit:auditTrail>
@@ -118,268 +181,105 @@
     </foxml:datastream>
     <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
         <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object to Object Relationship Metadata."
-                                 CREATED="2019-03-19T16:59:14.802Z" MIMETYPE="application/rdf+xml"
-                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1530">
+                                 CREATED="2017-05-25T13:36:34.177Z" MIMETYPE="application/rdf+xml"
+                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="854">
             <foxml:xmlContent>
                 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                          xmlns:fedora="info:fedora/fedora-system:def/relations-external#"
                          xmlns:fedora-model="info:fedora/fedora-system:def/model#"
                          xmlns:islandora="http://islandora.ca/ontology/relsext#">
-                    <rdf:Description rdf:about="info:fedora/stfxir:364">
-                        <fedora:isMemberOfCollection rdf:resource="info:fedora/stfxir:55"></fedora:isMemberOfCollection>
-                        <fedora-model:hasModel rdf:resource="info:fedora/ir:thesisCModel"></fedora-model:hasModel>
-                        <islandora:inheritXacmlFrom rdf:resource="info:fedora/stfxir:55"></islandora:inheritXacmlFrom>
+                    <rdf:Description rdf:about="info:fedora/upei:batch1-1309">
+                        <islandora:isPageOf rdf:resource="info:fedora/upei:batch1-1308"></islandora:isPageOf>
+                        <islandora:isSequenceNumber>001</islandora:isSequenceNumber>
+                        <islandora:isPageNumber>001</islandora:isPageNumber>
+                        <islandora:isSection>1</islandora:isSection>
+                        <fedora:isMemberOf rdf:resource="info:fedora/upei:batch1-1308"></fedora:isMemberOf>
+                        <fedora-model:hasModel rdf:resource="info:fedora/islandora:pageCModel"></fedora-model:hasModel>
                         <islandora:deferDerivatives>true</islandora:deferDerivatives>
-                        <islandora:isViewableByUser>stacksadmin</islandora:isViewableByUser>
-                        <islandora:isViewableByUser>fedoraAdmin</islandora:isViewableByUser>
-                        <islandora:isViewableByRole>administrator</islandora:isViewableByRole>
-                        <islandora:isViewableByRole>authenticated user</islandora:isViewableByRole>
-                        <islandora:isViewableByRole>stfxir_admin</islandora:isViewableByRole>
-                        <islandora:isViewableByRole>stfxir_user</islandora:isViewableByRole>
-                        <islandora:isManageableByUser>stacksadmin</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>fedoraAdmin</islandora:isManageableByUser>
-                        <islandora:isManageableByRole>administrator</islandora:isManageableByRole>
-                        <islandora:isManageableByRole>stfxir_admin</islandora:isManageableByRole>
-                        <islandora:isManageableByRole>stfxir_user</islandora:isManageableByRole>
-                    </rdf:Description>
-                </rdf:RDF>
-            </foxml:xmlContent>
-        </foxml:datastreamVersion>
-        <foxml:datastreamVersion ID="RELS-EXT.1" LABEL="Fedora Object to Object Relationship Metadata."
-                                 CREATED="2019-03-21T18:30:19.940Z" MIMETYPE="application/rdf+xml"
-                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1643">
-            <foxml:xmlContent>
-                <rdf:RDF xmlns:fedora="info:fedora/fedora-system:def/relations-external#"
-                         xmlns:fedora-model="info:fedora/fedora-system:def/model#"
-                         xmlns:islandora="http://islandora.ca/ontology/relsext#"
-                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-                    <rdf:Description rdf:about="info:fedora/stfxir:364">
-                        <fedora:isMemberOfCollection rdf:resource="info:fedora/stfxir:55"></fedora:isMemberOfCollection>
-                        <fedora-model:hasModel rdf:resource="info:fedora/ir:thesisCModel"></fedora-model:hasModel>
-                        <islandora:inheritXacmlFrom rdf:resource="info:fedora/stfxir:55"></islandora:inheritXacmlFrom>
-                        <islandora:deferDerivatives>true</islandora:deferDerivatives>
-                        <islandora:isViewableByUser>stacksadmin</islandora:isViewableByUser>
-                        <islandora:isViewableByUser>fedoraAdmin</islandora:isViewableByUser>
-                        <islandora:isViewableByRole>administrator</islandora:isViewableByRole>
-                        <islandora:isViewableByRole>authenticated user</islandora:isViewableByRole>
-                        <islandora:isViewableByRole>stfxir_admin</islandora:isViewableByRole>
-                        <islandora:isViewableByRole>stfxir_user</islandora:isViewableByRole>
-                        <islandora:isManageableByUser>stacksadmin</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>fedoraAdmin</islandora:isManageableByUser>
-                        <islandora:isManageableByRole>administrator</islandora:isManageableByRole>
-                        <islandora:isManageableByRole>stfxir_admin</islandora:isManageableByRole>
-                        <islandora:isManageableByRole>stfxir_user</islandora:isManageableByRole>
-                        <fedora:isMemberOfCollection
-                                rdf:resource="info:fedora/stfxir:graduate-works"></fedora:isMemberOfCollection>
-                    </rdf:Description>
-                </rdf:RDF>
-            </foxml:xmlContent>
-        </foxml:datastreamVersion>
-        <foxml:datastreamVersion ID="RELS-EXT.2" LABEL="Fedora Object to Object Relationship Metadata."
-                                 CREATED="2019-03-21T18:30:20.138Z" MIMETYPE="application/rdf+xml"
-                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1542">
-            <foxml:xmlContent>
-                <rdf:RDF xmlns:fedora="info:fedora/fedora-system:def/relations-external#"
-                         xmlns:fedora-model="info:fedora/fedora-system:def/model#"
-                         xmlns:islandora="http://islandora.ca/ontology/relsext#"
-                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-                    <rdf:Description rdf:about="info:fedora/stfxir:364">
-                        <fedora-model:hasModel rdf:resource="info:fedora/ir:thesisCModel"></fedora-model:hasModel>
-                        <islandora:inheritXacmlFrom rdf:resource="info:fedora/stfxir:55"></islandora:inheritXacmlFrom>
-                        <islandora:deferDerivatives>true</islandora:deferDerivatives>
-                        <islandora:isViewableByUser>stacksadmin</islandora:isViewableByUser>
-                        <islandora:isViewableByUser>fedoraAdmin</islandora:isViewableByUser>
-                        <islandora:isViewableByRole>administrator</islandora:isViewableByRole>
-                        <islandora:isViewableByRole>authenticated user</islandora:isViewableByRole>
-                        <islandora:isViewableByRole>stfxir_admin</islandora:isViewableByRole>
-                        <islandora:isViewableByRole>stfxir_user</islandora:isViewableByRole>
-                        <islandora:isManageableByUser>stacksadmin</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>fedoraAdmin</islandora:isManageableByUser>
-                        <islandora:isManageableByRole>administrator</islandora:isManageableByRole>
-                        <islandora:isManageableByRole>stfxir_admin</islandora:isManageableByRole>
-                        <islandora:isManageableByRole>stfxir_user</islandora:isManageableByRole>
-                        <fedora:isMemberOfCollection
-                                rdf:resource="info:fedora/stfxir:graduate-works"></fedora:isMemberOfCollection>
-                    </rdf:Description>
-                </rdf:RDF>
-            </foxml:xmlContent>
-        </foxml:datastreamVersion>
-        <foxml:datastreamVersion ID="RELS-EXT.3" LABEL="Fedora Object to Object Relationship Metadata."
-                                 CREATED="2019-03-21T18:34:15.382Z" MIMETYPE="application/rdf+xml"
-                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1688">
-            <foxml:xmlContent>
-                <rdf:RDF xmlns:fedora="info:fedora/fedora-system:def/relations-external#"
-                         xmlns:fedora-model="info:fedora/fedora-system:def/model#"
-                         xmlns:islandora="http://islandora.ca/ontology/relsext#"
-                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-                    <rdf:Description rdf:about="info:fedora/stfxir:364">
-                        <fedora-model:hasModel rdf:resource="info:fedora/ir:thesisCModel"></fedora-model:hasModel>
-                        <islandora:inheritXacmlFrom rdf:resource="info:fedora/stfxir:55"></islandora:inheritXacmlFrom>
-                        <islandora:deferDerivatives>true</islandora:deferDerivatives>
-                        <fedora:isMemberOfCollection
-                                rdf:resource="info:fedora/stfxir:graduate-works"></fedora:isMemberOfCollection>
-                        <islandora:isViewableByUser>kmacphail</islandora:isViewableByUser>
-                        <islandora:isViewableByUser>stacksadmin</islandora:isViewableByUser>
-                        <islandora:isViewableByUser>fedoraAdmin</islandora:isViewableByUser>
-                        <islandora:isViewableByRole>administrator</islandora:isViewableByRole>
-                        <islandora:isViewableByRole>authenticated user</islandora:isViewableByRole>
-                        <islandora:isViewableByRole>stfxir_admin</islandora:isViewableByRole>
-                        <islandora:isViewableByRole>stfxir_user</islandora:isViewableByRole>
-                        <islandora:isManageableByUser>kmacphail</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>stacksadmin</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>fedoraAdmin</islandora:isManageableByUser>
-                        <islandora:isManageableByRole>administrator</islandora:isManageableByRole>
-                        <islandora:isManageableByRole>stfxir_admin</islandora:isManageableByRole>
-                        <islandora:isManageableByRole>stfxir_user</islandora:isManageableByRole>
-                    </rdf:Description>
-                </rdf:RDF>
-            </foxml:xmlContent>
-        </foxml:datastreamVersion>
-        <foxml:datastreamVersion ID="RELS-EXT.4" LABEL="Fedora Object to Object Relationship Metadata."
-                                 CREATED="2019-10-11T15:39:11.094Z" MIMETYPE="application/rdf+xml"
-                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1528">
-            <foxml:xmlContent>
-                <rdf:RDF xmlns:fedora="info:fedora/fedora-system:def/relations-external#"
-                         xmlns:fedora-model="info:fedora/fedora-system:def/model#"
-                         xmlns:islandora="http://islandora.ca/ontology/relsext#"
-                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-                    <rdf:Description rdf:about="info:fedora/stfxir:364">
-                        <fedora-model:hasModel rdf:resource="info:fedora/ir:thesisCModel"></fedora-model:hasModel>
-                        <islandora:inheritXacmlFrom rdf:resource="info:fedora/stfxir:55"></islandora:inheritXacmlFrom>
-                        <islandora:deferDerivatives>true</islandora:deferDerivatives>
-                        <fedora:isMemberOfCollection
-                                rdf:resource="info:fedora/stfxir:graduate-works"></fedora:isMemberOfCollection>
-                        <islandora:isManageableByUser>dmoses</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>kmacphail</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>mlandry</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>mvail</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>ppound</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>rdrew</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>stacksadmin</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>fedoraAdmin</islandora:isManageableByUser>
-                        <islandora:isManageableByRole>administrator</islandora:isManageableByRole>
-                        <islandora:isManageableByRole>stfxir_admin</islandora:isManageableByRole>
-                        <islandora:isManageableByRole>stfxir_user</islandora:isManageableByRole>
-                    </rdf:Description>
-                </rdf:RDF>
-            </foxml:xmlContent>
-        </foxml:datastreamVersion>
-        <foxml:datastreamVersion ID="RELS-EXT.5" LABEL="Fedora Object to Object Relationship Metadata."
-                                 CREATED="2024-01-30T19:11:22.300Z" MIMETYPE="application/rdf+xml"
-                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1386">
-            <foxml:xmlContent>
-                <rdf:RDF xmlns:fedora="info:fedora/fedora-system:def/relations-external#"
-                         xmlns:fedora-model="info:fedora/fedora-system:def/model#"
-                         xmlns:islandora="http://islandora.ca/ontology/relsext#"
-                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-                    <rdf:Description rdf:about="info:fedora/stfxir:364">
-                        <fedora-model:hasModel rdf:resource="info:fedora/ir:thesisCModel"></fedora-model:hasModel>
-                        <islandora:inheritXacmlFrom rdf:resource="info:fedora/stfxir:55"></islandora:inheritXacmlFrom>
-                        <islandora:deferDerivatives>true</islandora:deferDerivatives>
-                        <fedora:isMemberOfCollection
-                                rdf:resource="info:fedora/stfxir:graduate-works"></fedora:isMemberOfCollection>
-                        <islandora:isManageableByUser>kfuller</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>mvail</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>smacdona</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>stacksadmin</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>x2019apk</islandora:isManageableByUser>
-                        <islandora:isManageableByUser>fedoraAdmin</islandora:isManageableByUser>
-                        <islandora:isManageableByRole>administrator</islandora:isManageableByRole>
-                        <islandora:isManageableByRole>stfxir_admin</islandora:isManageableByRole>
-                        <islandora:isManageableByRole>stfxir_user</islandora:isManageableByRole>
                     </rdf:Description>
                 </rdf:RDF>
             </foxml:xmlContent>
         </foxml:datastreamVersion>
     </foxml:datastream>
-    <foxml:datastream ID="MODS" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
-        <foxml:datastreamVersion ID="MODS.0" LABEL="MODS Record" CREATED="2019-03-19T16:59:14.802Z"
-                                 MIMETYPE="application/xml" SIZE="2996">
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+MODS+MODS.0"/>
+    <foxml:datastream ID="MODS" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+        <foxml:datastreamVersion ID="MODS.0" LABEL="MODS Record" CREATED="2017-05-25T13:36:34.177Z"
+                                 MIMETYPE="application/xml" SIZE="190">
+            <foxml:xmlContent>
+                <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3">
+                    <mods:titleInfo>
+                        <mods:title>upei:batch1-1308-001</mods:title>
+                    </mods:titleInfo>
+                </mods:mods>
+            </foxml:xmlContent>
         </foxml:datastreamVersion>
     </foxml:datastream>
     <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-        <foxml:datastreamVersion ID="DC.0" LABEL="DC Record" CREATED="2019-03-19T16:59:14.802Z" MIMETYPE="text/xml"
-                                 SIZE="1325">
+        <foxml:datastreamVersion ID="DC.0" LABEL="DC Record" CREATED="2017-05-25T13:36:34.177Z"
+                                 MIMETYPE="application/xml" SIZE="389">
             <foxml:xmlContent>
                 <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
                            xmlns:dc="http://purl.org/dc/elements/1.1/"
                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                            xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-                    <dc:title>Factors that influence performance on the Canadian National Council Licensure Examination
-                        for Registered Nurses (NCLEX-RN®)
-                    </dc:title>
-                    <dc:publisher>St. Francis Xavier University</dc:publisher>
-                    <dc:contributor>Dudett, Kumar (author)</dc:contributor>
-                    <dc:contributor>(author)</dc:contributor>
-                    <dc:contributor>MacDonald, JoAnne (Thesis advisor)</dc:contributor>
-                    <dc:contributor>(Thesis advisor)</dc:contributor>
-                    <dc:contributor>(Supervisory Committee Member)</dc:contributor>
-                    <dc:contributor>Tompkins, Joanne (Examination Committee Member)</dc:contributor>
-                    <dc:contributor>Young, David (Examination Committee Member)</dc:contributor>
-                    <dc:contributor>(Examination Committee Member)</dc:contributor>
-                    <dc:date>2019</dc:date>
-                    <dc:type>Text</dc:type>
-                    <dc:type>Dissertation/Thesis</dc:type>
-                    <dc:format>electronic</dc:format>
-                    <dc:format>application/pdf</dc:format>
-                    <dc:identifier>stfxir:364</dc:identifier>
-                    <dc:identifier>department: Education</dc:identifier>
-                    <dc:language>eng</dc:language>
+                    <dc:title>upei:batch1-1308-001</dc:title>
+                    <dc:identifier>upei:batch1-1309</dc:identifier>
                 </oai_dc:dc>
             </foxml:xmlContent>
         </foxml:datastreamVersion>
     </foxml:datastream>
-    <foxml:datastream ID="PDF" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
-        <foxml:datastreamVersion ID="PDF.0" LABEL="Dudett Kumar&apos;s MEd thesis 2019.pdf"
-                                 CREATED="2019-03-19T16:59:14.802Z" MIMETYPE="application/pdf" SIZE="899640">
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+PDF+PDF.0"/>
+    <foxml:datastream ID="OBJ" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
+        <foxml:datastreamVersion ID="OBJ.0" LABEL="OBJ Datastream" CREATED="2017-05-25T13:36:34.177Z"
+                                 MIMETYPE="image/tiff" SIZE="6917082">
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="upei:batch1-1309+OBJ+OBJ.0"/>
         </foxml:datastreamVersion>
     </foxml:datastream>
-    <foxml:datastream ID="POLICY" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
-        <foxml:datastreamVersion ID="POLICY.0" LABEL="XACML Policy Stream" CREATED="2019-03-19T16:59:14.802Z"
-                                 MIMETYPE="application/xml" SIZE="15658">
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+POLICY+POLICY.0"/>
-        </foxml:datastreamVersion>
-        <foxml:datastreamVersion ID="POLICY.1" LABEL="XACML Policy Stream" CREATED="2019-03-21T18:34:15.500Z"
-                                 MIMETYPE="application/xml" SIZE="15870">
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+POLICY+POLICY.1"/>
-        </foxml:datastreamVersion>
-        <foxml:datastreamVersion ID="POLICY.2" LABEL="XACML Policy Stream" CREATED="2019-10-11T15:39:11.217Z"
-                                 MIMETYPE="application/xml" SIZE="13146">
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+POLICY+POLICY.2"/>
-        </foxml:datastreamVersion>
-        <foxml:datastreamVersion ID="POLICY.3" LABEL="XACML Policy Stream" CREATED="2024-01-30T19:11:22.347Z"
-                                 MIMETYPE="application/xml" SIZE="15882">
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+POLICY+POLICY.3"/>
-        </foxml:datastreamVersion>
-    </foxml:datastream>
-    <foxml:datastream ID="FULL_TEXT" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
-        <foxml:datastreamVersion ID="FULL_TEXT.0" LABEL="FULL_TEXT" CREATED="2019-03-19T16:59:29.479Z"
-                                 MIMETYPE="text/plain" SIZE="207734">
-            <foxml:contentDigest TYPE="MD5" DIGEST="cfd61ca60602496dfb5fa68eb1381752"/>
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+FULL_TEXT+FULL_TEXT.0"/>
+    <foxml:datastream ID="RELS-INT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+        <foxml:datastreamVersion ID="RELS-INT.0" LABEL="RELS-INT" CREATED="2017-05-25T13:52:56.866Z" MIMETYPE="text/xml"
+                                 SIZE="306">
+            <foxml:xmlContent>
+                <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                    <rdf:Description rdf:about="info:fedora/upei:batch1-1309/JP2">
+                        <width xmlns="http://islandora.ca/ontology/relsext#">1048</width>
+                        <height xmlns="http://islandora.ca/ontology/relsext#">1649</height>
+                    </rdf:Description>
+                </rdf:RDF>
+            </foxml:xmlContent>
         </foxml:datastreamVersion>
     </foxml:datastream>
     <foxml:datastream ID="TN" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
-        <foxml:datastreamVersion ID="TN.0" LABEL="TN" CREATED="2019-03-19T16:59:29.536Z" MIMETYPE="image/jpeg"
-                                 SIZE="9006">
-            <foxml:contentDigest TYPE="MD5" DIGEST="4f18cdb8f14aa69349dbe8f133da1364"/>
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+TN+TN.0"/>
+        <foxml:datastreamVersion ID="TN.2" LABEL="TN" CREATED="2017-08-17T15:44:59.858Z" MIMETYPE="image/jpeg"
+                                 SIZE="54881">
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="upei:batch1-1309+TN+TN.2"/>
+        </foxml:datastreamVersion>
+    </foxml:datastream>
+    <foxml:datastream ID="JP2" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+        <foxml:datastreamVersion ID="JP2.2" LABEL="JP2" CREATED="2017-08-17T15:45:00.135Z" MIMETYPE="image/jp2"
+                                 SIZE="109055">
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="upei:batch1-1309+JP2+JP2.2"/>
+        </foxml:datastreamVersion>
+    </foxml:datastream>
+    <foxml:datastream ID="HOCR" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+        <foxml:datastreamVersion ID="HOCR.2" LABEL="HOCR" CREATED="2017-08-17T15:45:00.264Z" MIMETYPE="text/html"
+                                 SIZE="984">
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="upei:batch1-1309+HOCR+HOCR.2"/>
+        </foxml:datastreamVersion>
+    </foxml:datastream>
+    <foxml:datastream ID="OCR" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+        <foxml:datastreamVersion ID="OCR.2" LABEL="FULL_TEXT" CREATED="2017-08-17T15:45:01.792Z" MIMETYPE="text/plain"
+                                 SIZE="58">
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="upei:batch1-1309+OCR+OCR.2"/>
         </foxml:datastreamVersion>
     </foxml:datastream>
     <foxml:datastream ID="TECHMD" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
-        <foxml:datastreamVersion ID="TECHMD.0" LABEL="TECHMD" CREATED="2019-03-19T16:59:32.750Z" MIMETYPE="text/xml"
-                                 SIZE="1939">
-            <foxml:contentDigest TYPE="MD5" DIGEST="6c302dd6e22f1afff07b5865cb6ba388"/>
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+TECHMD+TECHMD.0"/>
+        <foxml:datastreamVersion ID="TECHMD.2" LABEL="TECHMD" CREATED="2017-08-17T15:45:02.560Z" MIMETYPE="text/xml"
+                                 SIZE="8070">
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="upei:batch1-1309+TECHMD+TECHMD.2"/>
         </foxml:datastreamVersion>
     </foxml:datastream>
-    <foxml:datastream ID="PREVIEW" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
-        <foxml:datastreamVersion ID="PREVIEW.0" LABEL="PREVIEW" CREATED="2019-03-19T16:59:36.902Z" MIMETYPE="image/jpeg"
-                                 SIZE="56116">
-            <foxml:contentDigest TYPE="MD5" DIGEST="1229b5f54af9580bd75044ae1a7fa94c"/>
-            <foxml:contentLocation TYPE="INTERNAL_ID" REF="stfxir:364+PREVIEW+PREVIEW.0"/>
+    <foxml:datastream ID="JPG" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+        <foxml:datastreamVersion ID="JPG.2" LABEL="JPG" CREATED="2017-08-17T15:45:06.877Z" MIMETYPE="image/jpeg"
+                                 SIZE="457638">
+            <foxml:contentLocation TYPE="INTERNAL_ID" REF="upei:batch1-1309+JPG+JPG.2"/>
         </foxml:datastreamVersion>
     </foxml:datastream>
 </foxml:digitalObject>
