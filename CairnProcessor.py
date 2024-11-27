@@ -41,7 +41,8 @@ class CairnProcessor:
                         "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ".docx",
                         "application/octet-stream": ".bib",
                         "audio/mpeg": ".mp3",
-                        "video/mp4": "/mp4",
+                        "video/mp4": ".mp4",
+                        "video/x-m4v": ".m4v",
                         }
         self.start = time.time()
 
@@ -64,6 +65,7 @@ class CairnProcessor:
 
     def process_collection(self, table, collection, transform_mods):
         collection_map = self.ca.get_collection_recursive_pid_model_map(table, collection)
+        print(f"Processing {len(collection_map)} pids.")
         # Build collection directory
         archive = collection.replace(':', '_')
         archive_path = f"{self.export_dir}/{archive}"
@@ -83,9 +85,7 @@ class CairnProcessor:
             dublin_core = None
             thesis = None
             files_info = fw.get_file_data()
-            if 'MODS' not in files_info:
-                continue
-            if transform_mods == 'y':
+            if transform_mods == 'y' and 'MODS' in files_info:
                 mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
                 dom = ET.parse(mods_path)
                 xslt = ET.parse(self.mods_xsl)
@@ -298,6 +298,12 @@ class CairnProcessor:
         shutil.make_archive(collection_path, 'zip', collection_path)
         shutil.rmtree(collection_path)
 
+    def batch_processor(self, table, collections):
+        for collection in collections:
+            self.process_collection(table, collection, 'y')
 
+
+
+collections = ['stfx:8243', 'stfx:cbfc', 'stfx:3912', 'stfx:nccdh', 'stfx:3913']
 CP = CairnProcessor()
 CP.selector()
