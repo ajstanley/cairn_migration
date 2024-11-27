@@ -24,6 +24,7 @@ class CairnProcessor:
             'ir:thesisCModel': ['OBJ', 'PDF', 'FULL_TEXT'],
             'islandora:sp_videoCModel': ['OBJ', 'PDF'],
             'islandora:newspaperIssueCModel': ['OBJ', 'PDF'],
+            'islandora:sp-audioCModel': ['OBJ'],
         }
         self.ca = CA.CairnUtilities()
         self.mods_xsl = '/usr/local/fedora/cairn_migration/assets/islandora-dspace/stfx_mods_to_dc.xsl'
@@ -40,6 +41,7 @@ class CairnProcessor:
                         "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ".docx",
                         "application/octet-stream": ".bib",
                         "audio/mpeg": ".mp3",
+                        "video/mp4": "/mp4",
                         }
         self.start = time.time()
 
