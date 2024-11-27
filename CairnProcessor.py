@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import csv
 import re
 import shutil
 import time
@@ -84,6 +83,7 @@ class CairnProcessor:
                 transform = ET.XSLT(xslt)
                 dc = transform(dom)
                 root = ET.Element("dublin_core")
+                ET.SubElement(root, "dcvalue", element="identifier", qualifier="other").text = archive
                 thesis_root = ET.Element("dublin_core")
                 thesis_root.set('schema', 'thesis')
                 for candidate in dc.iter():
@@ -238,6 +238,7 @@ class CairnProcessor:
             'mods': mods,
             'file': f"{self.export_dir}/{archive}.zip"
         }
+
     def get_nscc_ocr(self):
         collections = self.ca.get_subcollections('nscc', 'nscc:booktest')
         for collection in collections:
@@ -268,6 +269,26 @@ class CairnProcessor:
                 print(f"Zipping files into {yearbook_title}.zip")
                 shutil.make_archive(yearbook_path, 'zip', yearbook_path)
                 shutil.rmtree(yearbook_path)
+
+    def save_all_datastreams(self, namespace, datastream):
+        pids = self.ca.get_pids_from_objectstore(namespace)
+        collection_path = f"{self.export_dir}/{namespace}_{datastream}"
+        Path(collection_path).mkdir(parents=True, exist_ok=True)
+        for pid in pids:
+            fw = self.get_foxml_from_pid(pid)
+            datastreams = fw.get_file_data()
+            if datastream in datastreams:
+                label = fw.get_properties()['label'].strip().replace(" ", "_")
+                source = f"{self.datastreamStore}/{self.ca.dereference(datastreams[datastream]['filename'])}"
+                destination = f"{collection_path}/{label}_{pid}_{datastream}{self.mimemap[datastreams[datastream]['mimetype']]}"
+                try:
+                    shutil.copy(source, destination)
+                except FileNotFoundError as e:
+                    print(f"File not found for: {pid}")
+        print(f"Zipping files into {namespace}_{datastream}.zip")
+        shutil.make_archive(collection_path, 'zip', collection_path)
+        shutil.rmtree(collection_path)
+
 
 CP = CairnProcessor()
 CP.selector()

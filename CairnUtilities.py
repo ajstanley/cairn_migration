@@ -324,5 +324,4 @@ class CairnUtilities:
 
 if __name__ == '__main__':
     CA = CairnUtilities()
-    CA.build_record_from_pids('mta', 'mta.csv')
-    CA.process_clean_institution('mta', 'mta.csv')
+    print(CA.get_collection_details('msvu'))
