@@ -22,6 +22,7 @@ class CairnProcessor:
             'ir:citationCModel': [],
             'ir:thesisCModel': ['OBJ', 'PDF', 'FULL_TEXT'],
             'islandora:sp_videoCModel': ['OBJ', 'PDF', 'MODS'],
+            'islandora:newspaperIssueCModel': ['OBJ', 'PDF', 'MODS'],
         }
         self.ca = CA.CairnUtilities()
         self.mods_xsl = 'assets/xsl/nov_12_margaret.xsl'
@@ -35,6 +36,8 @@ class CairnProcessor:
                         "application/pdf": ".pdf",
                         "application/xml": ".xml",
                         "audio/x-wav": ".wav",
+                        "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ".docx",
+                        "application/octet-stream": ".bib",
                         "audio/mpeg": ".mp3",
                         }
         self.start = time.time()
@@ -45,6 +48,7 @@ class CairnProcessor:
         transform = input("Transform DC from MODS?\ny/n\n")
         if transform not in ['y', 'n']:
             print("Try again\n")
+            self.selector()
         self.process_collection(table, collection_pid, transform)
 
     def get_foxml_from_pid(self, pid):
@@ -75,15 +79,17 @@ class CairnProcessor:
                 continue
             dublin_core = None
             thesis = None
+            files_info = fw.get_file_data()
+            if 'MODS' not in files_info:
+                continue
             if transform_mods == 'y':
-                files_info = fw.get_file_data()
                 mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
                 dom = ET.parse(mods_path)
                 xslt = ET.parse(self.mods_xsl)
                 transform = ET.XSLT(xslt)
                 dc = transform(dom)
                 root = ET.Element("dublin_core")
-                ET.SubElement(root, "dcvalue", element="identifier", qualifier="other").text = archive
+                ET.SubElement(root, "dcvalue", element="identifier", qualifier="other").text = pid
                 thesis_root = ET.Element("dublin_core")
                 thesis_root.set('schema', 'thesis')
                 for candidate in dc.iter():
