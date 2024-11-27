@@ -320,8 +320,27 @@ class CairnUtilities:
                     cursor.execute(command)
         self.conn.commit()
 
+    def get_collection_recursive_pid_model_map(self, table, collection_pid):
+        descendants = {}
+        cursor = self.conn.cursor()
+        command = f"select PID, CONTENT_MODEL from {table} where COLLECTION_PID = '{collection_pid}'"
+        child_collections = []
+        for row in cursor.execute(command):
+            if row['content_model'] == 'islandora:collectionCModel':
+                child_collections.append(row['PID'])
+            else:
+                descendants[row['PID']] = row['content_model']
+        while child_collections:
+            command = f"select PID, CONTENT_MODEL from {table} where COLLECTION_PID = '{child_collections.pop(0)}'"
+            for row in cursor.execute(command):
+                if row['content_model'] == 'islandora:collectionCModel':
+                    child_collections.append(row['PID'])
+                else:
+                    descendants[row['PID']] = row['content_model']
+        return descendants
+
 
 
 if __name__ == '__main__':
     CA = CairnUtilities()
-    print(CA.get_collection_details('msvu'))
+    print(CA.get_all_descendants('stfx', 'stfx:3906'))

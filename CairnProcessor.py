@@ -25,7 +25,7 @@ class CairnProcessor:
             'islandora:newspaperIssueCModel': ['OBJ', 'PDF', 'MODS'],
         }
         self.ca = CA.CairnUtilities()
-        self.mods_xsl = 'assets/xsl/nov_12_margaret.xsl'
+        self.mods_xsl = '/usr/local/fedora/cairn_migration/assets/islandora-dspace/stfx_mods_to_dc.xsl'
         self.export_dir = '/usr/local/fedora/cairn_migration/outputs'
         self.mimemap = {"image/jpeg": ".jpg",
                         "image/jp2": ".jp2",
@@ -60,7 +60,7 @@ class CairnProcessor:
             print(f"No results found for {pid}")
 
     def process_collection(self, table, collection, transform_mods):
-        collection_map = self.ca.get_collection_pid_model_map(table, collection)
+        collection_map = self.ca.get_collection_recursive_pid_model_map(table, collection)
         # Build collection directory
         archive = collection.replace(':', '_')
         archive_path = f"{self.export_dir}/{archive}"
