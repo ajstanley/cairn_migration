@@ -17,12 +17,13 @@ class CairnProcessor:
         self.objectStore = '/usr/local/fedora/data/objectStore'
         self.datastreamStore = '/usr/local/fedora/data/datastreamStore'
         self.stream_map = {
-            'islandora:sp_pdf': ['OBJ', 'PDF', 'MODS'],
-            'islandora:sp_large_image_cmodel': ['OBJ', 'JPG', 'MODS'],
+            'islandora:sp_pdf': ['OBJ', 'PDF'],
+            'islandora:sp_large_image_cmodel': ['OBJ'],
+            'islandora: sp_basic_image': ['OBJ'],
             'ir:citationCModel': [],
             'ir:thesisCModel': ['OBJ', 'PDF', 'FULL_TEXT'],
-            'islandora:sp_videoCModel': ['OBJ', 'PDF', 'MODS'],
-            'islandora:newspaperIssueCModel': ['OBJ', 'PDF', 'MODS'],
+            'islandora:sp_videoCModel': ['OBJ', 'PDF'],
+            'islandora:newspaperIssueCModel': ['OBJ', 'PDF'],
         }
         self.ca = CA.CairnUtilities()
         self.mods_xsl = '/usr/local/fedora/cairn_migration/assets/islandora-dspace/stfx_mods_to_dc.xsl'
