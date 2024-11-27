@@ -19,7 +19,7 @@ class CairnProcessor:
         self.stream_map = {
             'islandora:sp_pdf': ['OBJ', 'PDF'],
             'islandora:sp_large_image_cmodel': ['OBJ'],
-            'islandora: sp_basic_image': ['OBJ'],
+            'islandora:sp_basic_image': ['OBJ'],
             'ir:citationCModel': [],
             'ir:thesisCModel': ['OBJ', 'PDF', 'FULL_TEXT'],
             'islandora:sp_videoCModel': ['OBJ', 'PDF'],
