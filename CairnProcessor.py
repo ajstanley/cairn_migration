@@ -98,6 +98,7 @@ class CairnProcessor:
                 thesis_root = ET.Element("dublin_core")
                 thesis_root.set('schema', 'thesis')
                 oaire_root = ET.Element("dublin_core")
+                oaire_root.set('schema', 'citation')
 
                 for candidate in dc.iter():
                     if not candidate.text:
@@ -125,7 +126,7 @@ class CairnProcessor:
                     thesis = ET.tostring(thesis_root, encoding='unicode')
                 if len(oaire_root.xpath(".//*")) > 0:
                     ET.indent(thesis_root, space="\t", level=0)
-                    oaire = ET.tostring(thesis_root, encoding='unicode')
+                    oaire = ET.tostring(oaire_root, encoding='unicode')
 
             if not dublin_core:
                 dublin_core = fw.get_modified_dc()
@@ -135,6 +136,8 @@ class CairnProcessor:
                     copy_streams[
                         file_data[
                             'filename']] = f"{pid.replace(':', '_')}_{entry}{self.mimemap[file_data['mimetype']]}"
+            if not copy_streams:
+                continue
             path = f"{archive_path}/item_{item_number}"
             # Build directory
             Path(path).mkdir(parents=True, exist_ok=True)
@@ -319,4 +322,4 @@ class CairnProcessor:
 
 collections = ['stfxir:faculty-works']
 CP = CairnProcessor()
-CP.selector()
+CP.batch_processor('stfxir', collections)
