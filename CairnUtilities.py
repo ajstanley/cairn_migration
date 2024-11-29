@@ -343,4 +343,3 @@ class CairnUtilities:
 
 if __name__ == '__main__':
     CA = CairnUtilities()
-    print(CA.get_all_descendants('stfx', 'stfx:3906'))

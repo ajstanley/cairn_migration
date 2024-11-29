@@ -27,7 +27,7 @@ class CairnProcessor:
             'islandora:sp-audioCModel': ['OBJ'],
         }
         self.ca = CA.CairnUtilities()
-        self.mods_xsl = '/usr/local/fedora/cairn_migration/assets/islandora-dspace/stfx_mods_to_dc.xsl'
+        self.mods_xsl = '/usr/local/fedora/cairn_migration/assets/islandora-dspace/stfx_research_mods_to_dc.xsl'
         self.export_dir = '/usr/local/fedora/cairn_migration/outputs'
         self.mimemap = {"image/jpeg": ".jpg",
                         "image/jp2": ".jp2",
@@ -43,6 +43,7 @@ class CairnProcessor:
                         "audio/mpeg": ".mp3",
                         "video/mp4": ".mp4",
                         "video/x-m4v": ".m4v",
+                        "audio/vnd.wave": '.wav'
                         }
         self.start = time.time()
 
@@ -84,6 +85,7 @@ class CairnProcessor:
                 continue
             dublin_core = None
             thesis = None
+            oaire = None
             files_info = fw.get_file_data()
             if transform_mods == 'y' and 'MODS' in files_info:
                 mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
@@ -95,6 +97,8 @@ class CairnProcessor:
                 ET.SubElement(root, "dcvalue", element="identifier", qualifier="other").text = pid
                 thesis_root = ET.Element("dublin_core")
                 thesis_root.set('schema', 'thesis')
+                oaire_root = ET.Element("dublin_core")
+
                 for candidate in dc.iter():
                     if not candidate.text:
                         continue
@@ -108,6 +112,9 @@ class CairnProcessor:
                     if tag == 'degree':
                         ET.SubElement(thesis_root, "dcvalue", element=tag,
                                       qualifier=qualifier).text = value.replace('%%%', ',')
+                    if tag == 'citation':
+                        ET.SubElement(oaire_root, "dcvalue", element=tag,
+                                      qualifier=qualifier).text = value.replace('%%%', ',')
                     else:
                         ET.SubElement(root, "dcvalue", element=tag,
                                       qualifier=qualifier).text = value.replace('%%%', ',')
@@ -116,6 +123,9 @@ class CairnProcessor:
                 if len(thesis_root.xpath(".//*")) > 0:
                     ET.indent(thesis_root, space="\t", level=0)
                     thesis = ET.tostring(thesis_root, encoding='unicode')
+                if len(oaire_root.xpath(".//*")) > 0:
+                    ET.indent(thesis_root, space="\t", level=0)
+                    oaire = ET.tostring(thesis_root, encoding='unicode')
 
             if not dublin_core:
                 dublin_core = fw.get_modified_dc()
@@ -133,6 +143,9 @@ class CairnProcessor:
             if thesis:
                 with open(f'{path}/metadata_thesis.xml', 'w') as f:
                     f.write(thesis)
+            if oaire:
+                with open(f'{path}/metadata_oaire.xml', 'w') as f:
+                    f.write(oaire)
             with open(f'{path}/contents', 'w') as f:
                 for source, destination in copy_streams.items():
                     stream_to_copy = self.ca.dereference(source)
@@ -304,6 +317,6 @@ class CairnProcessor:
 
 
 
-collections = ['stfx:8243', 'stfx:cbfc', 'stfx:3912', 'stfx:nccdh', 'stfx:3913']
+collections = ['stfxir:faculty-works']
 CP = CairnProcessor()
 CP.selector()
