@@ -17,7 +17,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/inputs/mta.csv">
+        <entry key="/inputs/new_stfx_info.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

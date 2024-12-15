@@ -20,7 +20,7 @@ class CairnProcessor:
             'islandora:sp_pdf': ['OBJ', 'PDF'],
             'islandora:sp_large_image_cmodel': ['OBJ'],
             'islandora:sp_basic_image': ['OBJ'],
-            'ir:citationCModel': [],
+            'ir:citationCModel': ['FULL_TEXT'],
             'ir:thesisCModel': ['OBJ', 'PDF', 'FULL_TEXT'],
             'islandora:sp_videoCModel': ['OBJ', 'PDF'],
             'islandora:newspaperIssueCModel': ['OBJ', 'PDF'],
@@ -77,6 +77,7 @@ class CairnProcessor:
             item_number = str(current_number).zfill(4)
             foxml_file = self.ca.dereference(pid)
             copy_streams = {}
+            metadata = {}
             foxml = f"{self.objectStore}/{foxml_file}"
             try:
                 fw = FW.FWorker(foxml)
@@ -84,51 +85,12 @@ class CairnProcessor:
                 print(f"No record found for {pid}")
                 continue
             dublin_core = None
-            thesis = None
-            oaire = None
             files_info = fw.get_file_data()
             if transform_mods == 'y' and 'MODS' in files_info:
                 mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
-                dom = ET.parse(mods_path)
-                xslt = ET.parse(self.mods_xsl)
-                transform = ET.XSLT(xslt)
-                dc = transform(dom)
-                root = ET.Element("dublin_core")
-                ET.SubElement(root, "dcvalue", element="identifier", qualifier="other").text = pid
-                thesis_root = ET.Element("dublin_core")
-                thesis_root.set('schema', 'thesis')
-                oaire_root = ET.Element("dublin_core")
-                oaire_root.set('schema', 'citation')
+                metadata = self.apply_transform(mods_path, pid)
 
-                for candidate in dc.iter():
-                    if not candidate.text:
-                        continue
-                    value = candidate.text.replace("\\,", '%%%')
-                    tag = re.sub(r'{.*}', '', candidate.tag)
-                    qualifier = 'none'
-                    if tag == 'dc':
-                        continue
-                    if '.' in tag:
-                        [tag, qualifier] = tag.split('.')
-                    if tag == 'degree':
-                        ET.SubElement(thesis_root, "dcvalue", element=tag,
-                                      qualifier=qualifier).text = value.replace('%%%', ',')
-                    if tag == 'citation':
-                        ET.SubElement(oaire_root, "dcvalue", element=tag,
-                                      qualifier=qualifier).text = value.replace('%%%', ',')
-                    else:
-                        ET.SubElement(root, "dcvalue", element=tag,
-                                      qualifier=qualifier).text = value.replace('%%%', ',')
-                ET.indent(root, space="\t", level=0)
-                dublin_core = ET.tostring(root, encoding='unicode')
-                if len(thesis_root.xpath(".//*")) > 0:
-                    ET.indent(thesis_root, space="\t", level=0)
-                    thesis = ET.tostring(thesis_root, encoding='unicode')
-                if len(oaire_root.xpath(".//*")) > 0:
-                    ET.indent(thesis_root, space="\t", level=0)
-                    oaire = ET.tostring(oaire_root, encoding='unicode')
-
-            if not dublin_core:
+            if 'dublin_core' not in metadata:
                 dublin_core = fw.get_modified_dc()
             all_files = fw.get_file_data()
             for entry, file_data in all_files.items():
@@ -143,12 +105,12 @@ class CairnProcessor:
             Path(path).mkdir(parents=True, exist_ok=True)
             with open(f'{path}/dublin_core.xml', 'w') as f:
                 f.write(dublin_core)
-            if thesis:
+            if 'thesis' in metadata:
                 with open(f'{path}/metadata_thesis.xml', 'w') as f:
-                    f.write(thesis)
-            if oaire:
+                    f.write(metadata['thesis'])
+            if 'oaire' in metadata:
                 with open(f'{path}/metadata_oaire.xml', 'w') as f:
-                    f.write(oaire)
+                    f.write(metadata['oaire'])
             with open(f'{path}/contents', 'w') as f:
                 for source, destination in copy_streams.items():
                     stream_to_copy = self.ca.dereference(source)
@@ -161,44 +123,7 @@ class CairnProcessor:
         shutil.rmtree(f"{self.export_dir}/{archive}")
         print(f"Processed {int(item_number)} entries in {round(time.time() - self.start, 2)} seconds")
 
-    # Temp function for testing only.
-    def temp_transform(self):
-        dom = ET.parse('assets/MODS/stfxir_364.xml')
-        xslt = ET.parse('assets/xsl/thesis.xsl')
-        transform = ET.XSLT(xslt)
-        dublin_core = transform(dom)
-        root = ET.Element("dublin_core")
-        thesis_root = ET.Element("dublin_core")
-        thesis_root.set('schema', 'thesis')
-        degrees = []
-        for candidate in dublin_core.iter():
-            if not candidate.text:
-                continue
-            value = candidate.text.replace("\\,", '%%%')
-            tag = re.sub(r'{.*}', '', candidate.tag)
-            qualifier = 'none'
-            if tag == 'dc':
-                continue
-            if '.' in tag:
-                [tag, qualifier] = tag.split('.')
-            if tag == 'degree':
-                degrees.append(candidate)
-                ET.SubElement(thesis_root, "dcvalue", element=tag,
-                              qualifier=qualifier).text = value.replace('%%%', ',')
-            else:
-                ET.SubElement(root, "dcvalue", element=tag,
-                              qualifier=qualifier).text = value.replace('%%%', ',')
-        ET.indent(root, space="\t", level=0)
-
-        print(ET.tostring(root, encoding='unicode'))
-        if len(root) > 0:
-            ET.indent(thesis_root, space="\t", level=0)
-            print(ET.tostring(thesis_root, encoding='unicode'))
-
-        f = open("assets/demofile3.txt", "w")
-        f.write(str(dublin_core))
-        f.close()
-        # print(dublin_core)
+    #  Function for NS Audio.  Metadata is drawn at collection level, Assets come from members.
 
     def nscad_audio(self, collection_pid):
         archive = collection_pid.replace(':', '_')
@@ -211,12 +136,11 @@ class CairnProcessor:
             current_number += 1
             item_number = str(current_number).zfill(4)
             dublin_core = fw.get_modified_dc()
-            file_data = fw.get_file_data()
+            files_info = fw.get_file_data()
+            mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
+            metadata = self.apply_transform(mods_path, pid)
+
             copy_streams = {}
-            if 'MODS' in file_data:
-                source = file_data['MODS']['filename']
-                destination = f"{pid.replace(':', '_')}_MODS{self.mimemap[file_data['MODS']['mimetype']]}"
-                copy_streams[source] = destination
             second_level = self.ca.get_collection_pids('nscad', pid)
             for component in second_level:
                 fworker = self.get_foxml_from_pid(component)
@@ -230,6 +154,12 @@ class CairnProcessor:
             Path(path).mkdir(parents=True, exist_ok=True)
             with open(f'{path}/dublin_core.xml', 'w') as f:
                 f.write(dublin_core)
+            if 'thesis' in metadata:
+                with open(f'{path}/metadata_thesis.xml', 'w') as f:
+                    f.write(metadata['thesis'])
+            if 'oaire' in metadata:
+                with open(f'{path}/metadata_oaire.xml', 'w') as f:
+                    f.write(metadata['oaire'])
             with open(f'{path}/contents', 'w') as f:
                 for source, destination in copy_streams.items():
                     stream_to_copy = self.ca.dereference(source)
@@ -314,12 +244,53 @@ class CairnProcessor:
         shutil.make_archive(collection_path, 'zip', collection_path)
         shutil.rmtree(collection_path)
 
+    def apply_transform(self, mods_path, pid):
+        return_files = {}
+        dom = ET.parse(mods_path)
+        xslt = ET.parse(self.mods_xsl)
+        transform = ET.XSLT(xslt)
+        dc = transform(dom)
+        root = ET.Element("dublin_core")
+        ET.SubElement(root, "dcvalue", element="identifier", qualifier="other").text = pid
+        thesis_root = ET.Element("dublin_core")
+        thesis_root.set('schema', 'thesis')
+        oaire_root = ET.Element("dublin_core")
+        oaire_root.set('schema', 'oaire')
+
+        for candidate in dc.iter():
+            if not candidate.text:
+                continue
+            value = candidate.text.replace("\\,", '%%%')
+            tag = re.sub(r'{.*}', '', candidate.tag)
+            qualifier = 'none'
+            if tag == 'dc':
+                continue
+            if '.' in tag:
+                [tag, qualifier] = tag.split('.')
+            if tag == 'degree':
+                ET.SubElement(thesis_root, "dcvalue", element=tag,
+                              qualifier=qualifier).text = value.replace('%%%', ',')
+            elif tag == 'citation':
+                ET.SubElement(oaire_root, "dcvalue", element=tag,
+                              qualifier=qualifier).text = value.replace('%%%', ',')
+            else:
+                ET.SubElement(root, "dcvalue", element=tag,
+                              qualifier=qualifier).text = value.replace('%%%', ',')
+        ET.indent(root, space="\t", level=0)
+        return_files['dublin_core'] = ET.tostring(root, encoding='unicode')
+        if len(thesis_root.xpath(".//*")) > 0:
+            ET.indent(thesis_root, space="\t", level=0)
+            return_files['thesis'] = ET.tostring(thesis_root, encoding='unicode')
+        if len(oaire_root.xpath(".//*")) > 0:
+            ET.indent(thesis_root, space="\t", level=0)
+            return_files['oaire'] = ET.tostring(oaire_root, encoding='unicode')
+        return return_files
+
     def batch_processor(self, table, collections):
         for collection in collections:
             self.process_collection(table, collection, 'y')
 
 
-
-collections = ['stfxir:faculty-works']
+collections = ['stfx:casketobits']
 CP = CairnProcessor()
-CP.batch_processor('stfxir', collections)
+CP.batch_processor('stfx', collections)

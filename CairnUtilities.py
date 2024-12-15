@@ -200,6 +200,7 @@ class CairnUtilities:
         for row in cursor.execute(command):
             pids.append(row[0])
         return pids
+
     # Gets collection hierarchy by namespace.
     def get_collection_details(self, table):
         cursor = self.conn.cursor()
@@ -340,6 +341,6 @@ class CairnUtilities:
         return descendants
 
 
-
 if __name__ == '__main__':
     CA = CairnUtilities()
+    CA.process_clean_institution('mta_all', 'inputs/mta_with_inactive.csv')
