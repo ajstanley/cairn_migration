@@ -27,7 +27,7 @@ class CairnProcessor:
             'islandora:sp-audioCModel': ['OBJ'],
         }
         self.ca = CA.CairnUtilities()
-        self.mods_xsl = '/usr/local/fedora/cairn_migration/assets/islandora-dspace/stfx_research_mods_to_dc.xsl'
+        self.mods_xsl = '/usr/local/fedora/cairn_migration/assets/islandora-dspace/xsl-transforms/stfx_research_mods_to_dc.xsl'
         self.export_dir = '/usr/local/fedora/cairn_migration/outputs'
         self.mimemap = {"image/jpeg": ".jpg",
                         "image/jp2": ".jp2",
@@ -103,7 +103,7 @@ class CairnProcessor:
             # Build directory
             Path(path).mkdir(parents=True, exist_ok=True)
             with open(f'{path}/dublin_core.xml', 'w') as f:
-                f.write(dublin_core)
+                f.write(metadata['dublin_core'])
             if 'thesis' in metadata:
                 with open(f'{path}/metadata_thesis.xml', 'w') as f:
                     f.write(metadata['thesis'])
@@ -290,6 +290,6 @@ class CairnProcessor:
             self.process_collection(table, collection, 'y')
 
 
-collections = ['stfx:casketobits']
+collections = ['umir:theses']
 CP = CairnProcessor()
-CP.batch_processor('stfx', collections)
+CP.batch_processor('udmscholar', collections)
