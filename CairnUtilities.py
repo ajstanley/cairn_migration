@@ -341,52 +341,18 @@ class CairnUtilities:
                     descendants[row['PID']] = row['content_model']
         return descendants
 
-    def make_moncton_filename(self, dc):
+    def make_moncton_filename(self, xml_content):
         import xml.etree.ElementTree as ET
-
-        # XML content as a string
-        xml_content = """
-        <dublin_core>
-            <dcvalue element="identifier" qualifier="other">umir:669</dcvalue>
-            <dcvalue element="title" qualifier="none">La validation et la normalisation du test non-verbal d'intelligence logique (forme 6A) de Lidec Inc</dcvalue>
-            <dcvalue element="contributor" qualifier="author">Arsenault, Christian</dcvalue>
-            <dcvalue element="type" qualifier="none">Text</dcvalue>
-            <dcvalue element="type" qualifier="none">thèse</dcvalue>
-            <dcvalue element="date" qualifier="issued">1988</dcvalue>
-            <dcvalue element="publisher" qualifier="none">Université de Moncton</dcvalue>
-            <dcvalue element="language" qualifier="none">fre</dcvalue>
-            <dcvalue element="language" qualifier="iso">iso639-2b</dcvalue>
-            <dcvalue element="format" qualifier="extent">96</dcvalue>
-            <dcvalue element="format" qualifier="medium">print</dcvalue>
-            <dcvalue element="format" qualifier="none">application/pdf</dcvalue>
-            <dcvalue element="description" qualifier="note">statement of responsibility: par Christian Arsenault. --</dcvalue>
-            <dcvalue element="description" qualifier="note">thesis: Thèse (M.A. Éducation: Orientation) -- Université de Moncton, Faculte des sciences de l'éducation, 1988.</dcvalue>
-            <dcvalue element="description" qualifier="note">bibliography: Bibliogr.: f. 58-60.</dcvalue>
-            <dcvalue element="subject" qualifier="none">Intelligence</dcvalue>
-            <dcvalue element="subject" qualifier="none">Tests non verbaux</dcvalue>
-            <dcvalue element="identifier" qualifier="isbn">0315482214</dcvalue>
-            <dcvalue element="identifier" qualifier="none">oclc: 726418898</dcvalue>
-            <dcvalue element="subject" qualifier="faculty">Faculté des sciences de l'éducation</dcvalue>
-            <dcvalue element="subject" qualifier="campus">Campus de Moncton</dcvalue>
-        </dublin_core>
-        """
-
-        # Parse the XML content
         root = ET.fromstring(xml_content)
-
-        # Extract author and date
-        author = None
-        date = None
+        author = ''
+        date = ''
 
         for dcvalue in root.findall('dcvalue'):
             if dcvalue.attrib.get('element') == 'contributor' and dcvalue.attrib.get('qualifier') == 'author':
                 author = re.sub(r'[^a-zA-ZÀ-ÿ ]', '', dcvalue.text)
             if dcvalue.attrib.get('element') == 'date' and dcvalue.attrib.get('qualifier') == 'issued':
-                date = dcvalue.text
+                date = dcvalue.text[:4]
 
-        # Print the results
-        print(f"Author: {author}")
-        print(f"Date: {date}")
         filename = f"{author}_{date}.pdf".replace(' ', '_')
         return filename
 
