@@ -95,11 +95,10 @@ class CairnProcessor:
             all_files = fw.get_file_data()
             for entry, file_data in all_files.items():
                 if entry in self.stream_map[model]:
+                    filename = self.ca.make_moncton_filename(metadata['dublin_core'])
                     copy_streams[
                         file_data[
-                            'filename']] = f"{pid.replace(':', '_')}_{entry}{self.mimemap[file_data['mimetype']]}"
-            if not copy_streams:
-                continue
+                            'filename']] = filename
             path = f"{archive_path}/item_{item_number}"
             # Build directory
             Path(path).mkdir(parents=True, exist_ok=True)
