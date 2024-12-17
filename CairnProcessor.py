@@ -27,7 +27,7 @@ class CairnProcessor:
             'islandora:sp-audioCModel': ['OBJ'],
         }
         self.ca = CA.CairnUtilities()
-        self.mods_xsl = '/usr/local/fedora/cairn_migration/assets/islandora-dspace/xsl-transforms/stfx_research_mods_to_dc.xsl'
+        self.mods_xsl = '/usr/local/fedora/cairn_migration/assets/islandora-dspace/xsl-transforms/udm_research_mods_to_dc.xsl'
         self.export_dir = '/usr/local/fedora/cairn_migration/outputs'
         self.mimemap = {"image/jpeg": ".jpg",
                         "image/jp2": ".jp2",
