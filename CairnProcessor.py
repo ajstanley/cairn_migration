@@ -95,7 +95,7 @@ class CairnProcessor:
             all_files = fw.get_file_data()
             for entry, file_data in all_files.items():
                 if entry in self.stream_map[model]:
-                    filename = self.ca.make_moncton_filename(metadata['dublin_core'])
+                    filename = f"{pid.replace(':', '_')}_{entry}{self.mimemap[file_data['mimetype']]}"
                     copy_streams[
                         file_data[
                             'filename']] = filename
@@ -124,12 +124,12 @@ class CairnProcessor:
 
     #  Function for NS Audio.  Metadata is drawn at collection level, Assets come from members.
 
-    def nscad_audio(self, collection_pid):
+    def nscad_audio(self, collection_pid, start_num):
         archive = collection_pid.replace(':', '_')
-        archive_path = f"{self.export_dir}/{archive}"
+        archive_path = f"{self.export_dir}/nscad_4439"
         Path(archive_path).mkdir(parents=True, exist_ok=True)
         first_level = self.ca.get_subcollections('nscad', collection_pid)
-        current_number = 0
+        current_number = start_num
         for pid in first_level:
             fw = self.get_foxml_from_pid(pid)
             current_number += 1
@@ -138,7 +138,6 @@ class CairnProcessor:
             files_info = fw.get_file_data()
             mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
             metadata = self.apply_transform(mods_path, pid)
-
             copy_streams = {}
             second_level = self.ca.get_collection_pids('nscad', pid)
             for component in second_level:
@@ -165,31 +164,38 @@ class CairnProcessor:
                     shutil.copy(f"{self.datastreamStore}/{stream_to_copy}", f"{path}/{destination}")
                     f.write(f"{destination}\n")
             print(f"item_{item_number}")
+            return current_number
+
+    def build_nscad_audio_collection(self, collection):
+        subcollections = self.ca.get_subcollections('nscad', collection)
+        end_num = self.nscad_audio(subcollections[0], 0)
+        for subcollection in subcollections[1:]:
+            end_num = self.nscad_audio(subcollection, end_num)
+
 
     def build_book(self, table, book_pid):
         archive = book_pid.replace(':', '_')
         archive_path = f"{self.export_dir}/{archive}"
         Path(archive_path).mkdir(parents=True, exist_ok=True)
         pages = self.ca.get_pages(table, book_pid)
-        current_number = 0
         fw = self.get_foxml_from_pid(book_pid)
+        files_info = fw.get_file_data()
+        mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
+        metadata = self.apply_transform(mods_path, book_pid)
         dc = fw.get_modified_dc()
-        mods = fw.get_mods()
-
         path = f"{archive_path}/book_{book_pid.replace(':', '_')}"
         Path(path).mkdir(parents=True, exist_ok=True)
         for pid in pages:
             pfw = self.get_foxml_from_pid(pid)
             file_data = pfw.get_file_data()
-            if 'OBJ' in file_data:
-                source = f"{self.datastreamStore}/{file_data['OBJ']['filename']}"
+            if 'JPEG' in file_data:
+                source = f"{self.datastreamStore}/{file_data['JPEG']['filename']}"
                 destination = f"{pid.replace(':', '_')}_OBJ_{self.mimemap[file_data['OBJ']['mimetype']]}"
                 shutil.copy(source, f"{path}/{destination}")
         print(f"Zipping files into {archive}.zip")
         shutil.make_archive(f"{self.export_dir}/{archive}", 'zip', f"{self.export_dir}/{archive}")
         return {
             'dc': dc,
-            'mods': mods,
             'file': f"{self.export_dir}/{archive}.zip"
         }
 
@@ -292,4 +298,4 @@ class CairnProcessor:
 
 collections = ['umir:theses']
 CP = CairnProcessor()
-CP.batch_processor('udmscholar', collections)
+CP.build_nscad_audio_collection('nscad:4439')
