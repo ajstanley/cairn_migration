@@ -186,7 +186,7 @@ class CairnProcessor:
             with open(f'{path}/dublin_core.xml', 'w') as f:
                 f.write(book['dc'])
                 zip_file = Path(book['file']).name
-                shutil.move(book['file'], f"{path}/zip_file")
+                shutil.move(book['file'], f"{path}/{zip_file}")
 
 
 
@@ -314,4 +314,4 @@ class CairnProcessor:
 
 collections = ['umir:theses']
 CP = CairnProcessor()
-CP.build_nscad_audio_collection('nscad:4439')
+CP.build_book_collection('nscad', 'nscad:BarbaraGoldberg')
