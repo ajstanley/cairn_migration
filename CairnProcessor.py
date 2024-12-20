@@ -164,13 +164,30 @@ class CairnProcessor:
                     shutil.copy(f"{self.datastreamStore}/{stream_to_copy}", f"{path}/{destination}")
                     f.write(f"{destination}\n")
             print(f"item_{item_number}")
-            return current_number
+        return current_number
 
     def build_nscad_audio_collection(self, collection):
         subcollections = self.ca.get_subcollections('nscad', collection)
         end_num = self.nscad_audio(subcollections[0], 0)
         for subcollection in subcollections[1:]:
             end_num = self.nscad_audio(subcollection, end_num)
+    def build_book_collection(self, table, collection):
+        book_pids = self.ca.get_books(table,collection)
+        current_number = 0
+        archive = collection.replace(':', '_')
+        archive_path = f"{self.export_dir}/{archive}"
+        Path(archive_path).mkdir(parents=True, exist_ok=True)
+        for book_pid in book_pids:
+            current_number += 1
+            item_number = str(current_number).zfill(4)
+            book = self.build_book(table, book_pid)
+            path = f"{archive_path}/item_{item_number}"
+            Path(path).mkdir(parents=True, exist_ok=True)
+            with open(f'{path}/dublin_core.xml', 'w') as f:
+                f.write(book['dc'])
+                zip_file = Path(book['file']).name
+                shutil.move(book['file'], f"{path}/zip_file")
+
 
 
     def build_book(self, table, book_pid):
@@ -182,7 +199,6 @@ class CairnProcessor:
         files_info = fw.get_file_data()
         mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
         metadata = self.apply_transform(mods_path, book_pid)
-        dc = fw.get_modified_dc()
         path = f"{archive_path}/book_{book_pid.replace(':', '_')}"
         Path(path).mkdir(parents=True, exist_ok=True)
         for pid in pages:
@@ -195,7 +211,7 @@ class CairnProcessor:
         print(f"Zipping files into {archive}.zip")
         shutil.make_archive(f"{self.export_dir}/{archive}", 'zip', f"{self.export_dir}/{archive}")
         return {
-            'dc': dc,
+            'dc': metadata['dublin_core'],
             'file': f"{self.export_dir}/{archive}.zip"
         }
 

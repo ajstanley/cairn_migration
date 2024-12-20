@@ -359,4 +359,4 @@ class CairnUtilities:
 
 if __name__ == '__main__':
     CA = CairnUtilities()
-    print(CA.make_moncton_filename('zip'))
+    print(CA.dereference('umir:306+PDF+PDF.0'))

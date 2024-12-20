@@ -132,5 +132,5 @@ class FWorker:
         return re_values
 
 if __name__ == '__main__':
-    FW = FWorker('inputs/cbu_foxml.xml')
-    print(FW.get_rels_ext_values())
+    FW = FWorker('assets/udem_foxml.xml')
+    print(FW.get_file_data())
