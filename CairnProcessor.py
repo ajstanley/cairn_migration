@@ -183,10 +183,13 @@ class CairnProcessor:
             book = self.build_book(table, book_pid)
             path = f"{archive_path}/item_{item_number}"
             Path(path).mkdir(parents=True, exist_ok=True)
+            zip_file = Path(book['file']).name
+            shutil.move(book['file'], f"{path}/{zip_file}")
             with open(f'{path}/dublin_core.xml', 'w') as f:
                 f.write(book['dc'])
-                zip_file = Path(book['file']).name
-                shutil.move(book['file'], f"{path}/{zip_file}")
+            with open(f'{path}/contents', 'w') as f:
+                f.write(zip_file)
+
 
 
 
@@ -204,12 +207,13 @@ class CairnProcessor:
         for pid in pages:
             pfw = self.get_foxml_from_pid(pid)
             file_data = pfw.get_file_data()
-            if 'JPEG' in file_data:
-                source = f"{self.datastreamStore}/{file_data['JPEG']['filename']}"
-                destination = f"{pid.replace(':', '_')}_OBJ_{self.mimemap[file_data['OBJ']['mimetype']]}"
+            if 'OBJ' in file_data:
+                source = f"{self.datastreamStore}/{self.ca.dereference(file_data['OBJ']['filename'])}"
+                destination = f"{pid.replace(':', '_')}_OBJ{self.mimemap[file_data['OBJ']['mimetype']]}"
                 shutil.copy(source, f"{path}/{destination}")
         print(f"Zipping files into {archive}.zip")
         shutil.make_archive(f"{self.export_dir}/{archive}", 'zip', f"{self.export_dir}/{archive}")
+        shutil.rmtree(f"{self.export_dir}/{archive}")
         return {
             'dc': metadata['dublin_core'],
             'file': f"{self.export_dir}/{archive}.zip"
