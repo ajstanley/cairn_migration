@@ -162,18 +162,17 @@ class CairnProcessor:
             item_number = str(current_number).zfill(4)
             copy_streams = {}
             second_level = self.ca.get_collection_recursive_pid_model_map('nscad', pid)
-            for component, model in second_level:
+            for member_pid, model in second_level.items():
                 book_info = {}
-                for model, member_pid in second_level.items():
-                    fworker = self.get_foxml_from_pid(pid)
-                    if model == 'islandora:bookCModel':
-                        book_info = self.build_book('nscad', member_pid)
-                    else:
-                        file_data = fworker.get_file_data()
-                        if 'OBJ' in file_data:
-                            copy_streams[
-                                file_data['OBJ'][
-                                    'filename']] = f"{component.replace(':', '_')}_OBJ{self.mimemap[file_data['OBJ']['mimetype']]}"
+                fworker = self.get_foxml_from_pid(member_pid)
+                if model == 'islandora:bookCModel':
+                    book_info = self.build_book('nscad', member_pid)
+                else:
+                    file_data = fworker.get_file_data()
+                    if 'OBJ' in file_data:
+                        copy_streams[
+                            file_data['OBJ'][
+                                'filename']] = f"{member_pid.replace(':', '_')}_OBJ{self.mimemap[file_data['OBJ']['mimetype']]}"
                 path = f"{archive_path}/item_{item_number}"
                 # Build directory
                 Path(path).mkdir(parents=True, exist_ok=True)
