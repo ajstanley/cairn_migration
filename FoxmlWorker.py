@@ -14,7 +14,8 @@ class FWorker:
             'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
             'fedora': "info:fedora/fedora-system:def/relations-external#",
             'fedora - model': "info:fedora/fedora-system:def/model#",
-            'islandora': "http://islandora.ca/ontology/relsext#"
+            'islandora': "http://islandora.ca/ontology/relsext#",
+            'mods': 'http://www.loc.gov/mods/v3'
         }
         self.mods_xsl = 'assets/mods_to_dc.xsl'
         self.properties = self.get_properties()
@@ -131,6 +132,26 @@ class FWorker:
                 re_values[tag] = resource.replace('info:fedora/', '')
         return re_values
 
+    def get_inline_mods(self):
+        retval = ''
+        try:
+            mods_datastream = self.root.findall(
+                ".//foxml:datastream[@ID='MODS']/foxml:datastreamVersion/foxml:xmlContent/mods:mods",
+                self.namespaces
+            )
+            if not mods_datastream:
+                return retval
+            mods_node = mods_datastream[-1]
+            if mods_node is not None:
+                retval = ET.tostring(mods_node, encoding='unicode')
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+        return retval
+
+
 if __name__ == '__main__':
-    FW = FWorker('assets/udem_foxml.xml')
+    FW = FWorker('inputs/sample_foxml.xml')
     print(FW.get_file_data())
+    print(FW.get_inline_mods())

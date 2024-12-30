@@ -89,6 +89,10 @@ class CairnProcessor:
             if transform_mods == 'y' and 'MODS' in files_info:
                 mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
                 metadata = self.apply_transform(mods_path, pid)
+            else:
+                mods_string = fw.get_inline_mods()
+                if mods_string:
+                    metadata = self.apply_transform(mods_string, pid)
 
             if 'dublin_core' not in metadata:
                 dublin_core = fw.get_modified_dc()
@@ -99,6 +103,9 @@ class CairnProcessor:
                     copy_streams[
                         file_data[
                             'filename']] = filename
+            if model == 'islandora:bookCModel':
+                book_info = self.build_book(table, pid)
+                copy_streams[book_info['file']] = Path(book_info['file']).name
             path = f"{archive_path}/item_{item_number}"
             # Build directory
             Path(path).mkdir(parents=True, exist_ok=True)
@@ -269,9 +276,12 @@ class CairnProcessor:
         shutil.make_archive(collection_path, 'zip', collection_path)
         shutil.rmtree(collection_path)
 
-    def apply_transform(self, mods_path, pid):
+    def apply_transform(self, mods, pid):
+        if Path(mods).exists():
+            dom = ET.parse(mods)
+        else:
+            dom = ET.fromstring(mods)
         return_files = {}
-        dom = ET.parse(mods_path)
         xslt = ET.parse(self.mods_xsl)
         transform = ET.XSLT(xslt)
         dc = transform(dom)
@@ -318,4 +328,7 @@ class CairnProcessor:
 
 collections = ['umir:theses']
 CP = CairnProcessor()
-CP.build_book_collection('nscad', 'nscad:BarbaraGoldberg')
+CP.batch_processor('nscad', collections)
+CP.build_nscad_audio_collection('nscad:workingfolder')
+CP.build_book_collection('nscad', 'nscad:4450')
+CP.process_collection('nscad', 'nscad:4693', 'Y')
