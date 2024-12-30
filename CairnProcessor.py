@@ -326,9 +326,9 @@ class CairnProcessor:
             self.process_collection(table, collection, 'y')
 
 
-collections = ['umir:theses']
+collections = ['nscad:4701', 'nscad,4693', 'nscad:5693', 'nscad:5639', 'nscad:4541']
 CP = CairnProcessor()
 CP.batch_processor('nscad', collections)
-CP.build_nscad_audio_collection('nscad:workingfolder')
-CP.build_book_collection('nscad', 'nscad:4450')
-CP.process_collection('nscad', 'nscad:4693', 'Y')
+# CP.build_nscad_audio_collection('nscad:workingfolder')
+# CP.build_book_collection('nscad', 'nscad:4450')
+# CP.process_collection('nscad', 'nscad:4693', 'Y')
