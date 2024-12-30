@@ -123,7 +123,7 @@ class CairnProcessor:
                     shutil.copy(f"{self.datastreamStore}/{stream_to_copy}", f"{path}/{destination}")
                     f.write(f"{destination}\n")
                 if book_info:
-                    destination =  Path(book_info['file']).name
+                    destination = Path(book_info['file']).name
                     shutil.copy(book_info['file'], destination)
                     f.write(f"{destination}\n")
             print(f"item_{item_number}")
@@ -135,45 +135,67 @@ class CairnProcessor:
 
     #  Function for NS Audio.  Metadata is drawn at collection level, Assets come from members.
 
-    def nscad_audio(self, collection_pid, start_num):
+    def nscad_artists(self, collection_pid, start_num):
         archive = collection_pid.replace(':', '_')
-        archive_path = f"{self.export_dir}/nscad_4439"
+        archive_path = f"{self.export_dir}/{collection_pid}"
         Path(archive_path).mkdir(parents=True, exist_ok=True)
         first_level = self.ca.get_subcollections('nscad', collection_pid)
+        print(f"Processing {len(first_level)} members of collection")
         current_number = start_num
         for pid in first_level:
-            fw = self.get_foxml_from_pid(pid)
+            metadata = {}
+            try:
+                fw = self.get_foxml_from_pid(pid)
+            except:
+                print(f"No record found for {pid}")
+                continue
+            dublin_core = None
+            files_info = fw.get_file_data()
+            if 'MODS' in files_info:
+                mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
+                metadata = self.apply_transform(mods_path, pid)
+            else:
+                mods_string = fw.get_inline_mods()
+                if mods_string:
+                    metadata = self.apply_transform(mods_string, pid)
             current_number += 1
             item_number = str(current_number).zfill(4)
-            dublin_core = fw.get_modified_dc()
-            files_info = fw.get_file_data()
-            mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
-            metadata = self.apply_transform(mods_path, pid)
             copy_streams = {}
             second_level = self.ca.get_collection_pids('nscad', pid)
             for component in second_level:
-                fworker = self.get_foxml_from_pid(component)
-                file_data = fworker.get_file_data()
-                if 'OBJ' in file_data:
-                    copy_streams[
-                        file_data['OBJ'][
-                            'filename']] = f"{component.replace(':', '_')}_OBJ{self.mimemap[file_data['OBJ']['mimetype']]}"
-            path = f"{archive_path}/item_{item_number}"
-            # Build directory
-            Path(path).mkdir(parents=True, exist_ok=True)
-            with open(f'{path}/dublin_core.xml', 'w') as f:
-                f.write(dublin_core)
-            if 'thesis' in metadata:
-                with open(f'{path}/metadata_thesis.xml', 'w') as f:
-                    f.write(metadata['thesis'])
-            if 'oaire' in metadata:
-                with open(f'{path}/metadata_oaire.xml', 'w') as f:
-                    f.write(metadata['oaire'])
-            with open(f'{path}/contents', 'w') as f:
-                for source, destination in copy_streams.items():
-                    stream_to_copy = self.ca.dereference(source)
-                    shutil.copy(f"{self.datastreamStore}/{stream_to_copy}", f"{path}/{destination}")
-                    f.write(f"{destination}\n")
+                book_info = {}
+                collection_map = self.ca.get_collection_recursive_pid_model_map('nscad', component)
+                for model, member_pid in collection_map.items():
+                    fworker = self.get_foxml_from_pid(pid)
+                    if model == 'islandora:bookCModel':
+                        book_info = self.build_book('nscad', member_pid)
+                    else:
+                        file_data = fworker.get_file_data()
+                        if 'OBJ' in file_data:
+                            copy_streams[
+                                file_data['OBJ'][
+                                    'filename']] = f"{component.replace(':', '_')}_OBJ{self.mimemap[file_data['OBJ']['mimetype']]}"
+                path = f"{archive_path}/item_{item_number}"
+                # Build directory
+                Path(path).mkdir(parents=True, exist_ok=True)
+                with open(f'{path}/dublin_core.xml', 'w') as f:
+                    f.write(metadata['dublin_core'])
+                if 'thesis' in metadata:
+                    with open(f'{path}/metadata_thesis.xml', 'w') as f:
+                        f.write(metadata['thesis'])
+                if 'oaire' in metadata:
+                    with open(f'{path}/metadata_oaire.xml', 'w') as f:
+                        f.write(metadata['oaire'])
+                with open(f'{path}/contents', 'w') as f:
+                    for source, destination in copy_streams.items():
+                        stream_to_copy = self.ca.dereference(source)
+                        shutil.copy(f"{self.datastreamStore}/{stream_to_copy}", f"{path}/{destination}")
+                        f.write(f"{destination}\n")
+                    if book_info:
+                        destination = Path(book_info['file']).name
+                        shutil.move(book_info['file'], f"{path}/{destination}")
+                        f.write(f"{destination}\n")
+
             print(f"item_{item_number}")
         return current_number
 
@@ -332,7 +354,8 @@ class CairnProcessor:
 
 collections = ['nscad:4701', 'nscad,4693', 'nscad:5693', 'nscad:5639', 'nscad:4541']
 CP = CairnProcessor()
-CP.batch_processor('nscad', collections)
+#CP.batch_processor('nscad', collections)
 # CP.build_nscad_audio_collection('nscad:workingfolder')
 # CP.build_book_collection('nscad', 'nscad:4450')
 # CP.process_collection('nscad', 'nscad:4693', 'Y')
+CP.nscad_artists("nscad:4701", 0)

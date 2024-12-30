@@ -154,4 +154,4 @@ class FWorker:
 if __name__ == '__main__':
     FW = FWorker('inputs/sample_foxml.xml')
     print(FW.get_file_data())
-    print(FW.get_inline_mods())
+    print(FW.get_rels_ext_values())
