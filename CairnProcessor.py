@@ -76,6 +76,7 @@ class CairnProcessor:
         for pid, model in collection_map.items():
             item_number = str(current_number).zfill(4)
             foxml_file = self.ca.dereference(pid)
+            book_info = {}
             copy_streams = {}
             metadata = {}
             foxml = f"{self.objectStore}/{foxml_file}"
@@ -105,7 +106,6 @@ class CairnProcessor:
                             'filename']] = filename
             if model == 'islandora:bookCModel':
                 book_info = self.build_book(table, pid)
-                copy_streams[book_info['file']] = Path(book_info['file']).name
             path = f"{archive_path}/item_{item_number}"
             # Build directory
             Path(path).mkdir(parents=True, exist_ok=True)
@@ -122,12 +122,16 @@ class CairnProcessor:
                     stream_to_copy = self.ca.dereference(source)
                     shutil.copy(f"{self.datastreamStore}/{stream_to_copy}", f"{path}/{destination}")
                     f.write(f"{destination}\n")
+                if book_info:
+                    destination =  Path(book_info['file']).name
+                    shutil.copy(book_info['file'], destination)
+                    f.write(f"{destination}\n")
             print(f"item_{item_number}")
             current_number += 1
         print(f"Zipping files into {archive}.zip")
         shutil.make_archive(f"{self.export_dir}/{archive}", 'zip', f"{self.export_dir}/{archive}")
         shutil.rmtree(f"{self.export_dir}/{archive}")
-        print(f"Processed {int(item_number)} entries in {round(time.time() - self.start, 2)} seconds")
+        print(f"Processed {int(current_number)} entries in {round(time.time() - self.start, 2)} seconds")
 
     #  Function for NS Audio.  Metadata is drawn at collection level, Assets come from members.
 
