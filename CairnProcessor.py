@@ -98,7 +98,7 @@ class CairnProcessor:
                 dublin_core = fw.get_modified_dc()
             all_files = fw.get_file_data()
             for entry, file_data in all_files.items():
-                if entry in self.stream_map[model]:
+                if model in self.stream_map and entry in self.stream_map[model]:
                     filename = f"{pid.replace(':', '_')}_{entry}{self.mimemap[file_data['mimetype']]}"
                     copy_streams[
                         file_data[
