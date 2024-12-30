@@ -359,4 +359,4 @@ class CairnUtilities:
 
 if __name__ == '__main__':
     CA = CairnUtilities()
-    print(CA.dereference('umir:306+PDF+PDF.0'))
+    print(CA.get_collection_recursive_pid_model_map('nscad', 'nscad:5503'))

@@ -137,7 +137,7 @@ class CairnProcessor:
 
     def nscad_artists(self, collection_pid, start_num):
         archive = collection_pid.replace(':', '_')
-        archive_path = f"{self.export_dir}/{collection_pid}"
+        archive_path = f"{self.export_dir}/{archive}"
         Path(archive_path).mkdir(parents=True, exist_ok=True)
         first_level = self.ca.get_subcollections('nscad', collection_pid)
         print(f"Processing {len(first_level)} members of collection")
@@ -161,11 +161,10 @@ class CairnProcessor:
             current_number += 1
             item_number = str(current_number).zfill(4)
             copy_streams = {}
-            second_level = self.ca.get_collection_pids('nscad', pid)
-            for component in second_level:
+            second_level = self.ca.get_collection_recursive_pid_model_map('nscad', pid)
+            for component, model in second_level:
                 book_info = {}
-                collection_map = self.ca.get_collection_recursive_pid_model_map('nscad', component)
-                for model, member_pid in collection_map.items():
+                for model, member_pid in second_level.items():
                     fworker = self.get_foxml_from_pid(pid)
                     if model == 'islandora:bookCModel':
                         book_info = self.build_book('nscad', member_pid)
@@ -197,6 +196,7 @@ class CairnProcessor:
                         f.write(f"{destination}\n")
 
             print(f"item_{item_number}")
+        current_number += 1
         return current_number
 
     def build_nscad_audio_collection(self, collection):
