@@ -124,7 +124,7 @@ class CairnProcessor:
                     f.write(f"{destination}\n")
                 if book_info:
                     destination = Path(book_info['file']).name
-                    shutil.copy(book_info['file'], destination)
+                    shutil.copy(book_info['file'], f"{path}/{destination}")
                     f.write(f"{destination}\n")
             print(f"item_{item_number}")
             current_number += 1
@@ -232,8 +232,11 @@ class CairnProcessor:
         pages = self.ca.get_pages(table, book_pid)
         fw = self.get_foxml_from_pid(book_pid)
         files_info = fw.get_file_data()
-        mods_path = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
-        metadata = self.apply_transform(mods_path, book_pid)
+        if 'MODS' in files_info:
+            mods = f"{self.datastreamStore}/{self.ca.dereference(files_info['MODS']['filename'])}"
+        else:
+            mods = fw.get_inline_mods()
+        metadata = self.apply_transform(mods, book_pid)
         path = f"{archive_path}/book_{book_pid.replace(':', '_')}"
         Path(path).mkdir(parents=True, exist_ok=True)
         for pid in pages:

@@ -316,10 +316,12 @@ class CairnUtilities:
             if mods_info:
                 mods_path = f"{self.datastreamStore}/{self.dereference(mods_info['filename'])}"
                 mods_xml = Path(mods_path).read_text()
-                if mods_xml:
-                    mods_xml = mods_xml.replace("'", "''")
-                    command = f"""UPDATE {namespace} set mods = '{mods_xml}' where pid = '{pid}"""
-                    cursor.execute(command)
+            else:
+                mods_xml = fw.get_inline_mods()
+            if mods_xml:
+                mods_xml = mods_xml.replace("'", "''")
+                command = f"""UPDATE {namespace} set mods = '{mods_xml}' where pid = '{pid}"""
+                cursor.execute(command)
         self.conn.commit()
 
     def get_collection_recursive_pid_model_map(self, table, collection_pid):
